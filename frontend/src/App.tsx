@@ -1,65 +1,56 @@
 import { useEffect, useState } from 'react';
+import { AuthProvider } from './lib/auth';
+import Header from './components/Header';
+import MapPage from './pages/MapPage';
+import DestinationList from './pages/DestinationList';
+import DestinationDetailPage from './pages/DestinationDetail';
+import RouteList from './pages/RouteList';
+import RouteDetailPage from './pages/RouteDetail';
+import Favorites from './pages/Favorites';
+import AuthPage from './pages/AuthPage';
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
-
-type HealthResponse = {
-  status: string;
-  db: string;
-};
-
-export default function App() {
-  const [health, setHealth] = useState<HealthResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
+// Router đơn giản dựa trên hash
+function useHashPath(): string {
+  const [path, setPath] = useState(window.location.hash.replace(/^#/, '') || '/');
   useEffect(() => {
-    fetch(`${API_URL}/api/health`)
-      .then((res) => res.json())
-      .then((data: HealthResponse) => setHealth(data))
-      .catch((err: Error) => setError(err.message));
+    const onChange = () => setPath(window.location.hash.replace(/^#/, '') || '/');
+    window.addEventListener('hashchange', onChange);
+    return () => window.removeEventListener('hashchange', onChange);
   }, []);
+  return path;
+}
 
-  const isOk = health?.status === 'ok';
+function Router() {
+  const path = useHashPath();
+
+  const mapMatch = path.match(/^\/map(?:\/([a-z0-9-]+))?$/);
+  const detail = path.match(/^\/d\/([a-z0-9-]+)$/);
+  const route = path.match(/^\/routes\/([0-9a-f-]{36})$/i);
+
+  let page;
+  if (path === '/' || mapMatch) page = <MapPage slug={mapMatch?.[1] ?? null} />;
+  else if (detail) page = <DestinationDetailPage key={detail[1]} slug={detail[1]} />;
+  else if (route) page = <RouteDetailPage key={route[1]} id={route[1]} />;
+  else if (path === '/list') page = <DestinationList />;
+  else if (path === '/routes') page = <RouteList />;
+  else if (path === '/favorites') page = <Favorites />;
+  else if (path === '/auth') page = <AuthPage />;
+  else page = <p className="p-6 text-slate-600">Không tìm thấy trang.</p>;
+
+  const isMap = path === '/' || !!mapMatch;
 
   return (
-    <main className="min-h-screen bg-slate-100 flex items-center justify-center p-6">
-      <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
-        <h1 className="text-2xl font-bold text-slate-800">Fullstack App</h1>
-        <p className="mt-1 text-sm text-slate-500">React + TypeScript + Tailwind</p>
-
-        <div className="mt-6 space-y-3 text-sm">
-          <Row label="Backend" value={API_URL} />
-          <Row
-            label="Trạng thái API"
-            value={error ? `Lỗi: ${error}` : health ? health.status : 'Đang kiểm tra...'}
-            tone={error ? 'error' : isOk ? 'ok' : 'neutral'}
-          />
-          <Row
-            label="PostgreSQL"
-            value={health ? health.db : '—'}
-            tone={health?.db === 'connected' ? 'ok' : 'neutral'}
-          />
-        </div>
-      </div>
-    </main>
+    <>
+      <Header />
+      <main className={isMap ? 'bg-slate-900' : 'min-h-screen bg-slate-100'}>{page}</main>
+    </>
   );
 }
 
-function Row({
-  label,
-  value,
-  tone = 'neutral',
-}: {
-  label: string;
-  value: string;
-  tone?: 'ok' | 'error' | 'neutral';
-}) {
-  const color =
-    tone === 'ok' ? 'text-emerald-600' : tone === 'error' ? 'text-red-600' : 'text-slate-700';
-
+export default function App() {
   return (
-    <div className="flex items-center justify-between rounded-lg bg-slate-50 px-4 py-3">
-      <span className="text-slate-500">{label}</span>
-      <span className={`font-medium ${color}`}>{value}</span>
-    </div>
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
   );
 }
