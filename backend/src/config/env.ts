@@ -19,4 +19,5 @@ export const env = {
   FRONTEND_URL: process.env.FRONTEND_URL ?? 'http://localhost:5173',
   BACKEND_URL: process.env.BACKEND_URL ?? 'http://localhost:4000',
   DB_POSTGRES: required('DB_POSTGRES'),
+  JWT_SECRET: required('JWT_SECRET'),
 };
