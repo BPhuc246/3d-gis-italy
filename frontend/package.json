@@ -7,7 +7,11 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:explore": "node tests/explore.test.mjs",
+    "test:viewer": "node tests/sketchfab.test.mjs",
+    "test:tour": "node tests/phototour.test.mjs",
+    "test:immersive": "node tests/immersive.test.mjs"
   },
   "dependencies": {
     "@arcgis/core": "^5.1.27",

@@ -14,22 +14,22 @@ INSERT INTO tourist_destination
    arcgis_exterior_scene_item_id, arcgis_interior_scene_item_id)
 VALUES
   ('colosseum', 'Đấu trường La Mã (Colosseum)',
-   'Đấu trường lớn nhất thế giới cổ đại, nơi tổ chức các trận đấu đấu sĩ và sự kiện công cộng.',
+   'Đấu trường Flavian (Colosseum) là kiệt tác vĩ đại nhất của kỹ thuật xây dựng La Mã cổ đại. Với quy mô 4 tầng vòm đá travertine, hệ thống 80 cửa thoát hiểm vomitoria và mê cung hầm ngầm Hypogeum tinh vi, nơi đây từng tổ chức các trận quyết chiến giác đấu và đại hội kịch tính cho hơn 50.000 khán giả.',
    'Piazza del Colosseo, 1, 00184 Roma, Italia', 41.8902, 12.4922, 'landmark',
-   'Xem website chính thức để biết giờ mở cửa theo mùa', NULL, 'EUR',
-   'https://placehold.co/1200x800?text=Colosseum',
+   '08:30 – 19:15 (mùa hè) / 16:30 (mùa đông). Cần đặt trước vé giờ cố định.', 18.00, 'EUR',
+   '/_local/images/colosseum-exterior.jpg',
    'REPLACE_COLOSSEUM_EXTERIOR', 'REPLACE_COLOSSEUM_INTERIOR'),
   ('arch-of-constantine', 'Khải hoàn môn Constantine',
-   'Khải hoàn môn kỷ niệm chiến thắng của Hoàng đế Constantine I, nằm cạnh Colosseum.',
+   'Khải hoàn môn lớn nhất thế giới La Mã còn tồn tại nguyên vẹn, dựng năm 315 SCN để vinh danh chiến thắng Cầu Milvian của Hoàng đế Constantine I. Công trình nổi bật với ba lối vòm đá cẩm thạch trắng cân xứng cùng các bức phù điêu đỉnh cao được kế thừa từ thời các minh quân Trajan, Hadrian và Marcus Aurelius.',
    'Via di San Gregorio, Roma, Italia', 41.8898, 12.4905, 'landmark',
-   'Ngoài trời, xem website chính thức để biết thêm', NULL, 'EUR',
-   'https://placehold.co/1200x800?text=Arch+of+Constantine',
+   'Không gian ngoài trời trên trục đường Via Triumphalis, tham quan tự do 24/7.', 0.00, 'EUR',
+   '/_local/images/constantine-wide.jpg',
    'REPLACE_ARCH_EXTERIOR', NULL),
   ('pantheon', 'Đền Pantheon',
-   'Ngôi đền La Mã cổ với mái vòm bê tông không cốt thép, từng là vòm lớn nhất thế giới trong nhiều thế kỷ.',
+   'Ngôi đền cổ đại được bảo tồn hoàn hảo nhất thế giới, tái thiết dưới triều Hoàng đế Hadrian. Không gian kết hợp tiền sảnh 16 cột đá hoa cương Ai Cập nguyên khối nặng 60 tấn với đại sảnh tròn Rotunda dưới mái vòm bê tông không cốt thép lớn nhất thế giới suốt 2.000 năm, được thắp sáng huyền diệu bởi "Con mắt của Rome" – lỗ mở Oculus 9m.',
    'Piazza della Rotonda, 00186 Roma, Italia', 41.8986, 12.4769, 'landmark',
-   'Xem website chính thức để biết giờ mở cửa', NULL, 'EUR',
-   'https://placehold.co/1200x800?text=Pantheon',
+   '09:00 – 19:00 hàng ngày (lượt vào cuối 18:30).', 5.00, 'EUR',
+   '/_local/images/pantheon-exterior.jpg',
    'REPLACE_PANTHEON_EXTERIOR', 'REPLACE_PANTHEON_INTERIOR')
 ON CONFLICT (slug) DO NOTHING;
 

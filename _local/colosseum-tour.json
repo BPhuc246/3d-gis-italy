@@ -1,0 +1,507 @@
+{
+  "id": "colosseum-photo",
+  "version": 2,
+  "destinationSlug": "colosseum",
+  "destinationName": "Đấu trường La Mã",
+  "title": "Từ tầng vòm đến lòng đấu trường",
+  "startSceneId": "exterior",
+  "routeNote": "Mũi tên nối các góc nhìn, không phải tuyến đi bộ được khảo sát. Ảnh chụp ở nhiều thời điểm.",
+  "contentSources": [
+    {
+      "title": "Cổng thông tin du lịch chính thức Roma — Colosseum",
+      "url": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum"
+    },
+    {
+      "title": "Bách khoa toàn thư Wikipedia — Đấu trường La Mã",
+      "url": "https://en.wikipedia.org/wiki/Colosseum"
+    },
+    {
+      "title": "Kiến trúc và không gian nội thất Colosseum",
+      "url": "https://en.wikipedia.org/wiki/Colosseum#Interior"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "exterior",
+      "title": "01 · Toàn cảnh ngoại thất buổi sáng",
+      "image": "/_local/images/colosseum-exterior.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-exterior.jpg",
+      "alt": "Toàn cảnh mặt ngoài Colosseum tráng lệ trong nắng sớm, làm lộ rõ các tầng vòm đá Travertine và cấu trúc hình elip đồ sộ.",
+      "description": "Toàn cảnh mặt ngoài Colosseum tráng lệ trong nắng sớm, làm lộ rõ các tầng vòm đá Travertine và cấu trúc hình elip đồ sộ.",
+      "author": "Deb Nystrom from Ann Arbor, Michigan, USA",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colosseum_(45696033834).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2018-10-29 09:12",
+      "hotspots": [
+        {
+          "x": 39,
+          "y": 41,
+          "title": "Nhịp vòm ba tầng mặt đứng",
+          "text": "Mặt ngoài Colosseum cao 48m, chia làm 4 tầng kiến trúc. Ba tầng dưới gồm 80 cổng vòm mỗi tầng, kết hợp thức cột Doric ở tầng 1, thức cột Ionic ở tầng 2 và thức cột Corinth ở tầng 3. Cấu trúc vòm lặp lại giúp giảm tải trọng khối lượng đá travertine khổng lồ mà vẫn đảm bảo độ chịu lực vững chắc.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "exterior-info-1"
+        },
+        {
+          "x": 28,
+          "y": 18,
+          "title": "Tầng áp mái Attic kiên cố",
+          "text": "Tầng thứ 4 là bức tường kín ốp đá với các cột dẹt Corinthian và cửa sổ nhỏ. Phía trên đỉnh từng gắn 240 cột đỡ bằng gỗ dùng để căng tấm bạt che nắng khổng lồ (Velarium), được điều khiển bởi lực lượng thủy thủ tinh nhuệ để che chở cho hơn 50.000 khán giả khỏi mưa nắng.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "exterior-info-2"
+        },
+        {
+          "id": "exterior-to-west",
+          "target": "west",
+          "direction": "view",
+          "x": 58,
+          "y": 81,
+          "title": "Đổi góc nhìn ngoại thất",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "west",
+      "title": "02 · Góc nhìn ngoại thất phía Tây",
+      "image": "/_local/images/colosseum-west.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-west.jpg",
+      "alt": "Góc nhìn từ phía Tây phản ánh chân thực dấu ấn thời gian: sự tương phản rõ rệt giữa mảng tường nguyên vẹn phía ngoài và phần khán đài bị khuyết sau nhiều thế kỷ.",
+      "description": "Góc nhìn từ phía Tây phản ánh chân thực dấu ấn thời gian: sự tương phản rõ rệt giữa mảng tường nguyên vẹn phía ngoài và phần khán đài bị khuyết sau nhiều thế kỷ.",
+      "author": "Deb Nystrom from Ann Arbor, Michigan, USA",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colosseum,_Rome_(44601875200).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2018-10-29 08:55",
+      "hotspots": [
+        {
+          "x": 32,
+          "y": 32,
+          "title": "Vật liệu Travertine và Tufa",
+          "text": "Người La Mã đã sử dụng hơn 100.000 m³ đá travertine khai thác từ vùng Tivoli lân cận, liên kết bằng 300 tấn ngàm sắt kẹp (không dùng vữa). Khối lượng đá này đã tạo nên khung chịu lực vững bền thách thức động đất suốt hơn 2.000 năm.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "west-info-1"
+        },
+        {
+          "x": 76,
+          "y": 71,
+          "title": "Vết tích hư hại và bảo tồn",
+          "text": "Qua các trận động đất lớn vào năm 847 và 1349 cùng thời kỳ Trung cổ khi đá bị tận dụng để xây các cung điện La Mã, phần tường ngoài phía nam bị sập đã để lộ mặt cắt các tầng hành lang chịu lực bên trong.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "west-info-2"
+        },
+        {
+          "id": "west-to-exterior",
+          "target": "exterior",
+          "direction": "view",
+          "x": 20,
+          "y": 84,
+          "title": "Xem lại toàn cảnh ngoại thất",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "west-to-corridor",
+          "target": "corridor",
+          "direction": "forward",
+          "x": 56,
+          "y": 67,
+          "title": "Vào xem hành lang",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "west-to-aerial",
+          "target": "aerial",
+          "direction": "view",
+          "x": 82,
+          "y": 22,
+          "title": "Đổi góc: toàn cảnh từ trên cao",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "corridor",
+      "title": "03 · Hành lang thông tầng và trụ gạch chịu lực",
+      "image": "/_local/images/colosseum-corridor.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-corridor.jpg",
+      "alt": "Lối đi vành khuyên rộng lớn với lõi gạch nung La Mã kết hợp vữa tro núi lửa Pozzolana, đóng vai trò trục lưu thông chính giữa các tầng.",
+      "description": "Lối đi vành khuyên rộng lớn với lõi gạch nung La Mã kết hợp vữa tro núi lửa Pozzolana, đóng vai trò trục lưu thông chính giữa các tầng.",
+      "author": "Jebulon",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deambulatoire_Colosseum_Rome_Italy.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1247,
+      "captureDate": "2013-08-23",
+      "hotspots": [
+        {
+          "x": 73,
+          "y": 57,
+          "title": "Hệ thống cửa thoát hiểm Vomitoria",
+          "text": "Colosseum có 80 cửa vòm đánh số La Mã ở tầng trệt (76 cổng cho công chúng, 4 cổng danh dự). Hệ thống hành lang và cầu thang dốc cho phép 50.000 - 70.000 khán giả vào đúng vị trí hoặc thoát hiểm ra ngoài chỉ trong 10 đến 15 phút.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "corridor-info-1"
+        },
+        {
+          "x": 21,
+          "y": 57,
+          "title": "Kỹ thuật xây gạch và vòm bê tông",
+          "text": "Các trụ gạch dày kết hợp lõi bê tông La Mã (opus caementicium) nhẹ và siêu bền. Kỹ thuật này cho phép tạo ra các không gian thông tầng cao vút mà không cần cột chống ở giữa lối đi.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "corridor-info-2"
+        },
+        {
+          "id": "corridor-to-west",
+          "target": "west",
+          "direction": "return",
+          "x": 18,
+          "y": 82,
+          "title": "Trở ra ngoại thất ban ngày",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "corridor-to-gallery",
+          "target": "gallery",
+          "direction": "forward",
+          "x": 49,
+          "y": 68,
+          "title": "Khám phá hành lang có mái vòm",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "gallery",
+      "title": "04 · Hành lang vòm cuốn tầng trên",
+      "image": "/_local/images/colosseum-gallery.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-gallery.jpg",
+      "alt": "Hành lang có mái vòm cuốn liên hoàn ở tầng cao, nơi từng là lối đi nhộn nhịp của các tầng lớp cư dân La Mã thưởng ngoạn sự kiện.",
+      "description": "Hành lang có mái vòm cuốn liên hoàn ở tầng cao, nơi từng là lối đi nhộn nhịp của các tầng lớp cư dân La Mã thưởng ngoạn sự kiện.",
+      "author": "Quentin Lowagie / Klow",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colosseum,_Rome_-_Outer_gallery.jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 1920,
+      "height": 2888,
+      "captureDate": "2014-08-13 14:56:17",
+      "hotspots": [
+        {
+          "x": 52,
+          "y": 25,
+          "title": "Vòm bán nguyệt phân bố tải trọng",
+          "text": "Hệ vòm nôi (barrel vault) liên kết với vòm giao thoa (groin vault) giúp chuyển tải trọng của hàng ngàn tấn khán đài đá phía trên thẳng xuống các trụ móng ngầm vững chắc.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "gallery-info-1"
+        },
+        {
+          "x": 83,
+          "y": 50,
+          "title": "Không gian dịch vụ công cộng",
+          "text": "Dọc theo hành lang này thời cổ đại từng có các quầy bán thức ăn nhẹ, đồ uống và các vòi phun nước uống công cộng dẫn từ hệ thống cống dẫn nước dẫn về đấu trường.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "gallery-info-2"
+        },
+        {
+          "id": "gallery-to-corridor",
+          "target": "corridor",
+          "direction": "return",
+          "x": 46,
+          "y": 78,
+          "title": "Trở lại hành lang mở",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "gallery-to-interior",
+          "target": "interior",
+          "direction": "right",
+          "x": 71,
+          "y": 64,
+          "title": "Nhìn ra lòng đấu trường",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "gallery-to-arena",
+          "target": "arena",
+          "direction": "view",
+          "x": 59,
+          "y": 85,
+          "title": "Đổi góc: sàn đấu và khán đài",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "interior",
+      "title": "05 · Toàn cảnh lòng đấu trường và khán đài",
+      "image": "/_local/images/colosseum-interior.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-interior.jpg",
+      "alt": "Góc nhìn toàn cảnh bao quát từ khán đài xuống trung tâm đấu trường, nơi diễn ra các trận quyết đấu đỉnh cao của các đấu sĩ gladiator.",
+      "description": "Góc nhìn toàn cảnh bao quát từ khán đài xuống trung tâm đấu trường, nơi diễn ra các trận quyết đấu đỉnh cao của các đấu sĩ gladiator.",
+      "author": "Colin",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colosseum_interior_2012_sweep_panorama.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 1920,
+      "height": 749,
+      "captureDate": "2012-04-12 11:42:49",
+      "hotspots": [
+        {
+          "x": 52,
+          "y": 72,
+          "title": "Khu hầm ngầm Hypogeum lộ thiên",
+          "text": "Nguyên bản sàn đấu bằng gỗ phủ cát đã bị thời gian phá hủy, làm lộ ra toàn bộ mê cung Hypogeum bên dưới với mạng lưới phòng giam, chuồng thú và đường ray thang nâng.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum#Interior",
+          "id": "interior-info-1"
+        },
+        {
+          "x": 80,
+          "y": 28,
+          "title": "Phân tầng giai cấp trên khán đài Cavea",
+          "text": "Khán đài được phân định đẳng cấp nghiêm ngặt: hàng đầu tiên (Podium) dành cho Hoàng đế và Nguyên lão; tầng tiếp theo (Maenianum primum) cho tầng lớp quý tộc; tầng giữa cho bình dân và tầng cao nhất bằng gỗ cho phụ nữ và nô lệ.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum",
+          "id": "interior-info-2"
+        },
+        {
+          "id": "interior-to-gallery",
+          "target": "gallery",
+          "direction": "return",
+          "x": 17,
+          "y": 82,
+          "title": "Trở lại hành lang có mái",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-arena",
+          "target": "arena",
+          "direction": "right",
+          "x": 78,
+          "y": 64,
+          "title": "Xem góc sàn đấu",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-hypogeum",
+          "target": "hypogeum",
+          "direction": "down",
+          "x": 49,
+          "y": 81,
+          "title": "Xem gần khu ngầm Hypogeum",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-aerial",
+          "target": "aerial",
+          "direction": "view",
+          "x": 85,
+          "y": 20,
+          "title": "Đổi góc: nhìn toàn bộ từ trên cao",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "arena",
+      "title": "06 · Khu vực sàn đấu phục dựng",
+      "image": "/_local/images/colosseum-arena.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-arena.jpg",
+      "alt": "Một phần sàn gỗ phủ cát được phục dựng ở đầu phía đông, giúp người xem hình dung rõ ranh giới giữa mặt sân thi đấu và thế giới ngầm bên dưới.",
+      "description": "Một phần sàn gỗ phủ cát được phục dựng ở đầu phía đông, giúp người xem hình dung rõ ranh giới giữa mặt sân thi đấu và thế giới ngầm bên dưới.",
+      "author": "Erik Drost",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Colosseum_Arena_(5986632567).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 1440,
+      "captureDate": "2010-03-29 07:12",
+      "hotspots": [
+        {
+          "x": 77,
+          "y": 49,
+          "title": "Mặt sàn đấu Arena phủ cát",
+          "text": "Từ \"Arena\" xuất phát từ tiếng Latin \"harena\" nghĩa là hạt cát. Lớp cát dày trên sàn gỗ có nhiệm vụ thấm hút mồ hôi, máu và nước để chống trơn trượt cho đấu sĩ và dã thú trong các trận tử chiến.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum#Interior",
+          "id": "arena-info-1"
+        },
+        {
+          "x": 32,
+          "y": 21,
+          "title": "Lưới rào bảo vệ khán giả",
+          "text": "Xung quanh mép sàn đấu từng có hệ thống lưới chắn kim loại kiên cố và các con lăn ngà voi xoay tròn để ngăn thú dữ nhảy vọt lên hàng ghế danh dự của các quan chức cấp cao.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum",
+          "id": "arena-info-2"
+        },
+        {
+          "id": "arena-to-interior",
+          "target": "interior",
+          "direction": "return",
+          "x": 18,
+          "y": 80,
+          "title": "Trở lại toàn cảnh lòng đấu",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "arena-to-hypogeum",
+          "target": "hypogeum",
+          "direction": "down",
+          "x": 43,
+          "y": 47,
+          "title": "Nhìn xuống khu Hypogeum",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "arena-to-gallery",
+          "target": "gallery",
+          "direction": "view",
+          "x": 78,
+          "y": 24,
+          "title": "Đổi góc: hành lang có mái",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "hypogeum",
+      "title": "07 · Cận cảnh mê cung ngầm Hypogeum",
+      "image": "/_local/images/colosseum-hypogeum.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-hypogeum.jpg",
+      "alt": "Khu hầm ngầm hai tầng được xây dựng dưới thời Hoàng đế Domitian, là hậu trường công nghệ phức tạp phục vụ các màn trình diễn kịch tính.",
+      "description": "Khu hầm ngầm hai tầng được xây dựng dưới thời Hoàng đế Domitian, là hậu trường công nghệ phức tạp phục vụ các màn trình diễn kịch tính.",
+      "author": "daryl_mitchell from Saskatoon, Saskatchewan, Canada",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hypogeum_1_(15005526662).jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 1920,
+      "height": 1440,
+      "captureDate": "2014-06-07 01:13",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 61,
+          "title": "Hệ thống thang nâng cơ học",
+          "text": "Hypogeum từng có 28 thang nâng ròng rọc bằng gỗ do nô lệ vận hành. Thang nâng có thể đưa các lồng nhốt hổ, sư tử hoặc voi bất ngờ trồi lên mặt sân qua các cửa sập bí mật trước sự sững sờ của khán giả.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum#Interior",
+          "id": "hypogeum-info-1"
+        },
+        {
+          "x": 26,
+          "y": 62,
+          "title": "Hệ thống cấp thoát nước ngầm",
+          "text": "Dưới đáy Hypogeum là 4 cống ngầm lớn dẫn nước ra sông Tiber. Thời kỳ đầu trước khi xây Hypogeum kiên cố, người La Mã thậm chí còn bơm nước ngập đấu trường để tái hiện các trận hải chiến (naumachia).",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum#Interior",
+          "id": "hypogeum-info-2"
+        },
+        {
+          "id": "hypogeum-to-arena",
+          "target": "arena",
+          "direction": "return",
+          "x": 22,
+          "y": 82,
+          "title": "Trở lại góc sàn đấu",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "hypogeum-to-interior",
+          "target": "interior",
+          "direction": "return",
+          "x": 77,
+          "y": 80,
+          "title": "Trở lại toàn cảnh lòng đấu",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "aerial",
+      "title": "08 · Góc nhìn toàn cảnh từ trên cao",
+      "image": "/_local/images/colosseum-above.jpg",
+      "thumbnail": "/_local/images/thumbs/colosseum-above.jpg",
+      "alt": "Góc nhìn từ trên cao làm nổi bật bố cục hình elip hoàn hảo cùng mối liên kết không gian mật thiết với Quảng trường La Mã và Khải hoàn môn kế cận.",
+      "description": "Góc nhìn từ trên cao làm nổi bật bố cục hình elip hoàn hảo cùng mối liên kết không gian mật thiết với Quảng trường La Mã và Khải hoàn môn kế cận.",
+      "author": "Kasa Fue",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rom_Colosseum_Sept_2021_3.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1279,
+      "captureDate": "2021-09-06 12:00:56",
+      "hotspots": [
+        {
+          "x": 66,
+          "y": 68,
+          "title": "Kích thước hình học elip hoàn mỹ",
+          "text": "Trục dài của elip đo được 189m, trục ngắn 156m, chu vi ngoài lên tới 527m. Bố cục elip mở rộng tầm nhìn toàn diện cho mọi vị trí khán giả tốt hơn nhiều so với hình tròn Hy Lạp.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/flavian-amphitheatre-colosseum",
+          "id": "aerial-info-1"
+        },
+        {
+          "x": 52,
+          "y": 53,
+          "title": "Trục cảnh quan trung tâm Roma cổ",
+          "text": "Đấu trường nằm ở thung lũng giữa ba ngọn đồi Caelian, Esquiline và Palatine, nguyên là vị trí hồ nhân tạo của cung điện Vàng Domus Aurea do bạo chúa Nero xây dựng trước đó.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Colosseum",
+          "id": "aerial-info-2"
+        },
+        {
+          "id": "aerial-to-west",
+          "target": "west",
+          "direction": "return",
+          "x": 24,
+          "y": 79,
+          "title": "Trở lại ngoại thất mặt đất",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "aerial-to-interior",
+          "target": "interior",
+          "direction": "down",
+          "x": 44,
+          "y": 46,
+          "title": "Xem bên trong lòng đấu trường",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "underground",
+      "prompt": "Hypogeum là khu vực nào trong Colosseum?",
+      "choices": [
+        "Mái che nắng trên đỉnh đấu trường",
+        "Khu mê cung ngầm hai tầng dưới sàn đấu",
+        "Hàng ghế danh dự của hoàng đế"
+      ],
+      "answer": 1,
+      "explanation": "Hypogeum là hệ thống hầm ngầm chứa phòng giam đấu sĩ, chuồng thú và thang máy ròng rọc cơ học.",
+      "sceneId": "hypogeum"
+    },
+    {
+      "id": "shape",
+      "prompt": "Mặt bằng hình học tổng thể của Colosseum có dạng gì?",
+      "choices": [
+        "Hình elip hoàn hảo",
+        "Hình tròn đồng tâm",
+        "Hình chữ nhật bo góc"
+      ],
+      "answer": 0,
+      "explanation": "Colosseum có mặt bằng elip với trục dài 189m và trục ngắn 156m, tối ưu tầm nhìn cho khán giả.",
+      "sceneId": "aerial"
+    },
+    {
+      "id": "gallery",
+      "prompt": "Đặc điểm kiến trúc nào nổi bật nhất ở các tầng mặt ngoài Colosseum?",
+      "choices": [
+        "Mỗi tầng sử dụng một thức cột kinh điển khác nhau (Doric, Ionic, Corinth)",
+        "Chỉ sử dụng cột gỗ thuần túy",
+        "Toàn bộ tường là kính phẳng"
+      ],
+      "answer": 0,
+      "explanation": "Ba tầng dưới của Colosseum lần lượt ứng dụng ba thức cột Hy Lạp kinh điển: Doric ở tầng 1, Ionic ở tầng 2 và Corinth ở tầng 3.",
+      "sceneId": "exterior"
+    }
+  ]
+}
