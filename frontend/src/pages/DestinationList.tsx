@@ -9,6 +9,12 @@ const CATEGORIES = [
   { code: 'religious', label: 'Tôn giáo' },
 ];
 
+const COVER_FALLBACK: Record<string, string> = {
+  colosseum: '/_local/images/colosseum-exterior.jpg',
+  'arch-of-constantine': '/_local/images/constantine-wide.jpg',
+  pantheon: '/_local/images/pantheon-exterior.jpg',
+};
+
 export default function DestinationList() {
   const [items, setItems] = useState<DestinationSummary[]>([]);
   const [category, setCategory] = useState('');
@@ -72,22 +78,27 @@ export default function DestinationList() {
       )}
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((d) => (
-          <a
-            key={d.destinationId}
-            href={`#/d/${d.slug}`}
-            className="group overflow-hidden rounded-2xl bg-white shadow transition hover:-translate-y-1 hover:shadow-lg"
-          >
-            <img src={d.coverImageUrl} alt={d.name} className="h-44 w-full object-cover" loading="lazy" />
-            <div className="p-5">
-              <h2 className="text-lg font-semibold text-slate-800 group-hover:text-amber-700">{d.name}</h2>
-              <p className="mt-1 text-xs text-slate-500">{d.address}</p>
-              <p className="mt-3 text-xs text-slate-400">
-                {d.avgRating !== null ? `★ ${d.avgRating} · ${d.reviewCount} đánh giá` : 'Chưa có đánh giá'}
-              </p>
-            </div>
-          </a>
-        ))}
+        {items.map((d) => {
+          const cover = (!d.coverImageUrl || d.coverImageUrl.includes('placehold.co'))
+            ? (COVER_FALLBACK[d.slug] ?? '/_local/images/colosseum-exterior.jpg')
+            : d.coverImageUrl;
+          return (
+            <a
+              key={d.destinationId}
+              href={`#/d/${d.slug}`}
+              className="group overflow-hidden rounded-2xl bg-white shadow transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <img src={cover} alt={d.name} className="h-48 w-full object-cover" loading="lazy" />
+              <div className="p-5">
+                <h2 className="text-lg font-semibold text-slate-800 group-hover:text-amber-700">{d.name}</h2>
+                <p className="mt-1 text-xs text-slate-500">{d.address}</p>
+                <p className="mt-3 text-xs text-slate-400">
+                  {d.avgRating !== null ? `★ ${d.avgRating} · ${d.reviewCount} đánh giá` : 'Chưa có đánh giá'}
+                </p>
+              </div>
+            </a>
+          );
+        })}
       </div>
     </div>
   );

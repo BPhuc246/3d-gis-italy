@@ -3,3 +3,8 @@ dist
 .env
 *.log
 .DS_Store
+
+# Thư mục tạm trong quá trình kiểm thử / nghiên cứu dữ liệu
+_local/qa/
+_local/research/
+_local/sources/

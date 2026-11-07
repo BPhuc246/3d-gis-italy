@@ -8,6 +8,10 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "db:migrate": "tsx src/db/migrate.ts",
+    "db:demo": "tsx src/db/demo.ts",
+    "db:demo:clear": "tsx src/db/demo.ts --clear",
+    "test:integration": "tsx tests/integration.ts",
+    "test:browser": "tsx tests/browser.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -21,6 +25,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^22.10.2",
     "@types/pg": "^8.11.10",
     "tsx": "^4.19.2",

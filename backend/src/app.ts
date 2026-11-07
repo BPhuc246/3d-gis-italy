@@ -11,7 +11,16 @@ import regionsRouter from './routes/regions';
 export function createApp() {
   const app = express();
 
-  app.use(cors({ origin: env.FRONTEND_URL, credentials: true }));
+  const origins = new Set([env.FRONTEND_URL]);
+  // Vite may be opened with either loopback hostname during local development.
+  if (env.NODE_ENV !== 'production') {
+    const frontend = new URL(env.FRONTEND_URL);
+    if (frontend.hostname === 'localhost' || frontend.hostname === '127.0.0.1') {
+      frontend.hostname = frontend.hostname === 'localhost' ? '127.0.0.1' : 'localhost';
+      origins.add(frontend.origin);
+    }
+  }
+  app.use(cors({ origin: [...origins], credentials: true }));
   app.use(express.json({ limit: '100kb' }));
 
   app.use('/api', healthRouter);

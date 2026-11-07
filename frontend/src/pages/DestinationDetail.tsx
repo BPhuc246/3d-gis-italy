@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react';
 import { api, DestinationDetail as Detail } from '../lib/api';
 import { useAuth } from '../lib/auth';
 import ReviewSection from '../components/ReviewSection';
+import PhotoTour from '../components/PhotoTour';
+import { usePhotoTourAvailable } from '../lib/usePhotoTour';
 
 export default function DestinationDetailPage({ slug }: { slug: string }) {
   const { user } = useAuth();
   const [data, setData] = useState<Detail | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [showTour, setShowTour] = useState(false);
+  const hasTour = usePhotoTourAvailable(slug);
 
   const load = () =>
     api
@@ -61,6 +65,7 @@ export default function DestinationDetailPage({ slug }: { slug: string }) {
           <p className="mt-1 text-sm text-slate-500">{data.address}</p>
         </div>
         <div className="flex gap-2">
+          {hasTour && <button className="button secondary" onClick={() => setShowTour(true)}>Khám phá qua ảnh</button>}
           <a
             href={`#/map/${slug}`}
             className="rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
@@ -112,10 +117,12 @@ export default function DestinationDetailPage({ slug }: { slug: string }) {
       <ReviewSection
         slug={slug}
         reviews={data.reviews}
+        myReview={data.myReview}
         avgRating={data.avgRating}
         reviewCount={data.reviewCount}
         onChanged={load}
       />
+      {showTour && <PhotoTour destinationSlug={slug} onClose={() => setShowTour(false)} />}
     </div>
   );
 }

@@ -1,10 +1,11 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { api, Review } from '../lib/api';
 import { useAuth } from '../lib/auth';
 
 type Props = {
   slug: string;
   reviews: Review[];
+  myReview?: Review | null;
   avgRating: number | null;
   reviewCount: number;
   onChanged: () => void;
@@ -17,14 +18,17 @@ function stars(n: number) {
   return '★'.repeat(n) + '☆'.repeat(5 - n);
 }
 
-export default function ReviewSection({ slug, reviews, avgRating, reviewCount, onChanged }: Props) {
+export default function ReviewSection({ slug, reviews, myReview, avgRating, reviewCount, onChanged }: Props) {
   const { user } = useAuth();
-  const mine = reviews.find((r) => r.userId === user?.userId);
+  const mine = myReview?.userId === user?.userId ? myReview : reviews.find((r) => r.userId === user?.userId);
 
   const [rating, setRating] = useState(mine?.rating ?? 5);
   const [comment, setComment] = useState(mine?.comment ?? '');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  useEffect(() => {
+    setRating(mine?.rating ?? 5); setComment(mine?.comment ?? ''); setError(null);
+  }, [slug, user?.userId, mine?.reviewId, mine?.rating, mine?.comment]);
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
@@ -66,7 +70,7 @@ export default function ReviewSection({ slug, reviews, avgRating, reviewCount, o
 
       {!user ? (
         <p className="mt-3 text-sm text-slate-600">
-          <a href="#/auth" className="text-amber-700 hover:underline">Đăng nhập</a> để viết đánh giá.
+          <a href="#/auth" onClick={() => { try { sessionStorage.setItem('roma-return', window.location.hash); } catch { /* Optional. */ } }} className="text-amber-700 hover:underline">Đăng nhập</a> để viết đánh giá.
         </p>
       ) : (
         <form onSubmit={submit} className="mt-4 space-y-3 rounded-xl bg-white p-5 shadow">
@@ -84,6 +88,7 @@ export default function ReviewSection({ slug, reviews, avgRating, reviewCount, o
             </select>
           </div>
           <textarea
+            aria-label="Nội dung đánh giá"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             maxLength={2000}

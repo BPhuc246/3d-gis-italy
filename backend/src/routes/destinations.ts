@@ -66,7 +66,7 @@ router.get('/:slug', optionalAuth, async (req, res, next) => {
       return;
     }
 
-    const [images, reviews, stats, fav] = await Promise.all([
+    const [images, reviews, stats, fav, ownReview] = await Promise.all([
       pool.query(
         `SELECT image_url AS "imageUrl", image_type AS "imageType", caption, is_primary AS "isPrimary"
          FROM destination_image WHERE destination_id = $1
@@ -93,6 +93,15 @@ router.get('/:slug', optionalAuth, async (req, res, next) => {
             [req.user.userId, dest.destinationId]
           )
         : Promise.resolve({ rowCount: 0 }),
+      req.user
+        ? pool.query(
+            `SELECT r.review_id AS "reviewId", r.user_id AS "userId", u.full_name AS "authorName",
+                    r.rating, r.comment, r.updated_at AS "updatedAt"
+             FROM review r JOIN users u ON u.user_id = r.user_id
+             WHERE r.destination_id = $1 AND r.user_id = $2`,
+            [dest.destinationId, req.user.userId]
+          )
+        : Promise.resolve({ rows: [] }),
     ]);
 
     res.json({
@@ -102,6 +111,7 @@ router.get('/:slug', optionalAuth, async (req, res, next) => {
       reviewCount: stats.rows[0].reviewCount,
       avgRating: stats.rows[0].avgRating,
       isFavorite: (fav.rowCount ?? 0) > 0,
+      myReview: ownReview.rows[0] ?? null,
     });
   } catch (err) {
     next(err);
@@ -139,7 +149,8 @@ router.put('/:slug/review', requireAuth, async (req, res, next) => {
        VALUES ($1, $2, $3, $4)
        ON CONFLICT (user_id, destination_id)
        DO UPDATE SET rating = EXCLUDED.rating, comment = EXCLUDED.comment
-       RETURNING review_id AS "reviewId", user_id AS "userId", rating, comment, updated_at AS "updatedAt"`,
+       RETURNING review_id AS "reviewId", user_id AS "userId", rating, comment, updated_at AS "updatedAt",
+                 (SELECT full_name FROM users WHERE user_id = $1) AS "authorName"`,
       [req.user!.userId, destinationId, rating, comment?.trim() || null]
     );
     res.json(rows[0]);

@@ -22,22 +22,32 @@ function useHashPath(): string {
 
 function Router() {
   const path = useHashPath();
+  const [pathname] = path.split('?');
 
-  const mapMatch = path.match(/^\/map(?:\/([a-z0-9-]+))?$/);
-  const detail = path.match(/^\/d\/([a-z0-9-]+)$/);
-  const route = path.match(/^\/routes\/([0-9a-f-]{36})$/i);
+  const mapMatch = pathname.match(/^\/map(?:\/([a-z0-9-]+))?$/);
+  const detail = pathname.match(/^\/d\/([a-z0-9-]+)$/);
+  const route = pathname.match(/^\/routes\/([0-9a-f-]{36})$/i);
 
   let page;
-  if (path === '/' || mapMatch) page = <MapPage slug={mapMatch?.[1] ?? null} />;
-  else if (detail) page = <DestinationDetailPage key={detail[1]} slug={detail[1]} />;
-  else if (route) page = <RouteDetailPage key={route[1]} id={route[1]} />;
-  else if (path === '/list') page = <DestinationList />;
-  else if (path === '/routes') page = <RouteList />;
-  else if (path === '/favorites') page = <Favorites />;
-  else if (path === '/auth') page = <AuthPage />;
-  else page = <p className="p-6 text-slate-600">Không tìm thấy trang.</p>;
+  if (pathname === '/' || mapMatch) {
+    page = <MapPage slug={mapMatch?.[1] ?? null} />;
+  } else if (detail) {
+    page = <DestinationDetailPage key={detail[1]} slug={detail[1]} />;
+  } else if (route) {
+    page = <RouteDetailPage key={route[1]} id={route[1]} />;
+  } else if (pathname === '/list') {
+    page = <DestinationList />;
+  } else if (pathname === '/routes') {
+    page = <RouteList />;
+  } else if (pathname === '/favorites') {
+    page = <Favorites />;
+  } else if (pathname === '/auth') {
+    page = <AuthPage />;
+  } else {
+    page = <p className="p-6 text-slate-600">Không tìm thấy trang.</p>;
+  }
 
-  const isMap = path === '/' || !!mapMatch;
+  const isMap = pathname === '/' || !!mapMatch || pathname === '/map/route';
 
   return (
     <>

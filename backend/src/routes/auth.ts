@@ -16,9 +16,9 @@ router.post('/register', async (req, res, next) => {
     if (
       typeof fullName !== 'string' || !fullName.trim() || fullName.trim().length > 255 ||
       !isEmail(email) ||
-      typeof password !== 'string' || password.length < 8 || password.length > 128
+      typeof password !== 'string' || password.length < 8 || Buffer.byteLength(password, 'utf8') > 72
     ) {
-      res.status(400).json({ message: 'Cần họ tên, email hợp lệ và mật khẩu từ 8 ký tự' });
+      res.status(400).json({ message: 'Cần họ tên, email hợp lệ và mật khẩu từ 8 ký tự, tối đa 72 byte UTF-8' });
       return;
     }
 

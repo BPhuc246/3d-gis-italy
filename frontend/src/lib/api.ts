@@ -47,6 +47,7 @@ export type DestinationDetail = {
   coverImageUrl: string;
   images: { imageUrl: string; imageType: string; caption: string | null; isPrimary: boolean }[];
   reviews: Review[];
+  myReview: Review | null;
   reviewCount: number;
   avgRating: number | null;
   isFavorite: boolean;
@@ -63,6 +64,9 @@ export type EmbedItem = {
 export type BuildingShape = 'circle' | 'ellipse' | 'rectangle';
 
 export type RegionDestination = {
+  coverImageCredit?: string;
+  coverImageSourceUrl?: string;
+  coverImageLicenseUrl?: string;
   slug: string;
   name: string;
   description: string;
