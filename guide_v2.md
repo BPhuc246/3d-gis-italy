@@ -33,8 +33,8 @@ npm run db:demo
 ```
 > Lệnh này sẽ tự động khởi tạo:
 > * **3 tài khoản người dùng thực tế** (Minh An, Thu Hà, Gia Bảo).
-> * **9 đánh giá chân thật kèm số sao rating** chia đều cho Colosseum, Khải hoàn môn và Pantheon.
-> * **5 lượt thả tim yêu thích** để kiểm thử danh sách yêu thích.
+> * **12 đánh giá chân thật kèm số sao rating** chia đều cho Colosseum, Khải hoàn môn, Pantheon và Đài tưởng niệm Vittorio Emanuele II.
+> * Các lượt thả tim yêu thích để kiểm thử danh sách yêu thích.
 > * *Lưu ý:* Nếu muốn xóa sạch dữ liệu demo để nạp lại từ đầu, chạy: `npm run db:demo:clear`.
 
 ### Bước 2.3: Khởi động máy chủ API
@@ -73,7 +73,7 @@ Tất cả tài khoản đều sử dụng mật khẩu ngắn gọn, dễ nhớ
 3. **Đánh giá & Xếp hạng sao:** Đăng nhập và vào chi tiết một di sản, bạn có thể chỉnh sửa/xóa nhận xét của chính mình hoặc viết nhận xét mới kèm số sao rating từ 1 đến 5.
 4. **Mô hình 3D & Tour ảnh:**
    * Bấm **Xem chi tiết mô hình 3D** để tương tác xoay, zoom trực quan mô hình Sketchfab.
-   * Bấm **Khám phá qua ảnh** để trải nghiệm tour ảnh 27 góc chụp thực tế và trả lời câu đố di sản.
+   * Bấm **Khám phá qua ảnh** để trải nghiệm tour ảnh 45 góc chụp thực tế tại 4 địa điểm và trả lời câu đố di sản. Riêng Vittoriano có 18 cảnh, gồm cả bảo tàng, nội thất và sân thượng.
 
 ---
 *Dự án hoàn thành bởi nhóm phát triển Di sản Roma 3D GIS.*

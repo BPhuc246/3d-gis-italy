@@ -34,7 +34,12 @@ export default function Favorites() {
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((f) => {
           const cover = (!f.coverImageUrl || f.coverImageUrl.includes('placehold.co'))
-            ? ({ colosseum: '/_local/images/colosseum-exterior.jpg', 'arch-of-constantine': '/_local/images/constantine-wide.jpg', pantheon: '/_local/images/pantheon-exterior.jpg' }[f.slug] ?? '/_local/images/colosseum-exterior.jpg')
+            ? ({
+                colosseum: '/_local/images/colosseum-exterior.jpg',
+                'arch-of-constantine': '/_local/images/constantine-wide.jpg',
+                pantheon: '/_local/images/pantheon-exterior.jpg',
+                vittoriano: '/_local/images/vittoriano-exterior.jpg',
+              }[f.slug] ?? '/_local/images/colosseum-exterior.jpg')
             : f.coverImageUrl;
           return (
             <a key={f.slug} href={`#/d/${f.slug}`} className="overflow-hidden rounded-2xl bg-white shadow hover:shadow-lg">

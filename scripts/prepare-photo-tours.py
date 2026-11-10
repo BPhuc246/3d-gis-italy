@@ -1,4 +1,4 @@
-"""Build the three curated photo tours from verified local image metadata.
+"""Build the four curated photo tours from verified local image metadata.
 
 Coordinates are percentages of the original photo, reviewed on contact sheets.
 Graph edges describe a change of photographic viewpoint, not a surveyed path.
@@ -245,6 +245,8 @@ catalog = [
     build('pantheon','Đền Pantheon','Từ sảnh cột đến khoảng trời Oculus',pantheon,pan_edges,pan_questions,
         [{'title':'Cổng thông tin du lịch chính thức Roma — Đền Pantheon','url':PANTHEON},{'title':'Bách khoa toàn thư Wikipedia — Đền Pantheon','url':PANTHEON_MUSEUM}]),
 ]
+from importlib import import_module
+catalog.append(import_module('vittoriano-tour').create(scene, point, question, build, NAVIGATION))
 (ROOT / 'tours.json').write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 region = json.loads((ROOT / 'region.json').read_text(encoding='utf-8'))
 for place in region['destinations']:

@@ -8,3 +8,6 @@ dist
 _local/qa/
 _local/research/
 _local/sources/
+
+# Python asset preparation cache
+__pycache__/

@@ -16,6 +16,7 @@ export function makeBuildingMesh(place: BuildingInput): BuildingMesh {
   const height = Math.min(100, Math.max(5, Number(place.heightM) || 20));
   const colors = place.slug === 'colosseum' ? ['#c9ad8a', '#dec6a4', '#a28d73', '#d5be94']
     : place.slug === 'pantheon' ? ['#d4c9b3', '#e4d8bd', '#aa9d88', '#b6aa93']
+    : place.slug === 'vittoriano' ? ['#d9d6cc', '#f5f3e9', '#b3aea0', '#40564e']
     : ['#d7c9ad', '#e7d9be', '#bca989', '#c9b18c'];
   const result: BuildingMesh = { position: [], normal: [], components: colors.map(color => ({ color, faces: [] })) };
   function triangle(a: V, b: V, c: V, material = 0, normals?: [V, V, V]) {
@@ -115,6 +116,76 @@ export function makeBuildingMesh(place: BuildingInput): BuildingMesh {
       box(x*scale,side*width*.40,.5,1.6*scale,1.4*scale,.65,2);
     }
     for(const side of [-1,1]) box(0,side*(depth/2+.05),height*.79,length*.43,.15,height*.11,1);
+  } else if (place.slug === 'vittoriano') {
+    // X follows the facade; +Y faces Piazza Venezia. Scale in local metres.
+    const sx=length/138,sy=width/170,sz=height/81;
+    const block=(x:number,y:number,z:number,w:number,d:number,h:number,m=0)=>box(x*sx,y*sy,z*sz,w*sx,d*sy,h*sz,m);
+    const col=(x:number,y:number,z:number,r:number,h:number,m=1)=>cylinder(x*sx,y*sy,z*sz,r*sx,h*sz,m,12);
+    function stairs(x:number,back:number,front:number,w:number,z:number,rise:number,count:number) {
+      const tread=(front-back)/count;
+      for(let i=0;i<count;i++) block(x,front-(i+.5)*tread,z,w,tread+.03,rise*(i+1)/count,i%3===0?1:0);
+    }
+    block(0,-37,0,126,54,22);
+    block(0,-37,22,128,55,1,1);
+    block(0,4,0,112,46,12);
+    block(0,4,12,114,47,1,1);
+    stairs(0,55,86,38,0,8,20);
+    stairs(0,31,55,80,0,13,18);
+    for(const side of [-1,1]) {
+      stairs(side*43,-16,31,19,13,27,27);
+      block(side*55,8,13,3,43,2,1);
+      col(side*49,41,0,7,2);
+      col(side*49,41,2,5.5,.6,3);
+      const x=side*53;
+      block(x,-29,23,24,30,18);
+      block(x,-29,41,27,33,1.5,1);
+      block(x,-34,42.5,23,19,15);
+      for(const dx of [-9,-3,3,9]) {
+        col(x+dx,-19,42.5,1,15);
+        block(x+dx,-19,42,2.8,2.8,.6,2);
+        block(x+dx,-19,57,2.8,2.8,1,1);
+      }
+      block(x,-29,58,28,34,3,1);
+      block(x,-29,61,25,31,2);
+      block(x,-29,63,26,32,1,1);
+      block(x,-29,64,15,18,4);
+      // Four bronze horses and winged Victory on each quadriga.
+      block(x,-29,68,10,10,1,3);
+      for(const dx of [-3.3,-1.1,1.1,3.3]) {
+        block(x+dx,-26,71,1.4,5,2.5,3);
+        for(const dy of [-1.6,1.6]) block(x+dx,-26+dy,69,.65,.6,2,3);
+        block(x+dx,-23.8,73,1,1.5,2.5,3);
+      }
+      col(x,-31,69,1.7,3,3); col(x,-31,72,.8,6,3); col(x,-31,78,.9,1.5,3);
+      for(const wing of [-1,1]) quad([x*sx,-31*sy,76*sz],[(x+wing*5)*sx,-31*sy,81*sz],[(x+wing*3)*sx,-31*sy,76*sz],[(x+wing)*sx,-31*sy,74*sz],3);
+    }
+    // Sixteen freestanding columns; deep curved roof and recessed rear wall.
+    const bays=15;
+    for(let i=0;i<=bays;i++) {
+      const u=i/bays*2-1,x=u*39,y=-24-10*(1-u*u);
+      col(x,y,42,1,15);
+      block(x,y,41.5,2.8,2.8,.5,2); block(x,y,57,2.8,2.8,1,1);
+      col(x,y-1,62.5,.6,2.3); col(x,y-1,64.8,.65,.9);
+      if(i<bays) {
+        const v=(i+1)/bays*2-1,nx=v*39,ny=-24-10*(1-v*v);
+        for(const [offset,z,h,m] of [[-7,23,35,0],[0,40,2,1],[0,58,3,1],[0,61,1.5,0]] as const) {
+          const depth=offset===-7?2:10;
+          const corners:V[]=[[x*sx,(y+offset-depth/2)*sy,z*sz],[nx*sx,(ny+offset-depth/2)*sy,z*sz],[nx*sx,(ny+offset+depth/2)*sy,z*sz],[x*sx,(y+offset+depth/2)*sy,z*sz]];
+          const top=corners.map(p=>[p[0],p[1],p[2]+h*sz] as V);
+          quad(top[0],top[1],top[2],top[3],m);
+          for(let j=0;j<4;j++) quad(corners[j],corners[(j+1)%4],top[(j+1)%4],top[j],m);
+        }
+      }
+    }
+    block(0,27,13,48,9,7); block(0,27,20,50,10,1,1);
+    block(0,32,13,12,2,5,2); col(0,33.2,14,.8,3);
+    for(const side of [-1,1]) col(side*7,34,13,.45,1.5,3);
+    // Articulated equestrian silhouette and marble pedestal.
+    block(0,9,13,13,17,9); block(0,9,22,14,18,1,1);
+    for(const x of [-1.4,1.4]) for(const y of [5,12]) block(x,y,23,.8,.9,6,3);
+    block(0,8.5,29,4,9,3.5,3); block(0,12,31,2,3,4,3);
+    block(0,13.7,34,2,2.6,1.8,3); col(0,7.5,32,1,5,3); col(0,7.5,37,1.1,1.8,3);
+    block(0,3.7,27,.6,2.5,3,3);
   } else {
     const radius=width/2,drum=height*.5;
     cylinder(0,0,0,radius,drum,0,48);

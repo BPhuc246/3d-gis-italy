@@ -16,6 +16,7 @@ Hiện có:
 - Colosseum: bên ngoài
 - Khải hoàn môn Constantine: bên ngoài
 - Đền Pantheon: bên ngoài và bên trong
+- Đài tưởng niệm Vittorio Emanuele II: bên ngoài
 
 ---
 

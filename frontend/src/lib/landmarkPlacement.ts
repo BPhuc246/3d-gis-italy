@@ -16,6 +16,10 @@ export const landmarkPlacements: Record<string, Omit<BuildingInput, 'slug'>> = {
     footprintLengthM: 55.3, footprintWidthM: 55.3, heightM: 43.3,
     porticoWidthM: 35.7, porticoDepthM: 27.8, porticoCenterNorthM: 35.6,
   },
+  vittoriano: {
+    longitude: 12.48312, latitude: 41.89465, headingDeg: 343.0,
+    footprintLengthM: 138.0, footprintWidthM: 170.0, heightM: 81.0,
+  },
 };
 
 export function alignLandmark<T extends BuildingInput>(place: T): T {

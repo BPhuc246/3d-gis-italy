@@ -22,6 +22,10 @@ const realisticReviews: Record<string, Record<string, { rating: number; comment:
       rating: 5,
       comment: 'Không gian bên trong Pantheon thực sự khiến người ta phải nín thở vì kinh ngạc. Mái vòm bê tông không cốt thép lớn nhất thế giới tồn tại gần 2.000 năm mà vẫn sừng sững nguyên vẹn. Khoảnh khắc đứng ngay dưới lỗ mở Oculus vào giữa trưa khi luồng ánh sáng mặt trời rọi thẳng xuống nền đá hoa cương tạo nên một khung cảnh vô cùng linh thiêng.',
     },
+    vittoriano: {
+      rating: 5,
+      comment: 'Đài tưởng niệm Vittoriano uy nghi và lộng lẫy bằng đá cẩm thạch trắng Botticino nổi bật giữa lòng Roma. Đứng từ trên tầng thượng ngắm toàn cảnh 360 độ xuống Quảng trường Venezia, Đấu trường La Mã và các ngọn đồi cổ kính thực sự là một trải nghiệm khó quên. Khu vực Bàn thờ Tổ quốc và Mộ Chiến sĩ Vô danh rất trang nghiêm.',
+    },
   },
   'demo.ha@example.test': {
     colosseum: {
@@ -35,6 +39,10 @@ const realisticReviews: Record<string, Record<string, { rating: number; comment:
     pantheon: {
       rating: 5,
       comment: 'Một trong những công trình La Mã được bảo tồn nguyên vẹn và hoàn hảo nhất. Tiền sảnh với 16 cột đá granite nguyên khối nặng hơn 60 tấn được vận chuyển từ tận Ai Cập về La Mã thời cổ đại là một kỳ tích. Hiện tại vé vào cổng 5€ rất xứng đáng, lưu ý nên ăn mặc lịch sự che vai và đầu gối vì đây là nơi thờ tự linh thiêng.',
+    },
+    vittoriano: {
+      rating: 5,
+      comment: 'Công trình kiến trúc tân cổ điển hoành tráng bậc nhất ở Rome. Đi bộ từ Colosseum dọc theo đại lộ Via dei Fori Imperiali đến đây rất thuận tiện. Tham quan tự do không mất vé, nếu muốn ngắm toàn cảnh thành phố từ trên cao bạn có thể mua vé thang máy kính lên Terrazza delle Quadrighe.',
     },
   },
   'demo.bao@example.test': {
@@ -50,10 +58,14 @@ const realisticReviews: Record<string, Record<string, { rating: number; comment:
       rating: 5,
       comment: 'Kiến trúc đạt đến độ hoàn mỹ về hình học: đường kính của mái vòm đúng bằng chiều cao từ sàn lên đỉnh vòm (43,3m), tạo thành một hình cầu hoàn hảo bên trong khối trụ tròn. Hệ thống các lỗ thoát nước tinh tế trên mặt sàn đá để dẫn nước mưa từ Oculus là một minh chứng xuất sắc cho kỹ thuật cấp thoát nước La Mã.',
     },
+    vittoriano: {
+      rating: 4,
+      comment: 'Quy mô đồ sộ đến kinh ngạc! Hàng cột thức Corinthian cao vút hình vòng cung và hai cỗ xe tứ mã Quadriga trên đỉnh mái được chạm khắc vô cùng tinh tế. Bậc thang đá trắng vào ban ngày khá chói nắng, bạn nên mang kính râm và nón mũ khi tham quan.',
+    },
   },
 };
 
-const slugs = ['colosseum', 'arch-of-constantine', 'pantheon'] as const;
+const slugs = ['colosseum', 'arch-of-constantine', 'pantheon', 'vittoriano'] as const;
 
 async function main() {
   const dbHost = new URL(env.DB_POSTGRES).hostname;
@@ -77,7 +89,7 @@ async function main() {
       return;
     }
     const { rows: destinations } = await client.query('SELECT destination_id, slug FROM tourist_destination WHERE slug = ANY($1::text[])', [slugs as unknown as string[]]);
-    if (destinations.length !== 3) throw new Error('Cần đủ ba địa điểm; chạy migration trước.');
+    if (destinations.length !== slugs.length) throw new Error('Cần đủ các địa điểm; chạy migration trước.');
     const passwordHash = await bcrypt.hash('demo', 12);
     for (let i = 0; i < accounts.length; i++) {
       const account = accounts[i];
@@ -95,7 +107,7 @@ async function main() {
       }
     }
     await client.query('COMMIT');
-    console.log('Đã cập nhật 3 tài khoản người dùng và 9 bài đánh giá chi tiết thực tế; thêm 5 cặp yêu thích.');
+    console.log('Đã cập nhật 3 tài khoản người dùng và 12 bài đánh giá chi tiết thực tế; thêm các cặp yêu thích.');
     console.log('Tài khoản: demo.an@example.test / demo.ha@example.test / demo.bao@example.test');
     console.log('Mật khẩu: demo');
   } catch (error) {

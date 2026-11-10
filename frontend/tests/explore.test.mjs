@@ -49,5 +49,5 @@ assert.equal(arch.headingDeg, 13);
 assert(arch.footprintWidthM < 7.1);
 const pantheon = alignLandmark(region.destinations.find(p => p.slug === 'pantheon'));
 assert(pantheon.footprintWidthM > 55 && pantheon.porticoCenterNorthM > 35);
-assert(vertices < 40000, 'combined vertex budget (no textures or model downloads)');
-console.log(`PASS: 3 lightweight models (${vertices} vertices), calibrated placement and valid embed URLs.`);
+assert(vertices < 60000, 'four models combined vertex budget (no textures or model downloads)');
+console.log(`PASS: 4 lightweight models (${vertices} vertices), calibrated placement and valid embed URLs.`);

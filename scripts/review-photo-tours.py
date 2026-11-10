@@ -6,7 +6,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 FONT = ImageFont.truetype('C:/Windows/Fonts/arial.ttf', 15)
-for slug in ['colosseum', 'arch-of-constantine', 'pantheon']:
+for slug in ['colosseum', 'arch-of-constantine', 'pantheon', 'vittoriano']:
     tour = json.loads((ROOT / '_local' / (slug + '-tour.json')).read_text(encoding='utf-8'))
     sheet = Image.new('RGB', (1920, math.ceil(len(tour['scenes']) / 4) * 410), '#f4f2e9')
     draw = ImageDraw.Draw(sheet)
