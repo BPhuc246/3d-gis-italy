@@ -19,5 +19,12 @@
     "url": "/_local/pantheon-tour.json",
     "sceneCount": 12,
     "coverImage": "/_local/images/pantheon-exterior.jpg"
+  },
+  {
+    "slug": "vittoriano",
+    "name": "Đài tưởng niệm Vittorio Emanuele II",
+    "url": "/_local/vittoriano-tour.json",
+    "sceneCount": 18,
+    "coverImage": "/_local/images/vittoriano-exterior.jpg"
   }
 ]

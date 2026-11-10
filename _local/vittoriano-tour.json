@@ -1,0 +1,1035 @@
+{
+  "id": "vittoriano-photo",
+  "version": 2,
+  "destinationSlug": "vittoriano",
+  "destinationName": "Đài tưởng niệm Vittorio Emanuele II",
+  "title": "Từ Piazza Venezia vào bảo tàng và lên sân thượng",
+  "startSceneId": "exterior",
+  "routeNote": "Mũi tên nối các góc nhìn, không phải tuyến đi bộ được khảo sát. Ảnh chụp ở nhiều thời điểm.",
+  "contentSources": [
+    {
+      "title": "Cổng thông tin du lịch chính thức Roma — Vittoriano",
+      "url": "https://www.turismoroma.it/it/node/1541"
+    },
+    {
+      "title": "Bảo tàng VIVE — Vittoriano",
+      "url": "https://vive.cultura.gov.it/it/vittoriano"
+    },
+    {
+      "title": "VIVE — Museo Centrale del Risorgimento",
+      "url": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento"
+    },
+    {
+      "title": "VIVE — Sommoportico",
+      "url": "https://vive.cultura.gov.it/it/vittoriano/cosa-vedere/sommoportico"
+    },
+    {
+      "title": "VIVE — Sân thượng toàn cảnh",
+      "url": "https://vive.cultura.gov.it/en/panoramic-terrace"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "exterior",
+      "title": "01 · Từ quảng trường Piazza Venezia",
+      "image": "/_local/images/vittoriano-exterior.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-exterior.jpg",
+      "alt": "Toàn cảnh mặt tiền trắng với cầu thang, tượng kỵ mã và hai cỗ xe tứ mã trên mái.",
+      "description": "Toàn cảnh mặt tiền trắng với cầu thang, tượng kỵ mã và hai cỗ xe tứ mã trên mái.",
+      "author": "Alvesgaspar",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altar_della_Patria_September_2015-1.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1109,
+      "captureDate": "2015-09-12 10:55:15",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 54,
+          "title": "Vị vua đầu tiên của nước Ý thống nhất",
+          "text": "Công trình tưởng niệm Vittorio Emanuele II, vị vua đầu tiên của nước Ý thống nhất. Kiến trúc sư Giuseppe Sacconi thiết kế quần thể này.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "exterior-info-1"
+        },
+        {
+          "x": 72,
+          "y": 43,
+          "title": "Đá Botticino",
+          "text": "Đá sáng màu Botticino tạo nên mặt đứng nổi bật giữa các công trình có tông màu ấm của Roma.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "exterior-info-2"
+        },
+        {
+          "id": "exterior-to-oblique",
+          "target": "oblique",
+          "direction": "view",
+          "x": 84,
+          "y": 82,
+          "title": "Đổi góc: Bậc thang và các tầng sân",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "exterior-to-altar",
+          "target": "altar",
+          "direction": "view",
+          "x": 49,
+          "y": 82,
+          "title": "Đổi góc: Bàn thờ Tổ quốc",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "exterior-to-quadrigas",
+          "target": "quadrigas",
+          "direction": "view",
+          "x": 20,
+          "y": 20,
+          "title": "Đổi góc: Hai cỗ xe tứ mã trên đường chân trời",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "oblique",
+      "title": "02 · Bậc thang và các tầng sân",
+      "image": "/_local/images/vittoriano-oblique.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-oblique.jpg",
+      "alt": "Góc nhìn chéo cho thấy những lớp cầu thang và sân nối dần lên hàng cột phía sau.",
+      "description": "Góc nhìn chéo cho thấy những lớp cầu thang và sân nối dần lên hàng cột phía sau.",
+      "author": "Fczarnowski",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altare_della_Patria,_Roma_-_main_fc03.jpg",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "width": 1920,
+      "height": 1440,
+      "captureDate": "April 2010 / kwiecień 2010",
+      "hotspots": [
+        {
+          "x": 47,
+          "y": 80,
+          "title": "Bố cục đi lên",
+          "text": "Cầu thang dẫn qua các sân tới Bàn thờ Tổ quốc, rồi tới hai khối cánh và hàng cột lớn phía sau.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "oblique-info-1"
+        },
+        {
+          "x": 80,
+          "y": 35,
+          "title": "Hai khối cánh propylaea",
+          "text": "Hai khối kiến trúc đầu hàng cột tạo nên bố cục cân xứng; mỗi bên mang một cỗ xe tứ mã bằng đồng trên mái.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "oblique-info-2"
+        },
+        {
+          "id": "oblique-to-exterior",
+          "target": "exterior",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Từ quảng trường Piazza Venezia",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "oblique-to-portico",
+          "target": "portico",
+          "direction": "view",
+          "x": 75,
+          "y": 64,
+          "title": "Đổi góc: Ngước lên hàng cột lớn",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "oblique-to-quadrigas",
+          "target": "quadrigas",
+          "direction": "view",
+          "x": 30,
+          "y": 17,
+          "title": "Đổi góc: Hai cỗ xe tứ mã trên đường chân trời",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "oblique-to-museum-entry",
+          "target": "museum-entry",
+          "direction": "view",
+          "x": 20,
+          "y": 59,
+          "title": "Đổi góc: Lối vào khu bảo tàng trong Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "altar",
+      "title": "03 · Bàn thờ Tổ quốc",
+      "image": "/_local/images/vittoriano-altar.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-altar.jpg",
+      "alt": "Tượng kỵ mã phía trên và khu Bàn thờ Tổ quốc phía dưới cùng xuất hiện trong một khung hình.",
+      "description": "Tượng kỵ mã phía trên và khu Bàn thờ Tổ quốc phía dưới cùng xuất hiện trong một khung hình.",
+      "author": "Gary Ullah from UK",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_Nazionale_a_Vittorio_Emanuele_II,_Rome_(15206166266).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 1290,
+      "captureDate": "2014-09-07 10:06",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 89,
+          "title": "Altare della Patria",
+          "text": "Bàn thờ Tổ quốc nằm ở trung tâm mặt tiền, bên dưới tượng kỵ mã của nhà vua.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "altar-info-1"
+        },
+        {
+          "x": 80,
+          "y": 58,
+          "title": "Hàng cột làm phông nền",
+          "text": "Hàng cột cong ôm lấy không gian trung tâm, nối hai cánh của đài tưởng niệm.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "altar-info-2"
+        },
+        {
+          "id": "altar-to-exterior",
+          "target": "exterior",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Từ quảng trường Piazza Venezia",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "altar-to-equestrian",
+          "target": "equestrian",
+          "direction": "view",
+          "x": 84,
+          "y": 82,
+          "title": "Đổi góc: Tượng nhà vua cưỡi ngựa",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "altar-to-panorama",
+          "target": "panorama",
+          "direction": "view",
+          "x": 40,
+          "y": 65,
+          "title": "Đổi góc: Từ Vittoriano nhìn xuống Piazza Venezia",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "equestrian",
+      "title": "04 · Tượng nhà vua cưỡi ngựa",
+      "image": "/_local/images/vittoriano-equestrian.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-equestrian.jpg",
+      "alt": "Nhìn lên tượng kỵ mã và bệ đá có các hình tượng điêu khắc.",
+      "description": "Nhìn lên tượng kỵ mã và bệ đá có các hình tượng điêu khắc.",
+      "author": "Gary Ullah from UK",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_Nazionale_a_Vittorio_Emanuele_II,_Rome_(15042616228).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 1442,
+      "captureDate": "2014-09-07 10:09",
+      "hotspots": [
+        {
+          "x": 63,
+          "y": 20,
+          "title": "Tượng kỵ mã",
+          "text": "Tượng nhà vua trên lưng ngựa là điểm nhấn trung tâm của quần thể, được khánh thành năm 1911.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "equestrian-info-1"
+        },
+        {
+          "x": 55,
+          "y": 66,
+          "title": "Bệ tượng và phù điêu",
+          "text": "Bệ đá và các tác phẩm điêu khắc kết nối hình tượng nhà vua với chủ đề quốc gia thống nhất.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "equestrian-info-2"
+        },
+        {
+          "id": "equestrian-to-altar",
+          "target": "altar",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Bàn thờ Tổ quốc",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "portico",
+      "title": "05 · Ngước lên hàng cột lớn",
+      "image": "/_local/images/vittoriano-portico.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-portico.jpg",
+      "alt": "Góc nhìn thấp nhấn mạnh thân cột có rãnh, đầu cột trang trí và hệ dầm phía trên.",
+      "description": "Góc nhìn thấp nhấn mạnh thân cột có rãnh, đầu cột trang trí và hệ dầm phía trên.",
+      "author": "Gary Ullah from UK",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_Nazionale_a_Vittorio_Emanuele_II,_Rome_(15042615577).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 968,
+      "captureDate": "2014-09-07 10:24",
+      "hotspots": [
+        {
+          "x": 25,
+          "y": 53,
+          "title": "Thân cột có rãnh",
+          "text": "Các cột lớn tạo nên không gian chuyển tiếp có mái và nhịp điệu cho mặt đứng phía trên.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "portico-info-1"
+        },
+        {
+          "x": 57,
+          "y": 26,
+          "title": "Đầu cột và dầm",
+          "text": "Nhìn theo đầu cột để nhận ra cách hàng cột nâng hệ dầm và phần mái trang trí.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "portico-info-2"
+        },
+        {
+          "id": "portico-to-oblique",
+          "target": "oblique",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Bậc thang và các tầng sân",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "portico-to-ceiling",
+          "target": "ceiling",
+          "direction": "view",
+          "x": 50,
+          "y": 12,
+          "title": "Đổi góc: Chi tiết trần dưới mái",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "portico-to-relief",
+          "target": "relief",
+          "direction": "view",
+          "x": 84,
+          "y": 82,
+          "title": "Đổi góc: Điêu khắc trên kiến trúc",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "portico-to-vestibule",
+          "target": "vestibule",
+          "direction": "view",
+          "x": 65,
+          "y": 68,
+          "title": "Đổi góc: Sảnh có mái và cầu thang trong Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "ceiling",
+      "title": "06 · Chi tiết trần dưới mái",
+      "image": "/_local/images/vittoriano-ceiling.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-ceiling.jpg",
+      "alt": "Mảng trần trang trí hình tròn nằm giữa các cột đá trắng.",
+      "description": "Mảng trần trang trí hình tròn nằm giữa các cột đá trắng.",
+      "author": "Gary Ullah from UK",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_Nazionale_a_Vittorio_Emanuele_II,_Rome_(15228824512).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 1429,
+      "captureDate": "2014-09-07 10:35",
+      "hotspots": [
+        {
+          "x": 55,
+          "y": 46,
+          "title": "Hoa văn trần",
+          "text": "Các vòng hoa văn đồng tâm làm nổi bật chiều sâu của phần trần dưới mái.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "ceiling-info-1"
+        },
+        {
+          "x": 15,
+          "y": 61,
+          "title": "Đá sáng và vùng bóng",
+          "text": "Ánh sáng bên ngoài tương phản với vùng trần có mái, giúp đọc rõ chiều sâu kiến trúc.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "ceiling-info-2"
+        },
+        {
+          "id": "ceiling-to-portico",
+          "target": "portico",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Ngước lên hàng cột lớn",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "relief",
+      "title": "07 · Điêu khắc trên kiến trúc",
+      "image": "/_local/images/vittoriano-relief.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-relief.jpg",
+      "alt": "Một chi tiết hình tượng chạm khắc bên cạnh các đường gờ đá.",
+      "description": "Một chi tiết hình tượng chạm khắc bên cạnh các đường gờ đá.",
+      "author": "Gary Ullah from UK",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_Nazionale_a_Vittorio_Emanuele_II,_Rome_(15228823532).jpg",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "width": 1920,
+      "height": 2975,
+      "captureDate": "2014-09-07 10:13",
+      "hotspots": [
+        {
+          "x": 53,
+          "y": 44,
+          "title": "Hình tượng điêu khắc",
+          "text": "Điêu khắc là một phần của ngôn ngữ biểu tượng trên toàn bộ Vittoriano; ảnh này cho phép quan sát gần chi tiết.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "relief-info-1"
+        },
+        {
+          "x": 32,
+          "y": 81,
+          "title": "Chi tiết bề mặt đá",
+          "text": "Các đường gờ, lá trang trí và bề mặt chạm khắc bổ sung những lớp chi tiết khó thấy trong ảnh toàn cảnh.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "relief-info-2"
+        },
+        {
+          "id": "relief-to-portico",
+          "target": "portico",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Ngước lên hàng cột lớn",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "quadrigas",
+      "title": "08 · Hai cỗ xe tứ mã trên đường chân trời",
+      "image": "/_local/images/vittoriano-quadrigas.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-quadrigas.jpg",
+      "alt": "Nhìn mái công trình từ xa để thấy hai nhóm tượng tứ mã nổi bật trên nền trời.",
+      "description": "Nhìn mái công trình từ xa để thấy hai nhóm tượng tứ mã nổi bật trên nền trời.",
+      "author": "DestinationFearFan",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Altar_of_the_Fatherland_rooftop.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 962,
+      "captureDate": "2019-10-14 12:26:21",
+      "hotspots": [
+        {
+          "x": 28,
+          "y": 14,
+          "title": "Thống nhất và Tự do",
+          "text": "Hai cỗ xe tứ mã bằng đồng tượng trưng cho sự Thống nhất của Tổ quốc và Tự do của công dân.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "quadrigas-info-1"
+        },
+        {
+          "x": 73,
+          "y": 38,
+          "title": "Chiều cao gồm tượng trên mái",
+          "text": "Các nhóm tượng được đặt trên mái trong giai đoạn 1924–1927, đưa tổng chiều cao công trình lên khoảng 81 m so với Piazza Venezia.",
+          "sourceUrl": "https://www.turismoroma.it/it/node/1541",
+          "id": "quadrigas-info-2"
+        },
+        {
+          "id": "quadrigas-to-oblique",
+          "target": "oblique",
+          "direction": "view",
+          "x": 84,
+          "y": 82,
+          "title": "Đổi góc: Bậc thang và các tầng sân",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "quadrigas-to-exterior",
+          "target": "exterior",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Từ quảng trường Piazza Venezia",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "museum-entry",
+      "title": "09 · Lối vào khu bảo tàng trong Vittoriano",
+      "image": "/_local/images/vittoriano-museum-entry.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-museum-entry.jpg",
+      "alt": "Mặt bên khu bảo tàng thuộc Vittoriano, chụp ban ngày: dòng chữ Museo Centrale del Risorgimento phía trên cửa vào.",
+      "description": "Mặt bên khu bảo tàng thuộc Vittoriano, chụp ban ngày: dòng chữ Museo Centrale del Risorgimento phía trên cửa vào.",
+      "author": "Cezar Suceveanu",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Museo_Centrale_del_Risorgimento_din_Roma.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1440,
+      "captureDate": "2014-07-09 12:56:15",
+      "hotspots": [
+        {
+          "x": 44,
+          "y": 44,
+          "title": "Museo Centrale del Risorgimento",
+          "text": "Bảo tàng nằm trong lòng quần thể Vittoriano, kể về quá trình hình thành nước Ý thống nhất.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-entry-info-1"
+        },
+        {
+          "x": 38,
+          "y": 68,
+          "title": "Cửa vào khu bảo tàng",
+          "text": "Góc nhìn này ghi lại mặt bên và cửa khu bảo tàng của đài tưởng niệm. Các biển treo trên mặt đứng thuộc thời điểm chụp.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-entry-info-2"
+        },
+        {
+          "id": "museum-entry-to-oblique",
+          "target": "oblique",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Bậc thang và các tầng sân",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "museum-entry-to-museum-stairs",
+          "target": "museum-stairs",
+          "direction": "view",
+          "x": 52,
+          "y": 78,
+          "title": "Đổi góc: Cầu thang bên trong khu bảo tàng",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "museum-stairs",
+      "title": "10 · Cầu thang bên trong khu bảo tàng",
+      "image": "/_local/images/vittoriano-museum-stairs.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-museum-stairs.jpg",
+      "alt": "Từ cửa vào, đổi góc nhìn tới một cầu thang trong Museo Centrale del Risorgimento.",
+      "description": "Từ cửa vào, đổi góc nhìn tới một cầu thang trong Museo Centrale del Risorgimento.",
+      "author": "Lalupa",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:M_risorgimento_-_scala_P1040032.JPG",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 3413,
+      "captureDate": "2014-08-18 09:15:02",
+      "hotspots": [
+        {
+          "x": 50,
+          "y": 77,
+          "title": "Bậc thang trong nhà",
+          "text": "Cầu thang là một góc không gian bên trong khu bảo tàng tại Vittoriano; tour chuyển ảnh giữa các khu, không mô phỏng chính xác từng bước chân.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-stairs-info-1"
+        },
+        {
+          "x": 72,
+          "y": 31,
+          "title": "Không gian chuyển tiếp",
+          "text": "Quan sát sự thay đổi từ bậc thang ngoài trời sang các tường và lối đi có mái của khu bảo tàng.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-stairs-info-2"
+        },
+        {
+          "id": "museum-stairs-to-museum-entry",
+          "target": "museum-entry",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Lối vào khu bảo tàng trong Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "museum-stairs-to-museum-gallery",
+          "target": "museum-gallery",
+          "direction": "view",
+          "x": 52,
+          "y": 56,
+          "title": "Đổi góc: Lối đi trong Museo Centrale del Risorgimento",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "museum-gallery",
+      "title": "11 · Lối đi trong Museo Centrale del Risorgimento",
+      "image": "/_local/images/vittoriano-museum-gallery.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-museum-gallery.jpg",
+      "alt": "Góc nhìn dọc một lối đi có mái trong khu bảo tàng, hướng về không gian phía trước.",
+      "description": "Góc nhìn dọc một lối đi có mái trong khu bảo tàng, hướng về không gian phía trước.",
+      "author": "Lalupa",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:M_risorgimento_-_un_interno_P1040029.JPG",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 3413,
+      "captureDate": "2014-08-18 09:13:31",
+      "hotspots": [
+        {
+          "x": 48,
+          "y": 36,
+          "title": "Bảo tàng trong lòng đài tưởng niệm",
+          "text": "Ngoài cầu thang và tượng đài ngoài trời, Vittoriano còn có các phòng bảo tàng ở bên trong.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-gallery-info-1"
+        },
+        {
+          "x": 74,
+          "y": 69,
+          "title": "Hành trình lịch sử",
+          "text": "Nội dung bảo tàng trải từ thế kỷ XVIII tới Chiến tranh thế giới thứ nhất, qua các giai đoạn thống nhất nước Ý.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-gallery-info-2"
+        },
+        {
+          "id": "museum-gallery-to-museum-stairs",
+          "target": "museum-stairs",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Cầu thang bên trong khu bảo tàng",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "museum-gallery-to-museum-hall",
+          "target": "museum-hall",
+          "direction": "view",
+          "x": 53,
+          "y": 60,
+          "title": "Đổi góc: Phòng trưng bày của bảo tàng Risorgimento",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "museum-hall",
+      "title": "12 · Phòng trưng bày của bảo tàng Risorgimento",
+      "image": "/_local/images/vittoriano-museum-hall.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-museum-hall.jpg",
+      "alt": "Một phòng trưng bày bên trong Vittoriano, với nhóm tượng ở giữa phòng và các hiện vật, hình ảnh xung quanh.",
+      "description": "Một phòng trưng bày bên trong Vittoriano, với nhóm tượng ở giữa phòng và các hiện vật, hình ảnh xung quanh.",
+      "author": "Tepold",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Museo_del_Risorgimento07.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1080,
+      "captureDate": "2016-06-19 14:08:12",
+      "hotspots": [
+        {
+          "x": 50,
+          "y": 52,
+          "title": "Điêu khắc trong không gian trưng bày",
+          "text": "Các tác phẩm điêu khắc là một phần của bộ sưu tập bảo tàng, bên cạnh tài liệu và những kỷ vật lịch sử.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-hall-info-1"
+        },
+        {
+          "x": 83,
+          "y": 48,
+          "title": "Tư liệu về Risorgimento",
+          "text": "Bảo tàng lưu giữ thư từ, nhật ký, kỷ vật, vũ khí và tác phẩm nghệ thuật liên quan tới quá trình thống nhất nước Ý.",
+          "sourceUrl": "https://vive.cultura.gov.it/_cms/en/central-museum-of-the-risorgimento",
+          "id": "museum-hall-info-2"
+        },
+        {
+          "id": "museum-hall-to-museum-gallery",
+          "target": "museum-gallery",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Lối đi trong Museo Centrale del Risorgimento",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "vestibule",
+      "title": "13 · Sảnh có mái và cầu thang trong Vittoriano",
+      "image": "/_local/images/vittoriano-vestibule.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-vestibule.jpg",
+      "alt": "Không gian nội thất của đài tưởng niệm với vòm trang trí, tượng đá và cầu thang dẫn tới ô cửa sáng.",
+      "description": "Không gian nội thất của đài tưởng niệm với vòm trang trí, tượng đá và cầu thang dẫn tới ô cửa sáng.",
+      "author": "Américo Toledano",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_a_V%C3%ADctor_Manuel_II_-_Interior_-_Roma_001.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1080,
+      "captureDate": "2024-05-26 16:04:37",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 39,
+          "title": "Vòm trần trang trí",
+          "text": "Các ô lõm và đường gờ tạo chiều sâu cho phần trần, cho thấy kiến trúc bên trong tiếp tục được chăm chút như mặt ngoài.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "vestibule-info-1"
+        },
+        {
+          "x": 80,
+          "y": 49,
+          "title": "Tượng đá trong sảnh",
+          "text": "Các hình tượng điêu khắc đứng hai bên không gian sảnh; có thể chuyển sang cảnh cận để quan sát chi tiết.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "vestibule-info-2"
+        },
+        {
+          "id": "vestibule-to-portico",
+          "target": "portico",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Ngước lên hàng cột lớn",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "vestibule-to-vault",
+          "target": "vault",
+          "direction": "view",
+          "x": 50,
+          "y": 16,
+          "title": "Đổi góc: Ngước nhìn vòm trần bên trong",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "vestibule-to-arts",
+          "target": "arts",
+          "direction": "view",
+          "x": 84,
+          "y": 72,
+          "title": "Đổi góc: Cận cảnh tượng trong sảnh",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "vestibule-to-terrace",
+          "target": "terrace",
+          "direction": "view",
+          "x": 76,
+          "y": 24,
+          "title": "Đổi góc: Trên sân thượng của Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "vault",
+      "title": "14 · Ngước nhìn vòm trần bên trong",
+      "image": "/_local/images/vittoriano-vault.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-vault.jpg",
+      "alt": "Góc nhìn hướng lên trần nội thất Vittoriano, cho thấy các ô trang trí hình học và đường vòm ở hai đầu.",
+      "description": "Góc nhìn hướng lên trần nội thất Vittoriano, cho thấy các ô trang trí hình học và đường vòm ở hai đầu.",
+      "author": "Américo Toledano",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_a_V%C3%ADctor_Manuel_II_-_Interior_-_Roma_007.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1080,
+      "captureDate": "2024-05-26 16:09:28",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 48,
+          "title": "Các ô trần lặp lại",
+          "text": "Những ô trang trí lặp lại làm rõ kết cấu hình học và nhịp điệu của vòm trần.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "vault-info-1"
+        },
+        {
+          "x": 23,
+          "y": 44,
+          "title": "Ánh sáng và chiều sâu",
+          "text": "Ánh sáng từ các cửa ở đầu sảnh làm nổi bật các gờ và lớp trang trí của nội thất.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "vault-info-2"
+        },
+        {
+          "id": "vault-to-vestibule",
+          "target": "vestibule",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Sảnh có mái và cầu thang trong Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "arts",
+      "title": "15 · Cận cảnh tượng trong sảnh",
+      "image": "/_local/images/vittoriano-arts.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-arts.jpg",
+      "alt": "Một tác phẩm điêu khắc bằng đá trong nội thất Vittoriano, được nhìn gần từ bệ tới phần đầu tượng.",
+      "description": "Một tác phẩm điêu khắc bằng đá trong nội thất Vittoriano, được nhìn gần từ bệ tới phần đầu tượng.",
+      "author": "Américo Toledano",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Monumento_a_V%C3%ADctor_Manuel_II_-_Interior_-_Roma_011.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 3195,
+      "captureDate": "2024-05-26 16:09:04",
+      "hotspots": [
+        {
+          "x": 54,
+          "y": 38,
+          "title": "Hình tượng người trong điêu khắc",
+          "text": "Quan sát tư thế, trang phục và các chi tiết đi kèm của tượng. Cảnh này tập trung vào tác phẩm trong sảnh thay vì toàn bộ mặt đứng.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "arts-info-1"
+        },
+        {
+          "x": 50,
+          "y": 84,
+          "title": "Bệ tượng bằng đá",
+          "text": "Bệ đưa tác phẩm lên khỏi mặt sàn và tạo ranh giới rõ với không gian lưu thông xung quanh.",
+          "sourceUrl": "https://vive.cultura.gov.it/it/vittoriano",
+          "id": "arts-info-2"
+        },
+        {
+          "id": "arts-to-vestibule",
+          "target": "vestibule",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Sảnh có mái và cầu thang trong Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "terrace",
+      "title": "16 · Trên sân thượng của Vittoriano",
+      "image": "/_local/images/vittoriano-terrace.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-terrace.jpg",
+      "alt": "Sân thượng Vittoriano dưới bầu trời xanh ban ngày, với nhóm tượng tứ mã và bệ đá trắng nhìn từ trên mái.",
+      "description": "Sân thượng Vittoriano dưới bầu trời xanh ban ngày, với nhóm tượng tứ mã và bệ đá trắng nhìn từ trên mái.",
+      "author": "Karelj",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Victor_Emanuel_II_Rome_2011_6.jpg",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "width": 1920,
+      "height": 1235,
+      "captureDate": "2011-04",
+      "hotspots": [
+        {
+          "x": 52,
+          "y": 81,
+          "title": "Bệ đá trên mái",
+          "text": "Điểm quan sát trên sân thượng đưa người xem tới gần các nhóm tượng tứ mã và phần bệ đá của chúng.",
+          "sourceUrl": "https://vive.cultura.gov.it/en/panoramic-terrace",
+          "id": "terrace-info-1"
+        },
+        {
+          "x": 76,
+          "y": 30,
+          "title": "Tứ mã và Chiến thắng có cánh",
+          "text": "Nhóm tượng đồng hiện rõ trên nền trời. Hai cỗ xe trên mái biểu trưng cho Thống nhất và Tự do.",
+          "sourceUrl": "https://vive.cultura.gov.it/en/panoramic-terrace",
+          "id": "terrace-info-2"
+        },
+        {
+          "id": "terrace-to-vestibule",
+          "target": "vestibule",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Sảnh có mái và cầu thang trong Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "terrace-to-quadriga-close",
+          "target": "quadriga-close",
+          "direction": "view",
+          "x": 40,
+          "y": 14,
+          "title": "Đổi góc: Nhìn gần cỗ xe tứ mã trên mái",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "terrace-to-panorama",
+          "target": "panorama",
+          "direction": "view",
+          "x": 84,
+          "y": 88,
+          "title": "Đổi góc: Từ Vittoriano nhìn xuống Piazza Venezia",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "quadriga-close",
+      "title": "17 · Nhìn gần cỗ xe tứ mã trên mái",
+      "image": "/_local/images/vittoriano-quadriga-close.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-quadriga-close.jpg",
+      "alt": "Cận cảnh một nhóm tượng đồng với bốn ngựa, cỗ xe và hình tượng Chiến thắng có cánh trên đỉnh Vittoriano.",
+      "description": "Cận cảnh một nhóm tượng đồng với bốn ngựa, cỗ xe và hình tượng Chiến thắng có cánh trên đỉnh Vittoriano.",
+      "author": "Hugo DK",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vittoriano_vierspan_Eenheid.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1440,
+      "captureDate": "2018-05-11 17:58:08",
+      "hotspots": [
+        {
+          "x": 67,
+          "y": 24,
+          "title": "Chiến thắng có cánh",
+          "text": "Hình tượng có cánh điều khiển cỗ xe. Hai nhóm tượng trên mái gắn với chủ đề Thống nhất và Tự do.",
+          "sourceUrl": "https://vive.cultura.gov.it/en/panoramic-terrace",
+          "id": "quadriga-close-info-1"
+        },
+        {
+          "x": 37,
+          "y": 54,
+          "title": "Ngựa và cỗ xe bằng đồng",
+          "text": "Góc cận cho thấy rõ những hình khối mà trong ảnh toàn cảnh chỉ hiện thành đường nét trên nền trời.",
+          "sourceUrl": "https://vive.cultura.gov.it/en/panoramic-terrace",
+          "id": "quadriga-close-info-2"
+        },
+        {
+          "id": "quadriga-close-to-terrace",
+          "target": "terrace",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Trên sân thượng của Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "panorama",
+      "title": "18 · Từ Vittoriano nhìn xuống Piazza Venezia",
+      "image": "/_local/images/vittoriano-panorama.jpg",
+      "thumbnail": "/_local/images/thumbs/vittoriano-panorama.jpg",
+      "alt": "Góc nhìn ban ngày từ sân thượng Vittoriano xuống Piazza Venezia. Mặt bằng quảng trường trong ảnh phản ánh thời điểm chụp.",
+      "description": "Góc nhìn ban ngày từ sân thượng Vittoriano xuống Piazza Venezia. Mặt bằng quảng trường trong ảnh phản ánh thời điểm chụp.",
+      "author": "Karelj",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Victor_Emanuel_II_Rome_2011_12.jpg",
+      "license": "Public domain",
+      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2011-04",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 17,
+          "title": "Trục nhìn về trung tâm Roma",
+          "text": "Nhìn theo các phố phía trước quảng trường để cảm nhận vị trí trung tâm của Vittoriano. Điểm đứng chụp vẫn thuộc đài tưởng niệm.",
+          "sourceUrl": "https://vive.cultura.gov.it/en/panoramic-terrace",
+          "id": "panorama-info-2"
+        },
+        {
+          "id": "panorama-to-terrace",
+          "target": "terrace",
+          "direction": "view",
+          "x": 16,
+          "y": 84,
+          "title": "Đổi góc: Trên sân thượng của Vittoriano",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "panorama-to-altar",
+          "target": "altar",
+          "direction": "view",
+          "x": 52,
+          "y": 82,
+          "title": "Đổi góc: Bàn thờ Tổ quốc",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "king",
+      "prompt": "Vittoriano tưởng niệm ai?",
+      "choices": [
+        "Julius Caesar",
+        "Vittorio Emanuele II",
+        "Constantine I"
+      ],
+      "answer": 1,
+      "explanation": "Công trình tưởng niệm vị vua đầu tiên của nước Ý thống nhất.",
+      "sceneId": "exterior"
+    },
+    {
+      "id": "stone",
+      "prompt": "Vật liệu sáng màu đặc trưng của Vittoriano là gì?",
+      "choices": [
+        "Đá Botticino",
+        "Gạch đỏ",
+        "Gỗ sơn trắng"
+      ],
+      "answer": 0,
+      "explanation": "Đá Botticino tạo nên sắc trắng đặc trưng của quần thể.",
+      "sceneId": "oblique"
+    },
+    {
+      "id": "quadrigas",
+      "prompt": "Hai cỗ xe tứ mã tượng trưng cho điều gì?",
+      "choices": [
+        "Bốn mùa",
+        "Hai con sông",
+        "Thống nhất và Tự do"
+      ],
+      "answer": 2,
+      "explanation": "Hai nhóm tượng bằng đồng thể hiện sự Thống nhất của Tổ quốc và Tự do của công dân.",
+      "sceneId": "quadrigas"
+    },
+    {
+      "id": "museum",
+      "prompt": "Bảo tàng nào nằm bên trong Vittoriano?",
+      "choices": [
+        "Museo Centrale del Risorgimento",
+        "Bảo tàng Vatican",
+        "Bảo tàng Louvre"
+      ],
+      "answer": 0,
+      "explanation": "Museo Centrale del Risorgimento nằm trong Vittoriano và giới thiệu lịch sử thống nhất nước Ý.",
+      "sceneId": "museum-hall"
+    },
+    {
+      "id": "interior",
+      "prompt": "Ngoài các tượng đài ngoài trời, có thể thấy gì trong sảnh Vittoriano?",
+      "choices": [
+        "Chỉ có tường trơn",
+        "Vòm trần trang trí và tượng đá",
+        "Đường hầm tàu điện"
+      ],
+      "answer": 1,
+      "explanation": "Ảnh nội thất cho thấy vòm trần có các ô trang trí và các hình tượng điêu khắc bằng đá.",
+      "sceneId": "vestibule"
+    },
+    {
+      "id": "terrace",
+      "prompt": "Cảnh sân thượng giúp quan sát điều gì?",
+      "choices": [
+        "Toàn cảnh Roma và tượng tứ mã gần hơn",
+        "Bên trong đấu trường Colosseum",
+        "Nội thất đền Pantheon"
+      ],
+      "answer": 0,
+      "explanation": "Điểm quan sát trên Vittoriano mở ra toàn cảnh Roma và góc nhìn gần các tượng trên mái.",
+      "sceneId": "terrace"
+    }
+  ]
+}

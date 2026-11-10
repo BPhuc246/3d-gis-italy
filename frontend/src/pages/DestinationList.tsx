@@ -13,6 +13,7 @@ const COVER_FALLBACK: Record<string, string> = {
   colosseum: '/_local/images/colosseum-exterior.jpg',
   'arch-of-constantine': '/_local/images/constantine-wide.jpg',
   pantheon: '/_local/images/pantheon-exterior.jpg',
+  vittoriano: '/_local/images/vittoriano-exterior.jpg',
 };
 
 export default function DestinationList() {

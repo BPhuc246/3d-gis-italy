@@ -94,7 +94,13 @@ export default function DestinationDetailPage({ slug }: { slug: string }) {
         <div>
           <p className="text-xs uppercase tracking-wide text-slate-400">Giá vé</p>
           <p className="mt-1 text-sm text-slate-700">
-            {data.entryFee !== null ? `${data.entryFee.toFixed(2)} ${data.entryFeeCurrency}` : 'Chưa cập nhật'}
+            {slug === 'vittoriano'
+              ? 'Ngoài trời: Miễn phí · Vé VIVE (bảo tàng & sân thượng): 18 EUR'
+              : data.entryFee !== null
+              ? data.entryFee === 0
+                ? 'Miễn phí'
+                : `${data.entryFee.toFixed(2)} ${data.entryFeeCurrency}`
+              : 'Chưa cập nhật'}
           </p>
         </div>
         <div className="sm:col-span-2">

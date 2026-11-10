@@ -106,7 +106,16 @@ export default function MapPage({ slug }: { slug: string | null }) {
                 <div className="visit-info">
                   <p><span>⌖ ĐỊA CHỈ</span>{selected.address}</p>
                   <p><span>◷ GIỜ THAM QUAN</span>{selected.openingHours ?? 'Xem thông tin tại nguồn chính thức.'}</p>
-                  <p><span>VÉ THAM QUAN</span>{selected.entryFee !== null ? `${selected.entryFee} ${selected.entryFeeCurrency}` : 'Xem loại vé và giá hiện hành tại nguồn chính thức.'}</p>
+                  <p>
+                    <span>VÉ THAM QUAN</span>
+                    {selected.slug === 'vittoriano'
+                      ? 'Ngoài trời: Miễn phí · Vé VIVE (bảo tàng & sân thượng): 18 EUR'
+                      : selected.entryFee !== null
+                      ? selected.entryFee === 0
+                        ? 'Miễn phí'
+                        : `${selected.entryFee} ${selected.entryFeeCurrency}`
+                      : 'Xem loại vé và giá hiện hành tại nguồn chính thức.'}
+                  </p>
                 </div>
                 <FavoriteControl key={selected.slug} place={selected} />
                 <a className="source-link" href={stories[selected.slug]?.sourceUrl ?? 'https://www.turismoroma.it/en'} target="_blank" rel="noreferrer">
@@ -266,6 +275,17 @@ function PlaceHero({ place, local }: { place: RegionDestination; local: boolean 
                 <path d="M80 82h20v53H80zM121 82h21v53h-21zM178 82h21v53h-21zM220 82h20v53h-20z" />
                 <path d="M100 96a11 11 0 0 1 21 0v-15h-21zM142 99a18 18 0 0 1 36 0V81h-36zM199 96a11 11 0 0 1 21 0V81h-21z" />
                 <path d="M75 135h170v5H75z" />
+              </g>
+            ) : place.slug === 'vittoriano' ? (
+              <g fill="#4a5d6e">
+                <path d="M40 135h240v6H40zM55 125h210v10H55zM70 110h180v15H70z" fill="#b0aba2" />
+                <path d="M50 48h42v62H50zM228 48h42v62h-42z" fill="#cfcac0" />
+                <path d="M56 36h30v12H56zM234 36h30v12h-30z" fill="#938e85" />
+                <path d="M92 56h136v8H92z" fill="#beb9af" />
+                {[102, 116, 130, 144, 158, 172, 186, 200, 214].map(x => (
+                  <path key={x} d={`M${x} 64h6v46h-6z`} fill="#e2ded5" />
+                ))}
+                <path d="M142 98h36v16h-36z" fill="#7a756d" />
               </g>
             ) : (
               <g fill="#c38e70">

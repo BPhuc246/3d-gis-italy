@@ -13,7 +13,8 @@ const metadata = JSON.parse(await readFile(new URL('_local/sources.json', root),
 const fixtures = {};
 for (const entry of catalog) fixtures[entry.slug] = JSON.parse(await readFile(new URL(`_local/${entry.slug}-tour.json`, root), 'utf8'));
 const dev = await loadWithEnv({ DEV: true, VITE_LOCAL_DEMO: 'false' });
-assert.equal(catalog.length, 3);
+assert.equal(catalog.length, 4);
+assert.deepEqual(catalog.map(t => t.slug), [...dev.PHOTO_TOUR_SLUGS]);
 assert.equal(dev.localDemoAvailable, false);
 let totalScenes = 0, links = 0, info = 0, questions = 0;
 const photos = new Set();
@@ -38,7 +39,7 @@ for (const { slug, sceneCount } of catalog) {
     assert(meta.width >= 1920);
     assert(scene.thumbnail.startsWith('/_local/images/thumbs/'));
     assert((await stat(new URL(scene.thumbnail.slice(1), root))).size < 100_000);
-    assert(scene.hotspots.filter(h => !h.target).length >= 2);
+    assert(scene.hotspots.filter(h => !h.target).length >= (slug === 'vittoriano' && scene.id === 'panorama' ? 1 : 2));
     for (const hotspot of scene.hotspots) {
       if (hotspot.target) {
         links++;
@@ -60,7 +61,20 @@ for (const { slug, sceneCount } of catalog) {
     assert.equal(seen.size, tour.scenes.length);
   }
 }
-assert.equal(totalScenes, 27); assert.equal(photos.size, 27);
+assert.equal(totalScenes, 45); assert.equal(photos.size, 45);
+const vittoriano = fixtures.vittoriano;
+assert.equal(vittoriano.scenes.length, 18);
+assert.equal(vittoriano.questions.length, 6);
+for (const id of ['exterior','oblique','altar','equestrian','portico','ceiling','relief','quadrigas',
+  'museum-entry','museum-stairs','museum-gallery','museum-hall','vestibule','vault','arts','terrace','quadriga-close','panorama']) {
+  assert(vittoriano.scenes.some(s => s.id === id));
+}
+// New interior and roof scenes must be reachable through in-photo links, with exits
+// at distinct positions so overlapping controls cannot hide a route.
+for (const scene of vittoriano.scenes) {
+  const points = scene.hotspots.map(h => `${h.x},${h.y}`);
+  assert.equal(new Set(points).size, points.length, `${scene.id}: overlapping hotspots`);
+}
 const pantheon = fixtures.pantheon;
 for (const id of ['entrance','side','chapel','floor']) assert(pantheon.scenes.some(s => s.id === id));
 assert(pantheon.scenes.every(s => !/về đêm|chạng vạng/.test(s.title)));
@@ -86,7 +100,7 @@ try {
   let requested;
   globalThis.fetch = async url => { requested = url; const slug = catalog.find(t => url.includes(t.slug))?.slug ?? 'colosseum'; return Response.json(fixtures[slug]); };
   for (const { slug } of catalog) assert.equal((await dev.loadLocalTour(slug)).destinationSlug, slug);
-  assert.equal(requested, '/_local/pantheon-tour.json');
+  assert.equal(requested, '/_local/vittoriano-tour.json');
   const deployed = await loadWithEnv({ DEV: false, VITE_PHOTO_TOUR_BASE_URL: 'https://assets.example/tours/' });
   await deployed.loadLocalTour('pantheon'); assert.equal(requested, 'https://assets.example/tours/pantheon-tour.json');
   const legacy = await loadWithEnv({ DEV: false, VITE_PHOTO_TOUR_URL: 'https://assets.example/colosseum.json' });
@@ -98,7 +112,7 @@ try {
   globalThis.fetch = async () => new Response('<html>SPA fallback</html>');
   await assert.rejects(dev.loadLocalTour('colosseum', true));
 } finally { globalThis.fetch = originalFetch; }
-console.log(`PASS: 3 tours, ${totalScenes} licensed photos, ${links} reciprocal links, ${info} information points, ${questions} questions; files, thumbnails, hashes, graph reachability and loader errors.`);
+console.log(`PASS: 4 tours, ${totalScenes} licensed photos, ${links} reciprocal links, ${info} information points, ${questions} questions; files, thumbnails, hashes, graph reachability and loader errors.`);
 
 const navigationSource = await readFile(new URL('../src/lib/photoNavigation.ts', import.meta.url), 'utf8');
 const navigationCode = ts.transpileModule(navigationSource, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 } }).outputText;

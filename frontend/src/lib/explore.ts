@@ -45,6 +45,20 @@ export const stories: Record<string, PlaceStory> = {
     ],
     sourceUrl: 'https://www.turismoroma.it/en/places/pantheon',
   },
+  vittoriano: {
+    eyebrow: '04 / ĐÀI TƯỞNG NIỆM QUỐC GIA',
+    subtitle: 'Monumento a Vittorio Emanuele II · Altare della Patria',
+    era: 'Năm 1885 – 1935',
+    color: '#8c7a6b',
+    description: 'Đài tưởng niệm Quốc gia tôn vinh Vị vua đầu tiên thống nhất nước Ý và Bàn thờ Tổ quốc (Altare della Patria), kiệt tác đá cẩm thạch trắng Botticino tọa lạc uy nghi tại Quảng trường Venezia với hàng cột Corinthian đồ sộ, tượng đài kỵ mã và ngọn lửa vĩnh cửu canh gác Mộ Chiến sĩ Vô danh.',
+    facts: [
+      { label: 'Khánh thành', value: 'Năm 1911 (Hoàn thành 1935)' },
+      { label: 'Quy mô', value: 'Rộng 135m · Sâu 130m · Cao 81m (gồm tứ mã)' },
+      { label: 'Vật liệu', value: 'Đá cẩm thạch trắng Botticino' },
+      { label: 'Điểm nổi bật', value: 'Bàn thờ Tổ quốc & Cỗ xe Tứ mã Quadriga' }
+    ],
+    sourceUrl: 'https://www.turismoroma.it/en/places/monumental-complex-vittoriano',
+  },
 };
 
 export function searchKey(value: string) {
@@ -60,7 +74,7 @@ export async function loadLocalRegion(): Promise<RegionDetail> {
   return response.json();
 }
 
-export const PHOTO_TOUR_SLUGS = ['colosseum', 'arch-of-constantine', 'pantheon'] as const;
+export const PHOTO_TOUR_SLUGS = ['colosseum', 'arch-of-constantine', 'pantheon', 'vittoriano'] as const;
 export type NavigationDirection = 'left' | 'right' | 'forward' | 'up' | 'down' | 'return' | 'view';
 export type Hotspot = { id: string; x: number; y: number; title: string; text: string; target?: string; direction?: NavigationDirection; sourceUrl?: string };
 export type PhotoScene = {
