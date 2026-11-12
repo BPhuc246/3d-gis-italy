@@ -1,0 +1,147 @@
+{
+  "regionId": "local-roma",
+  "slug": "roma-trung-tam",
+  "name": "Di sản Roma",
+  "description": "Ba công trình, một hành trình khám phá Roma cổ đại.",
+  "centerLatitude": 41.894,
+  "centerLongitude": 12.485,
+  "destinations": [
+    {
+      "slug": "colosseum",
+      "name": "Đấu trường La Mã",
+      "description": "Đấu trường La Mã (Colosseum / Anfiteatro Flavio) là đấu trường cổ đại lớn nhất thế giới, kiệt tác đỉnh cao của kỹ thuật xây dựng và kết cấu vòm La Mã thế kỷ thứ nhất với sức chứa hơn 50.000 khán giả.",
+      "address": "Piazza del Colosseo, 1, Roma, Italia",
+      "category": "landmark",
+      "categoryLabel": "Di tích",
+      "latitude": 41.89021,
+      "longitude": 12.492231,
+      "coverImageUrl": "/_local/images/colosseum-exterior.jpg",
+      "openingHours": "08:30 – 19:15 (mùa hè) / 16:30 (mùa đông). Cần đặt trước vé giờ cố định.",
+      "entryFee": 18,
+      "entryFeeCurrency": "EUR",
+      "buildingShape": "ellipse",
+      "footprintLengthM": 189,
+      "footprintWidthM": 156,
+      "heightM": 48,
+      "headingDeg": 22,
+      "interiorHeightM": null,
+      "displayColor": "#bc704c",
+      "avgRating": null,
+      "reviewCount": 0,
+      "embeds": [
+        {
+          "kind": "exterior",
+          "embedUrl": "https://sketchfab.com/models/3c5b7197d73342bbb333b24be23ba850/embed",
+          "credit": "Colosseum, Roman Forum, Rome, Italy by LibanCiel on Sketchfab"
+        }
+      ],
+      "coverImageCredit": "Deb Nystrom from Ann Arbor, Michigan, USA · CC BY 2.0",
+      "coverImageSourceUrl": "https://commons.wikimedia.org/wiki/File:Colosseum_(45696033834).jpg",
+      "coverImageLicenseUrl": "https://creativecommons.org/licenses/by/2.0"
+    },
+    {
+      "slug": "arch-of-constantine",
+      "name": "Khải hoàn môn Constantine",
+      "description": "Khải hoàn môn lớn nhất của thế giới La Mã cổ đại còn nguyên vẹn, dựng năm 315 SCN để vinh danh chiến thắng Cầu Milvian của Hoàng đế Constantine I, nổi bật với nghệ thuật điêu khắc phù điêu và tượng tù binh Dacia.",
+      "address": "Via di San Gregorio, Roma, Italia",
+      "category": "landmark",
+      "categoryLabel": "Di tích",
+      "latitude": 41.88976,
+      "longitude": 12.490598,
+      "coverImageUrl": "/_local/images/constantine-wide.jpg",
+      "openingHours": "Không gian ngoài trời trên trục đường Via Triumphalis, tham quan tự do 24/7.",
+      "entryFee": 0,
+      "entryFeeCurrency": "EUR",
+      "buildingShape": "rectangle",
+      "footprintLengthM": 25,
+      "footprintWidthM": 11,
+      "heightM": 21,
+      "headingDeg": 10,
+      "interiorHeightM": null,
+      "displayColor": "#b49b62",
+      "avgRating": null,
+      "reviewCount": 0,
+      "embeds": [
+        {
+          "kind": "exterior",
+          "embedUrl": "https://sketchfab.com/models/ae8471e2f6b94e8591f006c8cfa04c27/embed",
+          "credit": "Arco de Constantino by Real Academia de Bellas Artes de San Fernando on Sketchfab"
+        }
+      ],
+      "coverImageCredit": "Jean-Pol GRANDMONT · CC BY 4.0",
+      "coverImageSourceUrl": "https://commons.wikimedia.org/wiki/File:0_Arc_de_Constantin_et_Colis%C3%A9e_-_Rome_(2).jpg",
+      "coverImageLicenseUrl": "https://creativecommons.org/licenses/by/4.0"
+    },
+    {
+      "slug": "pantheon",
+      "name": "Đền Pantheon",
+      "description": "Đền thờ La Mã cổ đại tráng lệ được xây dựng lại dưới thời Hoàng đế Hadrian năm 125 SCN, nổi tiếng với mái vòm bê tông không cốt thép lớn nhất thế giới suốt 2.000 năm và lỗ mở Oculus huyền diệu.",
+      "address": "Piazza della Rotonda, Roma, Italia",
+      "category": "landmark",
+      "categoryLabel": "Di tích",
+      "latitude": 41.8986,
+      "longitude": 12.4769,
+      "coverImageUrl": "/_local/images/pantheon-exterior.jpg",
+      "openingHours": "09:00 – 19:00 hàng ngày (lượt vào cuối 18:30).",
+      "entryFee": 5,
+      "entryFeeCurrency": "EUR",
+      "buildingShape": "circle",
+      "footprintLengthM": 43.3,
+      "footprintWidthM": 43.3,
+      "heightM": 43.3,
+      "headingDeg": 0,
+      "interiorHeightM": null,
+      "displayColor": "#748778",
+      "avgRating": null,
+      "reviewCount": 0,
+      "embeds": [
+        {
+          "kind": "exterior",
+          "embedUrl": "https://sketchfab.com/models/8ce20ac5fc3a4af7ab223cdc0caa7d27/embed",
+          "credit": "Pantheon, Rome, Italy by Brian Trepanier on Sketchfab"
+        },
+        {
+          "kind": "interior",
+          "embedUrl": "https://sketchfab.com/models/5f35ab370082403e8c7829388f4e0c30/embed",
+          "credit": "The Pantheon Interior by artfletch on Sketchfab"
+        }
+      ],
+      "coverImageCredit": "John Samuel · CC BY-SA 4.0",
+      "coverImageSourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Exterior_04.jpg",
+      "coverImageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    },
+    {
+      "slug": "vittoriano",
+      "name": "Đài tưởng niệm Vittorio Emanuele II",
+      "description": "Đài tưởng niệm Quốc gia tôn vinh Vị vua đầu tiên thống nhất nước Ý và Bàn thờ Tổ quốc (Altare della Patria), kiệt tác kiến trúc tân cổ điển đồ sộ bằng đá cẩm thạch trắng Botticino tọa lạc uy nghi tại Quảng trường Venezia với hàng cột Corinthian hình vòng cung, tượng đồng kỵ mã và Mộ Chiến sĩ Vô danh có ngọn lửa vĩnh cửu.",
+      "address": "Piazza Venezia, 00186 Roma, Italia",
+      "category": "landmark",
+      "categoryLabel": "Di tích",
+      "latitude": 41.89465,
+      "longitude": 12.48312,
+      "coverImageUrl": "/_local/images/vittoriano-exterior.jpg",
+      "openingHours": "09:30 – 19:30 hàng ngày (lượt vào cuối 18:45). Bậc thang ngoài trời: miễn phí; vé VIVE (bảo tàng & thang máy sân thượng): 18 €.",
+      "entryFee": 18,
+      "entryFeeCurrency": "EUR",
+      "buildingShape": "rectangle",
+      "footprintLengthM": 138,
+      "footprintWidthM": 170,
+      "heightM": 81,
+      "headingDeg": 343,
+      "interiorHeightM": null,
+      "displayColor": "#e6e2d8",
+      "avgRating": null,
+      "reviewCount": 0,
+      "embeds": [
+        {
+          "kind": "exterior",
+          "embedUrl": "https://sketchfab.com/models/b1328999fad84b6daf21f73708d42f30/embed",
+          "credit": "Victor Emmanuel II Monument,altare,roma,scan by asensio on Sketchfab"
+        }
+      ],
+      "coverImageCredit": "Alvesgaspar · CC BY-SA 4.0",
+      "coverImageSourceUrl": "https://commons.wikimedia.org/wiki/File:Altar_della_Patria_September_2015-1.jpg",
+      "coverImageLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+    }
+  ]
+}

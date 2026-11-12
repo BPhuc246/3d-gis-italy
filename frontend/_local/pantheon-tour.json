@@ -1,0 +1,725 @@
+{
+  "id": "pantheon-photo",
+  "version": 2,
+  "destinationSlug": "pantheon",
+  "destinationName": "Đền Pantheon",
+  "title": "Từ sảnh cột đến khoảng trời Oculus",
+  "startSceneId": "exterior",
+  "routeNote": "Mũi tên nối các góc nhìn, không phải tuyến đi bộ được khảo sát. Ảnh chụp ở nhiều thời điểm.",
+  "contentSources": [
+    {
+      "title": "Cổng thông tin du lịch chính thức Roma — Đền Pantheon",
+      "url": "https://www.turismoroma.it/en/places/pantheon"
+    },
+    {
+      "title": "Bách khoa toàn thư Wikipedia — Đền Pantheon",
+      "url": "https://en.wikipedia.org/wiki/Pantheon,_Rome"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "exterior",
+      "title": "01 · Mặt tiền tiền sảnh nhìn từ quảng trường Piazza della Rotonda",
+      "image": "/_local/images/pantheon-exterior.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-exterior.jpg",
+      "alt": "Mặt tiền kiêu hãnh của Đền Pantheon với mái tam giác cổ điển và hàng cột đá granite đồ sộ, biểu tượng bất biến suốt gần 2.000 năm.",
+      "description": "Mặt tiền kiêu hãnh của Đền Pantheon với mái tam giác cổ điển và hàng cột đá granite đồ sộ, biểu tượng bất biến suốt gần 2.000 năm.",
+      "author": "John Samuel",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Exterior_04.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2016-10-09 10:47:10",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 26,
+          "title": "Dòng chữ khắc tên Marcus Agrippa",
+          "text": "Dòng chữ Latinh lớn trên dầm: \"M·AGRIPPA·L·F·COS·TERTIUM·FECIT\" (Marcus Agrippa, con trai của Lucius, chấp chính quan lần thứ ba, đã xây dựng ngôi đền này) nhằm tôn vinh người đặt nền móng đầu tiên.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "exterior-info-1"
+        },
+        {
+          "x": 32,
+          "y": 64,
+          "title": "16 cột đá Granite nguyên khối khổng lồ",
+          "text": "Hàng hiên gồm 16 cột đá hoa cương nguyên khối không chắp nối, cao 12m và nặng hơn 60 tấn mỗi cột, được khai thác từ mỏ đá Mons Claudianus ở Ai Cập và vượt biển Địa Trung Hải về Rome.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "exterior-info-2"
+        },
+        {
+          "id": "exterior-to-oblique",
+          "target": "oblique",
+          "direction": "view",
+          "x": 85,
+          "y": 63,
+          "title": "Đổi góc: sảnh và khối đền ban ngày",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "exterior-to-portico",
+          "target": "portico",
+          "direction": "forward",
+          "x": 49,
+          "y": 77,
+          "title": "Vào xem dưới mái tiền sảnh",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "oblique",
+      "title": "02 · Góc nhìn tổng thể tiền sảnh và khối tròn Rotunda",
+      "image": "/_local/images/pantheon-square.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-square.jpg",
+      "alt": "Góc nhìn chếch từ quảng trường hé lộ sự kết hợp táo bạo: một tiền sảnh hình chữ nhật kiểu Hy Lạp gắn liền với khối đại sảnh tròn (Rotunda) đồ sộ của La Mã.",
+      "description": "Góc nhìn chếch từ quảng trường hé lộ sự kết hợp táo bạo: một tiền sảnh hình chữ nhật kiểu Hy Lạp gắn liền với khối đại sảnh tròn (Rotunda) đồ sộ của La Mã.",
+      "author": "John Samuel",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Exterior_10.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2016-10-09 10:58:31",
+      "hotspots": [
+        {
+          "x": 24,
+          "y": 31,
+          "title": "Bức tường gạch Rotunda dày hơn 6 mét",
+          "text": "Khối trụ tròn phía sau có tường gạch dày tới 6.4m, bên trong ẩn chứa mạng lưới các vòm giảm tải hình bán nguyệt giúp phân tán áp lực khổng lồ của mái vòm.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "oblique-info-1"
+        },
+        {
+          "x": 64,
+          "y": 63,
+          "title": "Đài phun nước Fontana del Pantheon",
+          "text": "Đài phun nước thế kỷ 16 đặt tại trung tâm quảng trường Piazza della Rotonda, trên đỉnh có tháp bia Ai Cập cổ đại Obelisk của Pharaoh Ramses II.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "oblique-info-2"
+        },
+        {
+          "id": "oblique-to-exterior",
+          "target": "exterior",
+          "direction": "return",
+          "x": 22,
+          "y": 83,
+          "title": "Trở lại mặt tiền ban ngày",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "oblique-to-capitals",
+          "target": "capitals",
+          "direction": "up",
+          "x": 72,
+          "y": 72,
+          "title": "Xem gần đầu cột tiền sảnh",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "portico",
+      "title": "03 · Không gian bên dưới mái tiền sảnh Portico",
+      "image": "/_local/images/pantheon-portico.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-portico.jpg",
+      "alt": "Bước vào bóng râm của hàng hiên tiền sảnh, người tham quan cảm nhận rõ rệt độ kỳ vĩ của không gian đệm trước khi bước vào đại sảnh linh thiêng.",
+      "description": "Bước vào bóng râm của hàng hiên tiền sảnh, người tham quan cảm nhận rõ rệt độ kỳ vĩ của không gian đệm trước khi bước vào đại sảnh linh thiêng.",
+      "author": "John Samuel",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Exterior_09.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2016-10-09 10:56:08",
+      "hotspots": [
+        {
+          "x": 24,
+          "y": 56,
+          "title": "Ba lối đi phân nhánh trang nghiêm",
+          "text": "16 cột đá chia tiền sảnh thành 3 nhịp: lối giữa rộng lớn dẫn thẳng vào cửa chính, hai lối bên từng đặt tượng khổng lồ của Augustus và Agrippa.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "portico-info-1"
+        },
+        {
+          "x": 47,
+          "y": 65,
+          "title": "Hệ khung mái gỗ tuyết tùng thay thế đồng cổ",
+          "text": "Phần trần hiên xưa kia từng được ốp hàng ngàn tấn đồng mạ vàng lộng lẫy, trước khi bị Giáo hoàng Urban VIII (dòng họ Barberini) tháo dỡ vào thế kỷ 17 để đúc súng thần công.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "portico-info-2"
+        },
+        {
+          "id": "portico-to-exterior",
+          "target": "exterior",
+          "direction": "return",
+          "x": 21,
+          "y": 85,
+          "title": "Trở ra mặt tiền từ quảng trường",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "portico-to-capitals",
+          "target": "capitals",
+          "direction": "up",
+          "x": 77,
+          "y": 37,
+          "title": "Nhìn lên đầu cột và hệ dầm",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "portico-to-entrance",
+          "target": "entrance",
+          "direction": "view",
+          "x": 78,
+          "y": 75,
+          "title": "Đổi góc: nhìn từ trong ra cửa vào",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "capitals",
+      "title": "04 · Chi tiết đầu cột Corinthian và dầm đá",
+      "image": "/_local/images/pantheon-columns.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-columns.jpg",
+      "alt": "Góc nhìn cận cảnh các đầu cột đá cẩm thạch trắng Pentelic được chạm khắc hoa văn lá gai acanthus vô cùng sống động và sắc nét.",
+      "description": "Góc nhìn cận cảnh các đầu cột đá cẩm thạch trắng Pentelic được chạm khắc hoa văn lá gai acanthus vô cùng sống động và sắc nét.",
+      "author": "John Samuel",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Exterior_02.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2016-10-09 10:45:57",
+      "hotspots": [
+        {
+          "x": 38,
+          "y": 50,
+          "title": "Đầu cột thức Corinthian nguyên bản",
+          "text": "Các đầu cột đá hoa mỹ được chạm khắc thủ công với tỷ lệ mẫu mực, tạo nên sự chuyển tiếp hài hòa giữa thân cột tròn và khối dầm đá vuông vức.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "capitals-info-1"
+        },
+        {
+          "x": 58,
+          "y": 23,
+          "title": "Dầm đá Architrave và gờ chỉ Cornice",
+          "text": "Hệ thống dầm đỡ bằng đá cẩm thạch đồ sộ nâng đỡ toàn bộ kết cấu mái dốc tam giác phía trên mà không hề xuất hiện vết nứt nẻ sau hai thiên niên kỷ.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "capitals-info-2"
+        },
+        {
+          "id": "capitals-to-portico",
+          "target": "portico",
+          "direction": "return",
+          "x": 26,
+          "y": 84,
+          "title": "Trở lại dưới mái tiền sảnh",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "capitals-to-oblique",
+          "target": "oblique",
+          "direction": "view",
+          "x": 80,
+          "y": 81,
+          "title": "Đổi góc: sảnh và khối đền ban ngày",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "entrance",
+      "title": "05 · Cánh cửa đồng cổ đại nhìn từ bên trong",
+      "image": "/_local/images/pantheon-entrance.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-entrance.jpg",
+      "alt": "Đứng từ thềm cửa nhìn ngược ra quảng trường rực nắng qua đôi cánh cửa đồng cổ đại lớn nhất thế giới La Mã.",
+      "description": "Đứng từ thềm cửa nhìn ngược ra quảng trường rực nắng qua đôi cánh cửa đồng cổ đại lớn nhất thế giới La Mã.",
+      "author": "Szilas",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon,_Rome,_general_view_with_the_entrance,_2013-03-07.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2013-03-07",
+      "hotspots": [
+        {
+          "x": 87,
+          "y": 53,
+          "title": "Cánh cửa đồng La Mã nặng 20 tấn",
+          "text": "Đôi cánh cửa đồng hai cánh khổng lồ cao hơn 7 mét, mỗi cánh dày gần nửa mét và nặng hơn 10 tấn, quay trên các chốt ngõng bằng đồng từ thời cổ đại đến nay vẫn hoạt động trơn tru.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "entrance-info-1"
+        },
+        {
+          "x": 35,
+          "y": 83,
+          "title": "Ngưỡng cửa đá cẩm thạch xanh quý hiếm",
+          "text": "Ngưỡng cửa vào được chế tác từ một phiến đá cẩm thạch châu Phi khổng lồ, đón hàng triệu lượt bước chân du khách và giáo dân qua nhiều thời đại.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "entrance-info-2"
+        },
+        {
+          "id": "entrance-to-portico",
+          "target": "portico",
+          "direction": "forward",
+          "x": 86,
+          "y": 65,
+          "title": "Xem gần tiền sảnh bên ngoài",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "entrance-to-interior",
+          "target": "interior",
+          "direction": "left",
+          "x": 28,
+          "y": 62,
+          "title": "Quay nhìn về trung tâm đền",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "entrance-to-floor",
+          "target": "floor",
+          "direction": "down",
+          "x": 52,
+          "y": 88,
+          "title": "Xem gần nền đá dưới chân",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "interior",
+      "title": "06 · Đại sảnh Rotunda và tỷ lệ hình cầu hoàn mỹ",
+      "image": "/_local/images/pantheon-interior.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-interior.jpg",
+      "alt": "Toàn cảnh nội thất kỳ vĩ: chiều cao từ sàn lên đỉnh vòm đúng bằng 43.3m và đường kính lòng vòm cũng đúng 43.3m, tạo nên một quả cầu không gian toán học hoàn hảo.",
+      "description": "Toàn cảnh nội thất kỳ vĩ: chiều cao từ sàn lên đỉnh vòm đúng bằng 43.3m và đường kính lòng vòm cũng đúng 43.3m, tạo nên một quả cầu không gian toán học hoàn hảo.",
+      "author": "Szilas",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon,_centrum_of_the_rotonda,_2013-03-07-2.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1312,
+      "captureDate": "2013-03-07",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 52,
+          "title": "7 hốc thờ lớn thờ các vị thần tinh tú",
+          "text": "Tường tròn được khoét 7 hốc lớn (niche) xen kẽ hình bán nguyệt và hình chữ nhật, nguyên thủy là nơi đặt tượng thờ 7 vị thần hành tinh La Mã (Mặt Trời, Mặt Trăng, Sao Hỏa, Sao Thủy, Sao Mộc, Sao Kim, Sao Thổ).",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "interior-info-1"
+        },
+        {
+          "x": 27,
+          "y": 88,
+          "title": "Mộ danh họa thời Phục hưng Raphael",
+          "text": "Pantheon là nơi yên nghỉ vĩnh hằng của thiên tài hội họa thời Phục Hưng Raphael (qua đời năm 1520) cùng hai vị vua thống nhất nước Ý: Vittorio Emanuele II và Umberto I.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "interior-info-2"
+        },
+        {
+          "id": "interior-to-entrance",
+          "target": "entrance",
+          "direction": "return",
+          "x": 81,
+          "y": 76,
+          "title": "Quay về góc nhìn cửa vào",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-side",
+          "target": "side",
+          "direction": "right",
+          "x": 79,
+          "y": 46,
+          "title": "Nhìn ngang dọc không gian tròn",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-floor",
+          "target": "floor",
+          "direction": "down",
+          "x": 55,
+          "y": 87,
+          "title": "Nhìn xuống nền đá",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-dome",
+          "target": "dome",
+          "direction": "up",
+          "x": 53,
+          "y": 19,
+          "title": "Ngước lên mái vòm",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "interior-to-altar",
+          "target": "altar",
+          "direction": "forward",
+          "x": 52,
+          "y": 78,
+          "title": "Xem gần khu bàn thờ",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "side",
+      "title": "07 · Vòng cột đá cẩm thạch và hốc tường bên",
+      "image": "/_local/images/pantheon-side.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-side.jpg",
+      "alt": "Góc nhìn dọc theo chu vi tường tròn, thấy rõ các cặp cột đá cẩm thạch vàng Giallo Antico và cẩm thạch vân tím nâng đỡ các trán mái vòm nhỏ.",
+      "description": "Góc nhìn dọc theo chu vi tường tròn, thấy rõ các cặp cột đá cẩm thạch vàng Giallo Antico và cẩm thạch vân tím nâng đỡ các trán mái vòm nhỏ.",
+      "author": "Szilas",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon,_side_view_of_the_centrum_of_the_rotonda,_2013-03-07.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2013-03-07",
+      "hotspots": [
+        {
+          "x": 43,
+          "y": 46,
+          "title": "Cột đá cẩm thạch nguyên khối bao quanh",
+          "text": "Mỗi hốc thờ được che bởi hai cột đá cẩm thạch rực rỡ, tạo nhịp điệu ánh sáng và bóng đổ sinh động quanh chu vi công trình.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "side-info-1"
+        },
+        {
+          "x": 57,
+          "y": 77,
+          "title": "Sự chuyển hóa thành Vương cung thánh đường",
+          "text": "Năm 609 SCN, Hoàng đế Byzantine Phocas đã tặng ngôi đền cho Giáo hoàng Boniface IV, chuyển hóa thành Nhà thờ Thánh Maria và các Thánh Tử Đạo, nhờ đó bảo vệ công trình không bị phá hủy.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "side-info-2"
+        },
+        {
+          "id": "side-to-interior",
+          "target": "interior",
+          "direction": "return",
+          "x": 19,
+          "y": 76,
+          "title": "Trở lại góc chính diện trung tâm",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "side-to-chapel",
+          "target": "chapel",
+          "direction": "left",
+          "x": 24,
+          "y": 48,
+          "title": "Xem gần một bàn thờ bên",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "side-to-altar",
+          "target": "altar",
+          "direction": "right",
+          "x": 80,
+          "y": 50,
+          "title": "Xem gần bàn thờ chính",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "chapel",
+      "title": "08 · Bàn thờ bên và các tác phẩm nghệ thuật tôn giáo",
+      "image": "/_local/images/pantheon-chapel.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-chapel.jpg",
+      "alt": "Cận cảnh một nhà nguyện bên trong lòng đền, phô diễn các bức bích họa Phục hưng và các tượng thánh bằng đá cẩm thạch trắng.",
+      "description": "Cận cảnh một nhà nguyện bên trong lòng đền, phô diễn các bức bích họa Phục hưng và các tượng thánh bằng đá cẩm thạch trắng.",
+      "author": "Szilas",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon,_side_altar,_2013-03-07-6.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 3101,
+      "captureDate": "2013-03-07",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 58,
+          "title": "Nhà nguyện Truyền Tin (Annunciation)",
+          "text": "Tác phẩm bích họa tuyệt đẹp thời Phục hưng của họa sĩ Melozzo da Forlì vẽ cảnh Thiên thần truyền tin cho Đức Mẹ Maria.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "chapel-info-1"
+        },
+        {
+          "x": 49,
+          "y": 74,
+          "title": "Tượng Đức Mẹ với Tảng Đá (Madonna del Sasso)",
+          "text": "Bức tượng Đức Mẹ linh thiêng do nhà điêu khắc Lorenzetto tạc theo di nguyện của bạn thân ông là danh họa Raphael đặt ngay trên mộ của danh họa.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "chapel-info-2"
+        },
+        {
+          "id": "chapel-to-side",
+          "target": "side",
+          "direction": "return",
+          "x": 59,
+          "y": 91,
+          "title": "Trở ra không gian tròn",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "altar",
+      "title": "09 · Bàn thờ chính Apse ở trục đối diện cửa vào",
+      "image": "/_local/images/pantheon-altar.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-altar.jpg",
+      "alt": "Bàn thờ chính tôn nghiêm nằm trong hốc vòm bán cầu đối diện lối vào, trung tâm của các thánh lễ Công giáo hiện đại.",
+      "description": "Bàn thờ chính tôn nghiêm nằm trong hốc vòm bán cầu đối diện lối vào, trung tâm của các thánh lễ Công giáo hiện đại.",
+      "author": "John Samuel",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Interior_09.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2016-10-09 10:52:00",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 64,
+          "title": "Bức tranh Icon Đức Mẹ đồng trinh thế kỷ 7",
+          "text": "Tại bàn thờ lưu giữ bức tranh gỗ thiêng vẽ Đức Mẹ và Chúa Hài Đồng từ thế kỷ thứ 7, được Giáo hoàng Boniface IV dâng tặng khi cung hiến đền.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "altar-info-1"
+        },
+        {
+          "x": 92,
+          "y": 33,
+          "title": "Vòm bán nguyệt trang trí hoa văn khảm vàng",
+          "text": "Đỉnh vòm của bàn thờ chính giữ lại những mảnh mosaic vàng lấp lánh phản chiếu ánh sáng từ lỗ mở Oculus trên trần.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "altar-info-2"
+        },
+        {
+          "id": "altar-to-side",
+          "target": "side",
+          "direction": "return",
+          "x": 79,
+          "y": 78,
+          "title": "Trở lại góc nhìn ngang trong đền",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "altar-to-interior",
+          "target": "interior",
+          "direction": "return",
+          "x": 22,
+          "y": 85,
+          "title": "Trở lại toàn cảnh nội thất",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "altar-to-oculus",
+          "target": "oculus",
+          "direction": "up",
+          "x": 67,
+          "y": 23,
+          "title": "Ngước lên lỗ mở Oculus",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "floor",
+      "title": "10 · Nền đá cẩm thạch La Mã đa sắc nguyên bản",
+      "image": "/_local/images/pantheon-floor.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-floor.jpg",
+      "alt": "Mặt sàn lát đá cẩm thạch hình học bảo tồn gần như nguyên vẹn từ thời cổ đại với các phiến đá Porphyry đỏ Ai Cập, cẩm thạch vàng và đá hoa cương xám.",
+      "description": "Mặt sàn lát đá cẩm thạch hình học bảo tồn gần như nguyên vẹn từ thời cổ đại với các phiến đá Porphyry đỏ Ai Cập, cẩm thạch vàng và đá hoa cương xám.",
+      "author": "Szilas",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon,_Rome,_floor,_2013-03-07.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2013-03-07",
+      "hotspots": [
+        {
+          "x": 55,
+          "y": 22,
+          "title": "Hệ thống 22 lỗ thoát nước mưa tinh tế",
+          "text": "Do lỗ Oculus mở thẳng lên trời, nước mưa sẽ rơi tự do xuống sàn. Mặt sàn được thiết kế hơi cong lồi ở giữa và dốc nhẹ ra xung quanh với 22 lỗ thoát nước ngầm giúp sàn luôn khô ráo nhanh chóng.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "floor-info-1"
+        },
+        {
+          "x": 36,
+          "y": 73,
+          "title": "Đá Đỏ Imperial Porphyry biểu tượng hoàng gia",
+          "text": "Các vòng tròn lớn bằng đá porphyry màu đỏ tía quý hiếm – loại đá chỉ dành riêng cho Hoàng đế La Mã khai thác từ sa mạc phía đông Ai Cập.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "floor-info-2"
+        },
+        {
+          "id": "floor-to-interior",
+          "target": "interior",
+          "direction": "up",
+          "x": 20,
+          "y": 16,
+          "title": "Ngẩng lên không gian trung tâm",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "floor-to-entrance",
+          "target": "entrance",
+          "direction": "view",
+          "x": 81,
+          "y": 36,
+          "title": "Đổi góc: cửa vào của đền",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "dome",
+      "title": "11 · Mái vòm bê tông không cốt thép lớn nhất thế giới",
+      "image": "/_local/images/pantheon-dome.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-dome.jpg",
+      "alt": "Ngước nhìn tuyệt tác vòm bê tông vĩ đại: 5 tầng ô lõm (coffers) gồm 28 ô mỗi tầng xoay đồng tâm hướng về lỗ mở Oculus ở đỉnh.",
+      "description": "Ngước nhìn tuyệt tác vòm bê tông vĩ đại: 5 tầng ô lõm (coffers) gồm 28 ô mỗi tầng xoay đồng tâm hướng về lỗ mở Oculus ở đỉnh.",
+      "author": "Szilas",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon,_Rome,_ceiling,_2013-03-07-5.jpg",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 2880,
+      "captureDate": "2013-03-07",
+      "hotspots": [
+        {
+          "x": 44,
+          "y": 6,
+          "title": "Bí quyết vật liệu bê tông siêu nhẹ dần lên đỉnh",
+          "text": "Bê tông La Mã ở chân vòm sử dụng đá travertine nặng và bền; lên đến giữa vòm dùng đá tufa xốp; và gần đỉnh vòm người La Mã sử dụng tro núi lửa và đá bọt pumice siêu nhẹ nổi trên nước.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "dome-info-1"
+        },
+        {
+          "x": 73,
+          "y": 47,
+          "title": "140 ô lõm hình học Coffers (Caissons)",
+          "text": "5 tầng với tổng cộng 140 ô lõm không chỉ tạo hiệu ứng thẩm mỹ hút mắt mà còn giúp giảm bớt hơn 500 tấn trọng lượng của toàn bộ mái vòm bê tông.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "dome-info-2"
+        },
+        {
+          "id": "dome-to-interior",
+          "target": "interior",
+          "direction": "down",
+          "x": 19,
+          "y": 84,
+          "title": "Nhìn xuống không gian bên trong",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "dome-to-oculus",
+          "target": "oculus",
+          "direction": "up",
+          "x": 56,
+          "y": 16,
+          "title": "Xem gần lỗ mở Oculus",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "oculus",
+      "title": "12 · Cận cảnh lỗ mở thiên văn Oculus - Con mắt của Rome",
+      "image": "/_local/images/pantheon-oculus.jpg",
+      "thumbnail": "/_local/images/thumbs/pantheon-oculus.jpg",
+      "alt": "Lỗ hổng tròn đường kính 9m trên đỉnh vòm mở thẳng lên vòm trời xanh, là nguồn cung cấp ánh sáng duy nhất cho toàn bộ không gian đền.",
+      "description": "Lỗ hổng tròn đường kính 9m trên đỉnh vòm mở thẳng lên vòm trời xanh, là nguồn cung cấp ánh sáng duy nhất cho toàn bộ không gian đền.",
+      "author": "John Samuel",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Interior_05.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2016-10-09 10:49:51",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 28,
+          "title": "Đồng hồ mặt trời khổng lồ của thế giới cổ đại",
+          "text": "Vệt ánh sáng mặt trời chiếu qua Oculus dịch chuyển quanh các bức tường tròn theo từng giờ và từng mùa, tạo nên chiếc đồng hồ thiên văn kỳ vĩ tôn vinh các vị thần vũ trụ.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/pantheon",
+          "id": "oculus-info-1"
+        },
+        {
+          "x": 28,
+          "y": 69,
+          "title": "Vòng đai gia cố bằng đồng nguyên bản",
+          "text": "Miệng lỗ Oculus được viền bằng một vòng đai kim loại bằng đồng nguyên bản từ thời La Mã, vừa bảo vệ mép bê tông vừa phân bổ đều ứng suất nén của đỉnh vòm.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pantheon,_Rome",
+          "id": "oculus-info-2"
+        },
+        {
+          "id": "oculus-to-dome",
+          "target": "dome",
+          "direction": "return",
+          "x": 77,
+          "y": 82,
+          "title": "Trở lại toàn bộ mái vòm",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "oculus-to-altar",
+          "target": "altar",
+          "direction": "down",
+          "x": 21,
+          "y": 82,
+          "title": "Hạ góc nhìn về khu bàn thờ",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "oculus",
+      "prompt": "Lỗ mở Oculus trên đỉnh mái vòm Pantheon có tác dụng gì?",
+      "choices": [
+        "Đưa ánh sáng tự nhiên vào lòng đền và hoạt động như đồng hồ mặt trời",
+        "Chỉ dùng để thoát khói khi tế lễ",
+        "Là lối đi bí mật lên nóc đền"
+      ],
+      "answer": 0,
+      "explanation": "Lỗ mở Oculus đường kính 9m là nguồn chiếu sáng duy nhất, tạo luồng ánh sáng mặt trời dịch chuyển quanh tường theo chu kỳ ngày và mùa.",
+      "sceneId": "oculus"
+    },
+    {
+      "id": "columns",
+      "prompt": "16 cột đá nguyên khối ở tiền sảnh Pantheon có nguồn gốc đặc biệt như thế nào?",
+      "choices": [
+        "Đúc bằng bê tông tại chỗ",
+        "Được khai thác từ các mỏ đá granite nguyên khối ở Ai Cập và vận chuyển vượt biển về Rome",
+        "Làm bằng gỗ tuyết tùng phủ thạch cao"
+      ],
+      "answer": 1,
+      "explanation": "Mỗi cột đá hoa cương nguyên khối nặng hơn 60 tấn được đục đẽo từ mỏ đá Mons Claudianus ở Ai Cập và kéo về Rome qua sông Nile và biển Địa Trung Hải.",
+      "sceneId": "portico"
+    },
+    {
+      "id": "dome_geometry",
+      "prompt": "Không gian bên trong đại sảnh tròn Rotunda của Pantheon có tỷ lệ hình học gì đặc biệt?",
+      "choices": [
+        "Chiều cao đúng bằng đường kính vòm (43.3m), chứa trọn một khối cầu toán học hoàn hảo",
+        "Chiều cao gấp đôi đường kính đáy",
+        "Mặt bằng hình oval elip"
+      ],
+      "answer": 0,
+      "explanation": "Pantheon đạt đến đỉnh cao hình học cổ điển khi chiều cao từ sàn lên đỉnh vòm đúng bằng đường kính lòng vòm (43.3m), tạo thành một hình cầu hoàn hảo bên trong.",
+      "sceneId": "interior"
+    }
+  ]
+}

@@ -1,0 +1,434 @@
+{
+  "id": "arch-of-constantine-photo",
+  "version": 2,
+  "destinationSlug": "arch-of-constantine",
+  "destinationName": "Khải hoàn môn Constantine",
+  "title": "Giải mã những lớp phù điêu",
+  "startSceneId": "wide",
+  "routeNote": "Mũi tên nối các góc nhìn, không phải tuyến đi bộ được khảo sát. Ảnh chụp ở nhiều thời điểm.",
+  "contentSources": [
+    {
+      "title": "Cổng thông tin du lịch chính thức Roma — Khải hoàn môn Constantine",
+      "url": "https://www.turismoroma.it/en/places/arch-costantine"
+    },
+    {
+      "title": "Bách khoa toàn thư Wikipedia — Khải hoàn môn Constantine",
+      "url": "https://en.wikipedia.org/wiki/Arch_of_Constantine"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "wide",
+      "title": "01 · Khải hoàn môn Constantine và bối cảnh",
+      "image": "/_local/images/constantine-wide.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-wide.jpg",
+      "alt": "Toàn cảnh Khải hoàn môn sừng sững bên cạnh Colosseum trên con đường khải hoàn cổ xưa Via Triumphalis.",
+      "description": "Toàn cảnh Khải hoàn môn sừng sững bên cạnh Colosseum trên con đường khải hoàn cổ xưa Via Triumphalis.",
+      "author": "Jean-Pol GRANDMONT",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:0_Arc_de_Constantin_et_Colis%C3%A9e_-_Rome_(2).jpg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2011-09-28 18:31",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 58,
+          "title": "Cấu trúc ba cửa vòm cân xứng",
+          "text": "Khải hoàn môn cao 21m, rộng 25.9m và sâu 7.4m, gồm một vòm lớn ở giữa cao 11.5m và hai vòm phụ hai bên, tạo nên tỷ lệ vàng kinh điển của kiến trúc La Mã.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "wide-info-1"
+        },
+        {
+          "x": 92,
+          "y": 47,
+          "title": "Vị trí đắc địa cạnh Colosseum",
+          "text": "Khải hoàn môn được xây dựng ngay điểm giao giữa Đồi Palatine và thung lũng Colosseum, là cửa ngõ diễu binh đón các đạo quân chiến thắng trở về Điện thờ Jupiter.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "wide-info-2"
+        },
+        {
+          "id": "wide-to-south",
+          "target": "south",
+          "direction": "forward",
+          "x": 53,
+          "y": 81,
+          "title": "Xem gần mặt phía Nam",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "wide-to-side",
+          "target": "side",
+          "direction": "right",
+          "x": 77,
+          "y": 68,
+          "title": "Đổi sang mặt bên hông",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "south",
+      "title": "02 · Mặt đứng chính phía Nam",
+      "image": "/_local/images/constantine-south.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-south.jpg",
+      "alt": "Mặt tiền hướng về phía nam đón ánh nắng rực rỡ, phô diễn các hàng cột Corinthian nhô cao và hệ thống tranh tượng phù điêu đồ sộ.",
+      "description": "Mặt tiền hướng về phía nam đón ánh nắng rực rỡ, phô diễn các hàng cột Corinthian nhô cao và hệ thống tranh tượng phù điêu đồ sộ.",
+      "author": "NikonZ7II (Paris Orlando)",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arch_of_Constantine_(Rome)_-_South_side,_from_Via_triumphalis.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 1620,
+      "captureDate": "Taken on 23 April 2022",
+      "hotspots": [
+        {
+          "x": 50,
+          "y": 63,
+          "title": "Cột đá cẩm thạch Numidian màu vàng",
+          "text": "Bốn cột độc lập ở mỗi mặt tiền được tạc từ đá cẩm thạch vàng quý hiếm Numidian (giallo antico) với đầu cột chạm khắc hoa lá Corinthian tinh xảo.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "south-info-1"
+        },
+        {
+          "x": 76,
+          "y": 56,
+          "title": "Huy chương tròn thời Hoàng đế Hadrian",
+          "text": "Phía trên hai cửa vòm nhỏ là các cặp phù điêu tròn (tondi) có đường kính hơn 2m mô tả các chuyến săn bắn dũng cảm và nghi lễ tế thần Apollo, Hercules và Diana.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "south-info-2"
+        },
+        {
+          "id": "south-to-wide",
+          "target": "wide",
+          "direction": "return",
+          "x": 19,
+          "y": 85,
+          "title": "Trở lại ảnh toàn cảnh",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "south-to-north",
+          "target": "north",
+          "direction": "view",
+          "x": 91,
+          "y": 73,
+          "title": "Đổi góc: mặt phía Bắc từ trên cao",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "south-to-relief",
+          "target": "relief",
+          "direction": "up",
+          "x": 76,
+          "y": 43,
+          "title": "Xem gần các huy chương và phù điêu",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "south-to-inscription",
+          "target": "inscription",
+          "direction": "up",
+          "x": 51,
+          "y": 20,
+          "title": "Xem gần bia khắc phía trên",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "north",
+      "title": "03 · Mặt đứng phía Bắc nhìn từ trên cao",
+      "image": "/_local/images/constantine-north.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-north.jpg",
+      "alt": "Góc nhìn từ trên cao hướng về mặt phía bắc, phô diễn trọn vẹn tầng đỉnh Attic và hệ thống phù điêu mô tả lễ mừng chiến thắng.",
+      "description": "Góc nhìn từ trên cao hướng về mặt phía bắc, phô diễn trọn vẹn tầng đỉnh Attic và hệ thống phù điêu mô tả lễ mừng chiến thắng.",
+      "author": "Carole Raddato",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arch_of_Constantine,_North_face,_Rome.jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 1920,
+      "height": 1436,
+      "captureDate": "Taken on 28 August 2011, 08:34:18",
+      "hotspots": [
+        {
+          "x": 51,
+          "y": 24,
+          "title": "Tầng Attic đồ sộ chứa bia khắc văn tự",
+          "text": "Tầng cao nhất (attic) làm bằng gạch ốp đá cẩm thạch trắng, nơi ghi bài văn khắc vinh danh chiến công thống nhất đế quốc của Constantine.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "north-info-1"
+        },
+        {
+          "x": 30,
+          "y": 64,
+          "title": "Sự cân đối hoàn hảo hai mặt Bắc - Nam",
+          "text": "Cả hai mặt tiền đều có cấu trúc đối xứng tuyệt đối qua trục giữa, đảm bảo người xem từ cả hai chiều diễu hành đều chiêm ngưỡng trọn vẹn sự uy nghi.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "north-info-2"
+        },
+        {
+          "id": "north-to-south",
+          "target": "south",
+          "direction": "return",
+          "x": 20,
+          "y": 83,
+          "title": "Trở lại mặt phía Nam",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "north-to-side",
+          "target": "side",
+          "direction": "right",
+          "x": 81,
+          "y": 67,
+          "title": "Đổi sang mặt bên hông",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "side",
+      "title": "04 · Mặt bên hông và chiều dày công trình",
+      "image": "/_local/images/constantine-side.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-side.jpg",
+      "alt": "Góc nhìn từ cạnh bên làm nổi bật chiều dày vững chãi hơn 7 mét và các mảng trang trí chạm nổi tinh tế ở hai đầu hồi.",
+      "description": "Góc nhìn từ cạnh bên làm nổi bật chiều dày vững chãi hơn 7 mét và các mảng trang trí chạm nổi tinh tế ở hai đầu hồi.",
+      "author": "Livioandronico2013",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arch_of_Constantine_(Rome)_,lateral_view.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1920,
+      "height": 2888,
+      "captureDate": "Taken on 7 December 2014, 15:00:41",
+      "hotspots": [
+        {
+          "x": 50,
+          "y": 48,
+          "title": "Huy chương tròn cỗ xe thần Mặt trời",
+          "text": "Mặt hông phía đông có phù điêu tròn tạc cỗ xe tứ mã của Thần Mặt trời Sol đang bay lên, biểu trưng cho bình minh của một kỷ nguyên mới dưới triều đại Constantine.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "side-info-1"
+        },
+        {
+          "x": 50,
+          "y": 22,
+          "title": "Mảng phù điêu chữ nhật thời Trajan",
+          "text": "Phần trên cùng của mặt hông gắn các tấm phù điêu tạc các chiến binh La Mã trong cuộc chiến tranh Dacia hiển hách của Hoàng đế Trajan.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "side-info-2"
+        },
+        {
+          "id": "side-to-wide",
+          "target": "wide",
+          "direction": "return",
+          "x": 48,
+          "y": 83,
+          "title": "Trở lại ảnh toàn cảnh",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "side-to-north",
+          "target": "north",
+          "direction": "view",
+          "x": 76,
+          "y": 59,
+          "title": "Đổi góc: mặt phía Bắc từ trên cao",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "relief",
+      "title": "05 · Chi tiết các huy chương tròn và dải phù điêu",
+      "image": "/_local/images/constantine-relief.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-relief.jpg",
+      "alt": "Góc chụp cận cảnh minh chứng cho nghệ thuật điêu khắc đỉnh cao: hai huy chương tròn thời Hadrian phía trên và dải băng phù điêu Constantine chạy ngang bên dưới.",
+      "description": "Góc chụp cận cảnh minh chứng cho nghệ thuật điêu khắc đỉnh cao: hai huy chương tròn thời Hadrian phía trên và dải băng phù điêu Constantine chạy ngang bên dưới.",
+      "author": "Jean-Pol GRANDMONT",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:0_Arc_de_Constantin_-_C%C3%B4t%C3%A9_droit_de_la_face_sud.JPG",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2011-10-01",
+      "hotspots": [
+        {
+          "x": 33,
+          "y": 34,
+          "title": "Nghệ thuật tái sử dụng tác phẩm Spolia",
+          "text": "Constantine đã tái sử dụng các kiệt tác điêu khắc từ thời ba vị minh quân Trajan, Hadrian và Marcus Aurelius để khẳng định tính kế thừa ngai vàng chính thống và phẩm chất đế vương của mình.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "relief-info-1"
+        },
+        {
+          "x": 49,
+          "y": 63,
+          "title": "Dải phù điêu phong cách Hậu kỳ Cổ đại",
+          "text": "Dải băng ngang do các nghệ nhân thời Constantine trực tiếp chạm khắc, mô tả đoàn quân xuất trận và bài phát biểu của Hoàng đế tại Quảng trường La Mã với phong cách tạo hình trực diện, biểu cảm.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "relief-info-2"
+        },
+        {
+          "id": "relief-to-south",
+          "target": "south",
+          "direction": "return",
+          "x": 50,
+          "y": 84,
+          "title": "Trở lại toàn mặt phía Nam",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "relief-to-attic",
+          "target": "attic",
+          "direction": "up",
+          "x": 53,
+          "y": 16,
+          "title": "Nhìn lên tầng tượng và phù điêu",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "attic",
+      "title": "06 · Tầng đỉnh Attic và hàng tượng người Dacia",
+      "image": "/_local/images/constantine-attic.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-attic.jpg",
+      "alt": "Chi tiết các pho tượng tạc từ đá cẩm thạch trắng đứng uy nghiêm trên các đỉnh cột, tương phản với nền đá cẩm thạch vân tím Pavonazzetto.",
+      "description": "Chi tiết các pho tượng tạc từ đá cẩm thạch trắng đứng uy nghiêm trên các đỉnh cột, tương phản với nền đá cẩm thạch vân tím Pavonazzetto.",
+      "author": "Jean-Pol GRANDMONT",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:0_Arc_de_Constantin_-_C%C3%B4t%C3%A9_droit_-_Attique_de_la_face_sud.JPG",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "width": 1920,
+      "height": 1280,
+      "captureDate": "2011-10-01",
+      "hotspots": [
+        {
+          "x": 16,
+          "y": 49,
+          "title": "Các pho tượng tù binh Dacia",
+          "text": "8 pho tượng lớn trên tầng đỉnh mô tả các tù binh chiến tranh người Dacia thời Hoàng đế Trajan với trang phục áo choàng và quần dài đặc trưng của các bộ tộc phương Bắc.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "attic-info-1"
+        },
+        {
+          "x": 53,
+          "y": 66,
+          "title": "Phù điêu Marcus Aurelius phân phát cứu trợ",
+          "text": "Các tấm phù điêu chữ nhật hai bên bia khắc mô tả lòng nhân đức của Hoàng đế Marcus Aurelius khi phân phát lương thực và tiền bạc cho dân chúng nghèo khó.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "attic-info-2"
+        },
+        {
+          "id": "attic-to-relief",
+          "target": "relief",
+          "direction": "down",
+          "x": 49,
+          "y": 85,
+          "title": "Nhìn xuống tầng huy chương",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "attic-to-inscription",
+          "target": "inscription",
+          "direction": "left",
+          "x": 10,
+          "y": 31,
+          "title": "Xem bia khắc ở giữa mặt đứng",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    },
+    {
+      "id": "inscription",
+      "title": "07 · Bia văn khắc Latinh trên đỉnh cổng",
+      "image": "/_local/images/constantine-inscription.jpg",
+      "thumbnail": "/_local/images/thumbs/constantine-inscription.jpg",
+      "alt": "Tấm bia đá cẩm thạch lớn ở trung tâm tầng attic với dòng chữ khắc Latinh sâu từng được khảm chữ đồng mạ vàng rực rỡ.",
+      "description": "Tấm bia đá cẩm thạch lớn ở trung tâm tầng attic với dòng chữ khắc Latinh sâu từng được khảm chữ đồng mạ vàng rực rỡ.",
+      "author": "Carole Raddato from FRANKFURT, Germany",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arch_of_Constantine,_Inscription_on_South_side,_Rome_(8130462845).jpg",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "width": 1920,
+      "height": 1440,
+      "captureDate": "2011-08-28 12:08",
+      "hotspots": [
+        {
+          "x": 49,
+          "y": 42,
+          "title": "Cụm từ lịch sử \"Instinctu Divinitatis\"",
+          "text": "Văn bia tôn vinh Constantine đã giải phóng Roma khỏi tay bạo chúa \"bằng nguồn cảm hứng thiêng liêng từ thần linh\" (instinctu divinitatis), gợi nhắc đến điềm báo Thập tự giá trong trận chiến Cầu Milvian.",
+          "sourceUrl": "https://en.wikipedia.org/wiki/Arch_of_Constantine",
+          "id": "inscription-info-1"
+        },
+        {
+          "x": 49,
+          "y": 76,
+          "title": "Hệ thống phào chỉ kiến trúc tinh xảo",
+          "text": "Các đường gờ đá viền quanh bia khắc được chạm khắc hoa văn lá ô-rô (acanthus) và trứng cá (egg-and-dart) chuẩn mực kiến trúc La Mã cổ điển.",
+          "sourceUrl": "https://www.turismoroma.it/en/places/arch-costantine",
+          "id": "inscription-info-2"
+        },
+        {
+          "id": "inscription-to-attic",
+          "target": "attic",
+          "direction": "right",
+          "x": 83,
+          "y": 41,
+          "title": "Xem tầng tượng bên phải bia",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        },
+        {
+          "id": "inscription-to-south",
+          "target": "south",
+          "direction": "return",
+          "x": 23,
+          "y": 87,
+          "title": "Trở lại toàn mặt phía Nam",
+          "text": "Chuyển góc nhìn; có điểm nối để quay lại ảnh này."
+        }
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "arches",
+      "prompt": "Khải hoàn môn Constantine được xây dựng để kỷ niệm sự kiện lịch sử nào?",
+      "choices": [
+        "Chiến thắng trong trận Cầu Milvian năm 312 SCN",
+        "Khánh thành Đấu trường Colosseum",
+        "Cuộc viễn chinh sang Ai Cập"
+      ],
+      "answer": 0,
+      "explanation": "Công trình được Thượng viện La Mã khánh thành năm 315 SCN để kỷ niệm chiến thắng của Constantine trước Maxentius tại Cầu Milvian.",
+      "sceneId": "wide"
+    },
+    {
+      "id": "reuse",
+      "prompt": "Tại sao trên Khải hoàn môn lại có các phù điêu từ thời Trajan, Hadrian và Marcus Aurelius?",
+      "choices": [
+        "Do thợ xây không có đá mới",
+        "Kỹ thuật Spolia nhằm tôn vinh sự kế thừa những vị hoàng đế vĩ đại nhất của Roma",
+        "Do công trình bị sửa đổi thời Phục Hưng"
+      ],
+      "answer": 1,
+      "explanation": "Việc sử dụng lại phù điêu (spolia) là một thông điệp chính trị có chủ đích, gắn liền hình ảnh Constantine với ba vị minh quân vĩ đại nhất của La Mã.",
+      "sceneId": "relief"
+    },
+    {
+      "id": "statues",
+      "prompt": "Các pho tượng đứng uy nghiêm trên đỉnh các cột ở tầng attic tạc ai?",
+      "choices": [
+        "Các tù binh chiến tranh người Dacia",
+        "Các võ sĩ giác đấu Colosseum",
+        "Các vị thần trên đỉnh Olympus"
+      ],
+      "answer": 0,
+      "explanation": "Đây là 8 pho tượng tù binh Dacia có từ thời Hoàng đế Trajan được đưa về trang hoàng trên tầng đỉnh công trình.",
+      "sceneId": "attic"
+    }
+  ]
+}
