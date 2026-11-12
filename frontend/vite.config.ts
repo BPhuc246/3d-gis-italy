@@ -49,22 +49,7 @@ async function serveLocalFiles(req: IncomingMessage, res: ServerResponse) {
 }
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    {
-      name: "roma-local-fixtures",
-      apply: "serve",
-
-      configurePreviewServer(server) {
-        server.middlewares.use("/_local", serveLocalFiles);
-      },
-
-      configureServer(server) {
-        server.middlewares.use("/_local", serveLocalFiles);
-      },
-    },
-  ],
+  plugins: [react(), tailwindcss()],
 
   envDir: fileURLToPath(new URL("..", import.meta.url)),
 
