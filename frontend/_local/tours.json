@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "colosseum",
+    "name": "Đấu trường La Mã",
+    "url": "/_local/colosseum-tour.json",
+    "sceneCount": 8,
+    "coverImage": "/_local/images/colosseum-exterior.jpg"
+  },
+  {
+    "slug": "arch-of-constantine",
+    "name": "Khải hoàn môn Constantine",
+    "url": "/_local/arch-of-constantine-tour.json",
+    "sceneCount": 7,
+    "coverImage": "/_local/images/constantine-wide.jpg"
+  },
+  {
+    "slug": "pantheon",
+    "name": "Đền Pantheon",
+    "url": "/_local/pantheon-tour.json",
+    "sceneCount": 12,
+    "coverImage": "/_local/images/pantheon-exterior.jpg"
+  },
+  {
+    "slug": "vittoriano",
+    "name": "Đài tưởng niệm Vittorio Emanuele II",
+    "url": "/_local/vittoriano-tour.json",
+    "sceneCount": 18,
+    "coverImage": "/_local/images/vittoriano-exterior.jpg"
+  }
+]

@@ -1,15 +1,15 @@
-import { Router } from 'express';
-import { pool } from '../db/pool';
-import { isSlug } from '../lib/validate';
+import { Router } from "express";
+import { pool } from "../db/pool";
+import { isSlug } from "../lib/validate";
 
 const router = Router();
 
 // Khu vực bản đồ kèm công trình và số liệu dựng hình
-router.get('/:slug', async (req, res, next) => {
+router.get("/:slug", async (req, res, next) => {
   try {
     const slug = req.params.slug;
     if (!isSlug(slug)) {
-      res.status(404).json({ message: 'Không tìm thấy khu vực' });
+      res.status(404).json({ message: "Không tìm thấy khu vực" });
       return;
     }
 
@@ -17,11 +17,11 @@ router.get('/:slug', async (req, res, next) => {
       `SELECT region_id AS "regionId", slug, name, description,
               center_latitude AS "centerLatitude", center_longitude AS "centerLongitude"
        FROM map_region WHERE slug = $1`,
-      [slug]
+      [slug],
     );
     const region = regionRows[0];
     if (!region) {
-      res.status(404).json({ message: 'Không tìm thấy khu vực' });
+      res.status(404).json({ message: "Không tìm thấy khu vực" });
       return;
     }
 
@@ -49,7 +49,7 @@ router.get('/:slug', async (req, res, next) => {
        JOIN destination_category c ON c.code = d.category
        WHERE d.region_id = $1
        ORDER BY d.name`,
-      [region.regionId]
+      [region.regionId],
     );
 
     res.json({ ...region, destinations: rows });
