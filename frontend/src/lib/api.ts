@@ -118,6 +118,8 @@ export type RouteStop = {
   address: string;
   latitude: number;
   longitude: number;
+  coverImageUrl?: string;
+  categoryLabel?: string;
 };
 
 export type RouteDetail = Omit<RouteSummary, 'stopCount'> & { stops: RouteStop[] };

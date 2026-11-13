@@ -46,9 +46,11 @@ router.get('/:id', async (req, res, next) => {
 
     const { rows: stops } = await pool.query(
       `SELECT s.stop_order AS "stopOrder", s.stay_minutes AS "stayMinutes",
-              d.slug, d.name, d.address, d.latitude, d.longitude
+              d.slug, d.name, d.address, d.latitude, d.longitude,
+              d.cover_image_url AS "coverImageUrl", c.label AS "categoryLabel"
        FROM route_stop s
        JOIN tourist_destination d ON d.destination_id = s.destination_id
+       JOIN destination_category c ON c.code = d.category
        WHERE s.route_id = $1
        ORDER BY s.stop_order`,
       [id]

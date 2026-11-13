@@ -12,7 +12,7 @@ export default function Header() {
   }, []);
 
   const [pathname, search] = hash.split('?');
-  const isRouteQuery = new URLSearchParams(search ?? '').get('route') === 'true';
+  const isRouteQuery = Boolean(new URLSearchParams(search ?? '').get('route'));
 
   const isRoutes = isRouteQuery || pathname.startsWith('/routes') || pathname === '/map/route';
   const isDestinations = !isRoutes && (pathname === '/list' || pathname.startsWith('/d/'));

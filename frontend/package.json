@@ -8,10 +8,12 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.node.json",
+    "test:route": "node tests/routeGeometry.test.mjs",
     "test:explore": "node tests/explore.test.mjs",
     "test:viewer": "node tests/sketchfab.test.mjs",
     "test:tour": "node tests/phototour.test.mjs",
-    "test:immersive": "node tests/immersive.test.mjs"
+    "test:immersive": "node tests/immersive.test.mjs",
+    "test": "npm run typecheck && npm run test:route"
   },
   "dependencies": {
     "@arcgis/core": "^5.1.27",
