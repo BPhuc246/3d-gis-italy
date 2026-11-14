@@ -1,13 +1,26 @@
-export const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
+export const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000";
 
-const TOKEN_KEY = 'token';
+const TOKEN_KEY = "token";
 export const tokenStore = {
   get: () => localStorage.getItem(TOKEN_KEY),
   set: (token: string) => localStorage.setItem(TOKEN_KEY, token),
   clear: () => localStorage.removeItem(TOKEN_KEY),
 };
 
-export type User = { userId: string; fullName: string; email: string; avatarUrl: string | null };
+export type User = {
+  userId: string;
+  fullName: string;
+  email: string;
+  avatarUrl: string | null;
+};
+
+export type ExperienceItem = {
+  featureKey: string;
+  kind: "video" | "audio";
+  assetUrl: string;
+  license: string;
+  credit: string | null;
+};
 
 export type DestinationSummary = {
   destinationId: string;
@@ -45,7 +58,12 @@ export type DestinationDetail = {
   entryFee: number | null;
   entryFeeCurrency: string;
   coverImageUrl: string;
-  images: { imageUrl: string; imageType: string; caption: string | null; isPrimary: boolean }[];
+  images: {
+    imageUrl: string;
+    imageType: string;
+    caption: string | null;
+    isPrimary: boolean;
+  }[];
   reviews: Review[];
   myReview: Review | null;
   reviewCount: number;
@@ -53,7 +71,7 @@ export type DestinationDetail = {
   isFavorite: boolean;
 };
 
-export type EmbedKind = 'exterior' | 'interior';
+export type EmbedKind = "exterior" | "interior";
 
 export type EmbedItem = {
   kind: EmbedKind;
@@ -61,7 +79,7 @@ export type EmbedItem = {
   credit: string | null;
 };
 
-export type BuildingShape = 'circle' | 'ellipse' | 'rectangle';
+export type BuildingShape = "circle" | "ellipse" | "rectangle";
 
 export type RegionDestination = {
   coverImageCredit?: string;
@@ -122,7 +140,9 @@ export type RouteStop = {
   categoryLabel?: string;
 };
 
-export type RouteDetail = Omit<RouteSummary, 'stopCount'> & { stops: RouteStop[] };
+export type RouteDetail = Omit<RouteSummary, "stopCount"> & {
+  stops: RouteStop[];
+};
 
 export type FavoriteItem = {
   slug: string;
@@ -133,62 +153,82 @@ export type FavoriteItem = {
 };
 
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
   const token = tokenStore.get();
   if (token) headers.Authorization = `Bearer ${token}`;
 
   const res = await fetch(`${API_URL}${path}`, { ...init, headers });
   const data: unknown = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error((data as { message?: string }).message ?? `Lỗi ${res.status}`);
+    throw new Error(
+      (data as { message?: string }).message ?? `Lỗi ${res.status}`,
+    );
   }
   return data as T;
 }
 
 export const api = {
   register: (body: { fullName: string; email: string; password: string }) =>
-    request<{ token: string; user: User }>('/api/auth/register', {
-      method: 'POST',
+    request<{ token: string; user: User }>("/api/auth/register", {
+      method: "POST",
       body: JSON.stringify(body),
     }),
 
   login: (body: { email: string; password: string }) =>
-    request<{ token: string; user: User }>('/api/auth/login', {
-      method: 'POST',
+    request<{ token: string; user: User }>("/api/auth/login", {
+      method: "POST",
       body: JSON.stringify(body),
     }),
 
-  me: () => request<User>('/api/auth/me'),
+  me: () => request<User>("/api/auth/me"),
 
   listDestinations: (params: { category?: string; q?: string }) => {
     const qs = new URLSearchParams();
-    if (params.category) qs.set('category', params.category);
-    if (params.q) qs.set('q', params.q);
+    if (params.category) qs.set("category", params.category);
+    if (params.q) qs.set("q", params.q);
     return request<DestinationSummary[]>(`/api/destinations?${qs.toString()}`);
   },
 
-  getDestination: (slug: string) => request<DestinationDetail>(`/api/destinations/${slug}`),
+  getDestination: (slug: string) =>
+    request<DestinationDetail>(`/api/destinations/${slug}`),
 
   saveReview: (slug: string, body: { rating: number; comment?: string }) =>
     request<Review>(`/api/destinations/${slug}/review`, {
-      method: 'PUT',
+      method: "PUT",
       body: JSON.stringify(body),
     }),
 
   deleteReview: (slug: string) =>
-    request<{ ok: boolean }>(`/api/destinations/${slug}/review`, { method: 'DELETE' }),
+    request<{ ok: boolean }>(`/api/destinations/${slug}/review`, {
+      method: "DELETE",
+    }),
 
   addFavorite: (slug: string) =>
-    request<{ ok: boolean }>(`/api/destinations/${slug}/favorite`, { method: 'POST' }),
+    request<{ ok: boolean }>(`/api/destinations/${slug}/favorite`, {
+      method: "POST",
+    }),
 
   removeFavorite: (slug: string) =>
-    request<{ ok: boolean }>(`/api/destinations/${slug}/favorite`, { method: 'DELETE' }),
+    request<{ ok: boolean }>(`/api/destinations/${slug}/favorite`, {
+      method: "DELETE",
+    }),
 
-  myFavorites: () => request<FavoriteItem[]>('/api/me/favorites'),
+  myFavorites: () => request<FavoriteItem[]>("/api/me/favorites"),
 
-  listRoutes: () => request<RouteSummary[]>('/api/routes'),
+  listRoutes: () => request<RouteSummary[]>("/api/routes"),
 
   getRoute: (id: string) => request<RouteDetail>(`/api/routes/${id}`),
 
   getRegion: (slug: string) => request<RegionDetail>(`/api/regions/${slug}`),
+
+  experiences: (slug: string) =>
+    request<ExperienceItem[]>(`/api/destinations/${slug}/experiences`),
+  candles: (slug: string) =>
+    request<{ total: number }>(`/api/destinations/${slug}/candles`),
+  lightCandle: (slug: string) =>
+    request<{ total: number }>(`/api/destinations/${slug}/candles`, {
+      method: "POST",
+    }),
 };
