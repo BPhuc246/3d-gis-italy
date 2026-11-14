@@ -18,8 +18,26 @@ import ReviewSection from "../components/ReviewSection";
 import MapBoundary from "../components/MapBoundary";
 import { usePhotoTourAvailable } from "../lib/usePhotoTour";
 import ExperienceHub from "../features/experiences/ExperienceHub";
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import { api, RegionDetail, RegionDestination, DestinationDetail, RouteDetail } from '../lib/api';
+import { loadLocalRegion, loadLocalRoutes, localDemoAvailable, searchKey, stories } from '../lib/explore';
+import { useAuth } from '../lib/auth';
+import ModelViewer from '../components/ModelViewer';
+import PhotoTour from '../components/PhotoTour';
+import ReviewSection from '../components/ReviewSection';
+import MapBoundary from '../components/MapBoundary';
+import RoutePanel from '../components/RoutePanel';
+import type { ActiveRouteView } from '../components/MapScene';
+import { usePhotoTourAvailable } from '../lib/usePhotoTour';
+import { buildRouteGeometry, formatDistance } from '../lib/routeGeometry';
 
 const MapScene = lazy(() => import("../components/MapScene"));
+
+function readRouteParamFromHash(): string | null {
+  const hash = window.location.hash.replace(/^#/, '');
+  const search = hash.split('?')[1] ?? '';
+  return new URLSearchParams(search).get('route');
+}
 
 export default function MapPage({ slug }: { slug: string | null }) {
   const [region, setRegion] = useState<RegionDetail | null>(null);
@@ -47,6 +65,44 @@ export default function MapPage({ slug }: { slug: string | null }) {
   const [overlay, setOverlay] = useState<"model" | "tour" | null>(null);
   const [tab, setTab] = useState<"overview" | "reviews">("overview");
 
+  const [routeParam, setRouteParam] = useState<string | null>(() => readRouteParamFromHash());
+  const [routeMode, setRouteMode] = useState<boolean>(() => readRouteParamFromHash() !== null);
+  const [sidebarView, setSidebarView] = useState<'places' | 'route'>(() => (readRouteParamFromHash() !== null ? 'route' : 'places'));
+  const [routes, setRoutes] = useState<RouteDetail[]>([]);
+  const [routesLoading, setRoutesLoading] = useState(false);
+  const [routesError, setRoutesError] = useState('');
+  const [routeBuilderMode, setRouteBuilderMode] = useState<'curated' | 'custom'>(() =>
+    readRouteParamFromHash() === 'custom' ? 'custom' : 'curated'
+  );
+  const [selectedRouteId, setSelectedRouteId] = useState<string>(() => {
+    const p = readRouteParamFromHash();
+    return p && p !== 'true' && p !== 'custom' ? p : '';
+  });
+  const [customSlugs, setCustomSlugs] = useState<string[]>(['colosseum', 'vittoriano', 'pantheon']);
+  const [activeStopIndex, setActiveStopIndex] = useState<number | null>(null);
+  const [activeLegIndex, setActiveLegIndex] = useState<number | null>(null);
+  const [routeFitTick, setRouteFitTick] = useState(0);
+
+  useEffect(() => {
+    const onHash = () => {
+      const next = readRouteParamFromHash();
+      setRouteParam(next);
+      if (next !== null) {
+        setRouteMode(true);
+        setCollapsed(false);
+        if (next === 'custom') {
+          setRouteBuilderMode('custom');
+        } else if (next !== 'true') {
+          setRouteBuilderMode('curated');
+          setSelectedRouteId(next);
+        }
+        if (!slug) setSidebarView('route');
+      }
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, [slug]);
+
   useEffect(() => {
     let active = true;
     setError("");
@@ -64,23 +120,41 @@ export default function MapPage({ slug }: { slug: string | null }) {
   }, [local, attempt]);
 
   useEffect(() => {
-    setOverlay(null);
-    setTab("overview");
-  }, [slug]);
-  useEffect(() => {
-    try {
-      sessionStorage.setItem("roma-search", query);
-    } catch {
-      /* Optional. */
-    }
-  }, [query]);
-  useEffect(() => {
-    try {
-      sessionStorage.setItem("roma-data-mode", local ? "local" : "server");
-    } catch {
-      /* Optional. */
-    }
-  }, [local]);
+    if (!routeMode) return;
+    let active = true;
+    setRoutesLoading(true);
+    setRoutesError('');
+    const loader = local
+      ? loadLocalRoutes()
+      : api.listRoutes().then(list => Promise.all(list.map(item => api.getRoute(item.routeId))));
+    loader
+      .then(data => {
+        if (!active) return;
+        setRoutes(data);
+        if (data.length && (!selectedRouteId || !data.some(r => r.routeId === selectedRouteId))) {
+          setSelectedRouteId(data[0].routeId);
+        }
+      })
+      .catch(async (e: Error) => {
+        if (localDemoAvailable && !local) {
+          try {
+            const fallback = await loadLocalRoutes();
+            if (active) {
+              setRoutes(fallback);
+              if (fallback.length && !selectedRouteId) setSelectedRouteId(fallback[0].routeId);
+              return;
+            }
+          } catch { /* Fall through to error */ }
+        }
+        if (active) setRoutesError(e.message);
+      })
+      .finally(() => { if (active) setRoutesLoading(false); });
+    return () => { active = false; };
+  }, [routeMode, local]);
+
+  useEffect(() => { setOverlay(null); setTab('overview'); }, [slug]);
+  useEffect(() => { try { sessionStorage.setItem('roma-search', query); } catch { /* Optional. */ } }, [query]);
+  useEffect(() => { try { sessionStorage.setItem('roma-data-mode', local ? 'local' : 'server'); } catch { /* Optional. */ } }, [local]);
 
   const selected = region?.destinations.find((p) => p.slug === slug) ?? null;
   const photoTourAvailable = usePhotoTourAvailable(selected?.slug);
@@ -91,11 +165,104 @@ export default function MapPage({ slug }: { slug: string | null }) {
     ).includes(searchKey(query.trim())),
   );
 
+  const activeStops = useMemo(() => {
+    if (!routeMode) return [];
+    if (routeBuilderMode === 'curated') {
+      const route = routes.find(r => r.routeId === selectedRouteId) ?? routes[0];
+      return route ? route.stops : [];
+    }
+    return customSlugs
+      .map((s, idx) => {
+        const place = places.find(p => p.slug === s);
+        if (!place) return null;
+        return {
+          stopOrder: idx + 1,
+          stayMinutes: 45,
+          slug: place.slug,
+          name: place.name,
+          address: place.address,
+          latitude: place.latitude,
+          longitude: place.longitude,
+        };
+      })
+      .filter((x): x is NonNullable<typeof x> => x !== null);
+  }, [routeMode, routeBuilderMode, routes, selectedRouteId, customSlugs, places]);
+
+  const routeGeometry = useMemo(() => buildRouteGeometry(activeStops), [activeStops]);
+
+  const activeRouteView: ActiveRouteView | null = useMemo(() => {
+    if (!routeMode || activeStops.length < 2) return null;
+    return {
+      legs: routeGeometry.legs,
+      stops: activeStops.map(s => ({
+        slug: s.slug,
+        stopOrder: s.stopOrder,
+        name: s.name,
+        longitude: s.longitude,
+        latitude: s.latitude,
+      })),
+      activeLegIndex,
+      activeStopIndex,
+      fitTick: routeFitTick,
+    };
+  }, [routeMode, activeStops, routeGeometry.legs, activeLegIndex, activeStopIndex, routeFitTick]);
+
   function select(id: string) {
     setCollapsed(false);
-    window.location.hash = `#/map/${id}`;
-    setFocusTick((n) => n + 1);
+    const suffix = routeMode ? `?route=${routeParam ?? (routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true')}` : '';
+    window.location.hash = `#/map/${id}${suffix}`;
+    if (routeMode) {
+      const idx = activeStops.findIndex(s => s.slug === id);
+      if (idx !== -1) {
+        setActiveStopIndex(idx);
+        setActiveLegIndex(idx > 0 ? idx - 1 : null);
+      }
+    }
+    setFocusTick(n => n + 1);
   }
+
+  function toggleRouteMode(next: boolean) {
+    setRouteMode(next);
+    setCollapsed(false);
+    if (next) {
+      setSidebarView('route');
+      setActiveStopIndex(null);
+      setActiveLegIndex(null);
+      setRouteFitTick(n => n + 1);
+      window.location.hash = slug ? `#/map/${slug}?route=true` : '#/map?route=true';
+    } else {
+      setSidebarView('places');
+      setActiveStopIndex(null);
+      setActiveLegIndex(null);
+      window.location.hash = slug ? `#/map/${slug}` : '#/map';
+    }
+  }
+
+  function focusRouteStop(index: number, stopSlug: string) {
+    setActiveStopIndex(index);
+    setActiveLegIndex(index > 0 ? index - 1 : 0);
+    window.location.hash = `#/map/${stopSlug}?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`;
+    setFocusTick(n => n + 1);
+  }
+
+  function focusRouteLeg(legIndex: number) {
+    setActiveLegIndex(legIndex);
+    setActiveStopIndex(legIndex + 1);
+    const targetStop = activeStops[legIndex + 1];
+    if (targetStop) {
+      window.location.hash = `#/map/${targetStop.slug}?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`;
+      setFocusTick(n => n + 1);
+    }
+  }
+
+  function fitEntireRoute() {
+    setActiveStopIndex(null);
+    setActiveLegIndex(null);
+    setRouteFitTick(n => n + 1);
+    window.location.hash = `#/map?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`;
+  }
+
+  const currentStopIdx = selected && routeMode ? activeStops.findIndex(s => s.slug === selected.slug) : -1;
 
   return (
     <div className={`explore-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
@@ -108,32 +275,99 @@ export default function MapPage({ slug }: { slug: string | null }) {
           <p>Chạm vào di sản. Bước vào lịch sử.</p>
         </div>
 
-        <form
-          className="search-field"
-          role="search"
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (results[0]) select(results[0].slug);
-          }}
-        >
-          <span aria-hidden="true">⌕</span>
-          <input
-            aria-label="Tìm địa điểm"
-            placeholder="Tìm công trình, địa điểm…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button type="submit" aria-label="Tìm kiếm">
-            →
+        <div className="segmented sidebar-view-switch" role="tablist" aria-label="Chế độ thanh bên">
+          <button
+            role="tab"
+            aria-pressed={sidebarView === 'places'}
+            onClick={() => setSidebarView('places')}
+          >
+            Địa điểm ({places.length})
           </button>
-        </form>
+          <button
+            role="tab"
+            aria-pressed={sidebarView === 'route'}
+            onClick={() => {
+              if (!routeMode) {
+                toggleRouteMode(true);
+              } else {
+                setSidebarView('route');
+              }
+            }}
+          >
+            🧭 Tuyến tham quan
+          </button>
+        </div>
 
-        {selected ? (
+        {sidebarView === 'route' ? (
+          <RoutePanel
+            routes={routes}
+            places={places}
+            routeBuilderMode={routeBuilderMode}
+            selectedRouteId={selectedRouteId}
+            customSlugs={customSlugs}
+            stops={activeStops}
+            geometry={routeGeometry}
+            activeStopIndex={activeStopIndex}
+            activeLegIndex={activeLegIndex}
+            loading={routesLoading}
+            error={routesError}
+            onChangeBuilderMode={(mode) => {
+              setRouteBuilderMode(mode);
+              setActiveStopIndex(null);
+              setActiveLegIndex(null);
+              setRouteFitTick(n => n + 1);
+            }}
+            onSelectRouteId={(id) => {
+              setSelectedRouteId(id);
+              setActiveStopIndex(null);
+              setActiveLegIndex(null);
+              setRouteFitTick(n => n + 1);
+              window.location.hash = `#/map?route=${id}`;
+            }}
+            onUpdateCustomSlugs={(nextSlugs) => {
+              setCustomSlugs(nextSlugs);
+              setActiveStopIndex(null);
+              setActiveLegIndex(null);
+            }}
+            onFocusStop={focusRouteStop}
+            onFocusLeg={focusRouteLeg}
+            onFitAll={fitEntireRoute}
+            onOpenPlaceDetail={(targetSlug) => {
+              setSidebarView('places');
+              select(targetSlug);
+            }}
+          />
+        ) : selected ? (
           <>
+            {routeMode && currentStopIdx !== -1 && (
+              <div className="route-inline-nav">
+                <button type="button" onClick={() => setSidebarView('route')}>
+                  ← Lộ trình ({currentStopIdx + 1}/{activeStops.length})
+                </button>
+                <div>
+                  <button
+                    type="button"
+                    disabled={currentStopIdx <= 0}
+                    onClick={() => focusRouteStop(currentStopIdx - 1, activeStops[currentStopIdx - 1].slug)}
+                  >
+                    ‹ Trước
+                  </button>
+                  <button
+                    type="button"
+                    disabled={currentStopIdx >= activeStops.length - 1}
+                    onClick={() => focusRouteStop(currentStopIdx + 1, activeStops[currentStopIdx + 1].slug)}
+                  >
+                    Tiếp ›
+                  </button>
+                </div>
+              </div>
+            )}
             <button
               className="back-link"
               onClick={() => {
-                window.location.hash = "#/map";
+                window.location.hash = routeMode
+                  ? `#/map?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`
+                  : '#/map';
               }}
             >
               ← Tất cả địa điểm
@@ -260,6 +494,11 @@ export default function MapPage({ slug }: { slug: string | null }) {
           </>
         ) : (
           <>
+            <form className="search-field" role="search" onSubmit={e => { e.preventDefault(); if (results[0]) select(results[0].slug); }}>
+              <span aria-hidden="true">⌕</span>
+              <input aria-label="Tìm địa điểm" placeholder="Tìm công trình, địa điểm…" value={query} onChange={e => setQuery(e.target.value)} />
+              <button type="submit" aria-label="Tìm kiếm">→</button>
+            </form>
             <div className="list-heading">
               <h2>Di sản nổi bật</h2>
               <span>{results.length.toString().padStart(2, "0")} ĐỊA ĐIỂM</span>
@@ -372,6 +611,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
                 selected={selected?.slug ?? null}
                 focusTick={focusTick}
                 onSelect={select}
+                activeRoute={activeRouteView}
               />
             </Suspense>
           </MapBoundary>
@@ -404,18 +644,32 @@ export default function MapPage({ slug }: { slug: string | null }) {
           <button
             className="map-chip"
             onClick={() => {
-              window.location.hash = "#/map";
-              setFocusTick((n) => n + 1);
+              if (routeMode) {
+                fitEntireRoute();
+              } else {
+                window.location.hash = '#/map';
+                setFocusTick(n => n + 1);
+              }
             }}
           >
-            ⌖ Toàn cảnh Roma
+            {routeMode ? '⌖ Toàn tuyến 3D' : '⌖ Toàn cảnh Roma'}
+          </button>
+          <button
+            className={`map-chip ${routeMode ? 'active' : ''}`}
+            onClick={() => toggleRouteMode(!routeMode)}
+          >
+            {routeMode ? '✕ Tắt tuyến 3D' : '🧭 Tuyến tham quan'}
           </button>
         </div>
         {selected && (
           <div className="map-selected">
             <span className="live-dot" />
             <div>
-              <span>ĐANG KHÁM PHÁ</span>
+              <span>
+                {routeMode && currentStopIdx !== -1
+                  ? `CHẶNG ${currentStopIdx + 1}/${activeStops.length}${routeGeometry.legs[currentStopIdx] ? ` · TIẾP ${formatDistance(routeGeometry.legs[currentStopIdx].distanceMeters)}` : ' · ĐIỂM CUỐI'}`
+                  : 'ĐANG KHÁM PHÁ'}
+              </span>
               <strong>{selected.name}</strong>
             </div>
             <button
@@ -425,6 +679,14 @@ export default function MapPage({ slug }: { slug: string | null }) {
             >
               ◇ Xem 3D ↗
             </button>
+            {routeMode && currentStopIdx !== -1 && currentStopIdx < activeStops.length - 1 && (
+              <button
+                onClick={() => focusRouteStop(currentStopIdx + 1, activeStops[currentStopIdx + 1].slug)}
+                aria-label="Chuyển sang điểm dừng tiếp theo trong tuyến"
+              >
+                Chặng tiếp →
+              </button>
+            )}
           </div>
         )}
       </section>

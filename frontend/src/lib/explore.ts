@@ -1,4 +1,4 @@
-import type { RegionDetail } from './api';
+import type { RegionDetail, RouteDetail } from './api';
 
 export type PlaceStory = {
   eyebrow: string;
@@ -71,6 +71,12 @@ export const localDemoAvailable = import.meta.env.DEV && import.meta.env.VITE_LO
 export async function loadLocalRegion(): Promise<RegionDetail> {
   const response = await fetch('/_local/region.json');
   if (!response.ok) throw new Error('Chưa có dữ liệu thử. Kiểm tra thư mục _local theo HUONG_DAN.md.');
+  return response.json();
+}
+
+export async function loadLocalRoutes(): Promise<RouteDetail[]> {
+  const response = await fetch('/_local/routes.json');
+  if (!response.ok) throw new Error('Không tải được danh sách tuyến tham quan cục bộ.');
   return response.json();
 }
 
