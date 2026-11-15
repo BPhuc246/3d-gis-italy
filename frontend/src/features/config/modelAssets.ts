@@ -28,6 +28,11 @@ export const MODEL_ASSETS = {
       "/models/pantheon/pantheon.glb",
     ],
   },
+  // Sư tử chiến đấu. Đặt file vào frontend/public/models/lion/lion.glb
+  lion: [
+    "/models/lion/lion.glb",
+    "/models/lion.glb",
+  ],
   props: {
     candle: [
       "/models/props/candle.glb",

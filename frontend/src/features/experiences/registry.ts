@@ -1,4 +1,8 @@
-export type SceneKey = "colosseum" | "arch-parade" | "vittoriano" | "pantheon";
+export type SceneKey =
+  | "colosseum"
+  | "arch-of-constantine"
+  | "vittoriano"
+  | "pantheon";
 
 export type Feature =
   | {
@@ -10,6 +14,14 @@ export type Feature =
     }
   | { id: string; label: string; hint: string; type: "scene"; scene: SceneKey };
 
+// Video nằm trong frontend/public/_local/videos/, Vite phục vụ tại /_local/videos/
+export const VIDEO_URLS: Record<string, string> = {
+  "arch-of-constantine": "/_local/videos/arch-intro.mp4",
+  colosseum: "/_local/videos/colosseum-intro.mp4",
+  pantheon: "/_local/videos/patheon.mp4", // Nếu file đã đổi thành pantheon.mp4 thì sửa lại đường dẫn
+  vittoriano: "/_local/videos/victoriano.mp4",
+};
+
 export const FEATURES: Record<string, Feature[]> = {
   colosseum: [
     {
@@ -17,14 +29,7 @@ export const FEATURES: Record<string, Feature[]> = {
       label: "Video giới thiệu",
       hint: "Lịch sử và kiến trúc",
       type: "video",
-      featureKey: "intro_video",
-    },
-    {
-      id: "walk",
-      label: "Tham quan thực tế",
-      hint: "Video quay tại hiện trường",
-      type: "video",
-      featureKey: "walkthrough_video",
+      featureKey: "colosseum",
     },
     {
       id: "arena",
@@ -40,17 +45,17 @@ export const FEATURES: Record<string, Feature[]> = {
       label: "Video lịch sử",
       hint: "Lịch sử và kiến trúc khải hoàn môn",
       type: "video",
-      featureKey: "intro_video",
-    },
-    {
-      id: "parade",
-      label: "Đoàn diễu hành 3D",
-      hint: "Đi xuyên qua cổng vòm",
-      type: "scene",
-      scene: "arch-parade",
+      featureKey: "arch-of-constantine",
     },
   ],
   vittoriano: [
+    {
+      id: "intro",
+      label: "Video giới thiệu",
+      hint: "Lịch sử và kiến trúc",
+      type: "video",
+      featureKey: "vittoriano",
+    },
     {
       id: "memorial",
       label: "Tưởng niệm 3D",
@@ -60,6 +65,13 @@ export const FEATURES: Record<string, Feature[]> = {
     },
   ],
   pantheon: [
+    {
+      id: "intro",
+      label: "Video giới thiệu",
+      hint: "Lịch sử và kiến trúc",
+      type: "video",
+      featureKey: "pantheon",
+    },
     {
       id: "oculus",
       label: "Ánh sáng Oculus",

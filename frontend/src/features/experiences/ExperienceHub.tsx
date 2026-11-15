@@ -3,12 +3,13 @@ import { api, ExperienceItem } from "../../lib/api";
 import VideoModal from "../shared/VideoModal";
 import SceneModal from "../shared/SceneModal";
 import { FEATURES, Feature, SceneKey } from "./registry";
+import { VIDEO_URLS } from "./registry";
 
 type SceneProps = { audioUrl: string | null };
 
 const SCENES: Record<SceneKey, ComponentType<SceneProps>> = {
   colosseum: lazy(() => import("../scenes/ColosseumScene")),
-  "arch-parade": lazy(() => import("../scenes/ArchParadeScene")),
+  "arch-of-constantine": lazy(() => import("../scenes/ArchParadeScene")),
   vittoriano: lazy(() => import("../scenes/VittorianoScene")),
   pantheon: lazy(() => import("../scenes/PantheonScene")),
 };
@@ -37,7 +38,7 @@ export default function ExperienceHub({ slug }: { slug: string }) {
       <p className="eyebrow">Trải nghiệm</p>
       <div className="experience-grid">
         {features.map((f) => {
-          const missing = f.type === "video" && !find(f.featureKey);
+          const missing = f.type === "video" && !VIDEO_URLS[f.featureKey];
           return (
             <button
               key={f.id}
@@ -56,8 +57,8 @@ export default function ExperienceHub({ slug }: { slug: string }) {
       {open?.type === "video" && (
         <VideoModal
           title={open.label}
-          src={find(open.featureKey)?.assetUrl ?? ""}
-          credit={find(open.featureKey)?.credit ?? null}
+          src={VIDEO_URLS[open.featureKey] ?? ""}
+          credit={null}
           onClose={() => setOpen(null)}
         />
       )}

@@ -1,4 +1,3 @@
-
 import * as THREE from "three";
 
 export class CreativeFlyController {
@@ -13,13 +12,14 @@ export class CreativeFlyController {
   sensitivity = 0.002;
 
   private isPointerLocked = false;
+  private enabled = true;
 
   private onKeyDown = (event: KeyboardEvent) => {
+    if (!this.enabled) return;
+
     this.keys.add(event.code);
 
-    if (
-      ["Space", "ShiftLeft", "ShiftRight"].includes(event.code)
-    ) {
+    if (["Space", "ShiftLeft", "ShiftRight"].includes(event.code)) {
       event.preventDefault();
     }
   };
@@ -29,55 +29,57 @@ export class CreativeFlyController {
   };
 
   private onMouseMove = (event: MouseEvent) => {
-    if (!this.isPointerLocked) return;
+    if (!this.enabled || !this.isPointerLocked) return;
 
     this.euler.setFromQuaternion(this.camera.quaternion);
 
     this.euler.y -= event.movementX * this.sensitivity;
     this.euler.x -= event.movementY * this.sensitivity;
 
-    // Không cho camera lật ngược.
     this.euler.x = THREE.MathUtils.clamp(
       this.euler.x,
       -Math.PI / 2 + 0.01,
-      Math.PI / 2 - 0.01
+      Math.PI / 2 - 0.01,
     );
 
     this.camera.quaternion.setFromEuler(this.euler);
   };
 
   private onPointerLockChange = () => {
-    this.isPointerLocked =
-      document.pointerLockElement === this.element;
+    this.isPointerLocked = document.pointerLockElement === this.element;
   };
 
   private onClick = () => {
+    if (!this.enabled) return;
+
     if (!this.isPointerLocked) {
-      this.element.requestPointerLock();
+      void this.element.requestPointerLock();
     }
   };
 
-  constructor(
-    camera: THREE.PerspectiveCamera,
-    element: HTMLElement
-  ) {
+  constructor(camera: THREE.PerspectiveCamera, element: HTMLElement) {
     this.camera = camera;
     this.element = element;
 
     element.addEventListener("click", this.onClick);
+
     document.addEventListener("keydown", this.onKeyDown);
     document.addEventListener("keyup", this.onKeyUp);
     document.addEventListener("mousemove", this.onMouseMove);
-    document.addEventListener(
-      "pointerlockchange",
-      this.onPointerLockChange
-    );
+
+    document.addEventListener("pointerlockchange", this.onPointerLockChange);
+  }
+
+  setEnabled(value: boolean) {
+    this.enabled = value;
+    this.keys.clear();
   }
 
   update(dt: number) {
+    if (!this.enabled) return;
+
     const direction = new THREE.Vector3();
 
-    // Hướng nhìn ngang của camera.
     const forward = new THREE.Vector3();
     this.camera.getWorldDirection(forward);
 
@@ -85,33 +87,15 @@ export class CreativeFlyController {
       .crossVectors(forward, this.camera.up)
       .normalize();
 
-    // WASD.
-    if (this.keys.has("KeyW")) {
-      direction.add(forward);
-    }
+    if (this.keys.has("KeyW")) direction.add(forward);
+    if (this.keys.has("KeyS")) direction.sub(forward);
 
-    if (this.keys.has("KeyS")) {
-      direction.sub(forward);
-    }
+    if (this.keys.has("KeyD")) direction.add(right);
+    if (this.keys.has("KeyA")) direction.sub(right);
 
-    if (this.keys.has("KeyD")) {
-      direction.add(right);
-    }
+    if (this.keys.has("Space")) direction.y += 1;
 
-    if (this.keys.has("KeyA")) {
-      direction.sub(right);
-    }
-
-    // Space: bay lên.
-    if (this.keys.has("Space")) {
-      direction.y += 1;
-    }
-
-    // Shift: bay xuống.
-    if (
-      this.keys.has("ShiftLeft") ||
-      this.keys.has("ShiftRight")
-    ) {
+    if (this.keys.has("ShiftLeft") || this.keys.has("ShiftRight")) {
       direction.y -= 1;
     }
 
@@ -119,29 +103,22 @@ export class CreativeFlyController {
       direction.normalize();
 
       const boost =
-        this.keys.has("ControlLeft") ||
-        this.keys.has("ControlRight");
+        this.keys.has("ControlLeft") || this.keys.has("ControlRight");
 
-      const currentSpeed = boost
-        ? this.boostSpeed
-        : this.speed;
+      const currentSpeed = boost ? this.boostSpeed : this.speed;
 
-      this.camera.position.addScaledVector(
-        direction,
-        currentSpeed * dt
-      );
+      this.camera.position.addScaledVector(direction, currentSpeed * dt);
     }
   }
 
   dispose() {
     this.element.removeEventListener("click", this.onClick);
+
     document.removeEventListener("keydown", this.onKeyDown);
     document.removeEventListener("keyup", this.onKeyUp);
     document.removeEventListener("mousemove", this.onMouseMove);
-    document.removeEventListener(
-      "pointerlockchange",
-      this.onPointerLockChange
-    );
+
+    document.removeEventListener("pointerlockchange", this.onPointerLockChange);
 
     if (document.pointerLockElement === this.element) {
       document.exitPointerLock();
