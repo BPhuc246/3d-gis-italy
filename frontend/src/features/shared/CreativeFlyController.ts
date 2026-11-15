@@ -11,6 +11,11 @@ export class CreativeFlyController {
   boostSpeed = 30;
   sensitivity = 0.002;
 
+  // Độ cao khi đi bộ (không bay)
+  walkHeight = 3;
+  // false: đi bộ ở độ cao walkHeight. true: bay tự do
+  flying = false;
+
   private isPointerLocked = false;
   private enabled = true;
 
@@ -75,6 +80,21 @@ export class CreativeFlyController {
     this.keys.clear();
   }
 
+  setFlying(value: boolean) {
+    this.flying = value;
+    this.keys.clear();
+
+    // Khi tắt bay, hạ camera về độ cao đi bộ ngay lập tức
+    if (!value) {
+      this.camera.position.y = this.walkHeight;
+    }
+  }
+
+  toggleFlying(): boolean {
+    this.setFlying(!this.flying);
+    return this.flying;
+  }
+
   update(dt: number) {
     if (!this.enabled) return;
 
@@ -82,6 +102,14 @@ export class CreativeFlyController {
 
     const forward = new THREE.Vector3();
     this.camera.getWorldDirection(forward);
+
+    // Đi bộ: bỏ thành phần thẳng đứng để không bay khi nhìn lên/xuống
+    if (!this.flying) {
+      forward.y = 0;
+    }
+    if (forward.lengthSq() > 1e-6) {
+      forward.normalize();
+    }
 
     const right = new THREE.Vector3()
       .crossVectors(forward, this.camera.up)
@@ -93,10 +121,12 @@ export class CreativeFlyController {
     if (this.keys.has("KeyD")) direction.add(right);
     if (this.keys.has("KeyA")) direction.sub(right);
 
-    if (this.keys.has("Space")) direction.y += 1;
+    if (this.flying) {
+      if (this.keys.has("Space")) direction.y += 1;
 
-    if (this.keys.has("ShiftLeft") || this.keys.has("ShiftRight")) {
-      direction.y -= 1;
+      if (this.keys.has("ShiftLeft") || this.keys.has("ShiftRight")) {
+        direction.y -= 1;
+      }
     }
 
     if (direction.lengthSq() > 0) {
@@ -108,6 +138,11 @@ export class CreativeFlyController {
       const currentSpeed = boost ? this.boostSpeed : this.speed;
 
       this.camera.position.addScaledVector(direction, currentSpeed * dt);
+    }
+
+    // Đi bộ: luôn giữ độ cao cố định
+    if (!this.flying) {
+      this.camera.position.y = this.walkHeight;
     }
   }
 
