@@ -2021,3 +2021,4 @@ h4,
 .route-inline-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; padding: 8px 10px; border-radius: 7px; background: #eef3ea; border: 1px solid #d5e0cd; font-size: 11px; color: #314e3e; }
 .route-inline-nav > div { display: flex; gap: 6px; }
 .route-inline-nav button { padding: 4px 8px; border-radius: 4px; background: #fffef9; border: 1px solid #d7dcd0; font-size: 11px; }
+

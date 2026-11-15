@@ -1,12 +1,15 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import ExperienceHub from "../features/experiences/ExperienceHub";
+import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import {
   api,
   RegionDetail,
   RegionDestination,
   DestinationDetail,
+  RouteDetail,
 } from "../lib/api";
 import {
   loadLocalRegion,
+  loadLocalRoutes,
   localDemoAvailable,
   searchKey,
   stories,
@@ -16,27 +19,17 @@ import ModelViewer from "../components/ModelViewer";
 import PhotoTour from "../components/PhotoTour";
 import ReviewSection from "../components/ReviewSection";
 import MapBoundary from "../components/MapBoundary";
+import RoutePanel from "../components/RoutePanel";
+import type { ActiveRouteView } from "../components/MapScene";
 import { usePhotoTourAvailable } from "../lib/usePhotoTour";
-import ExperienceHub from "../features/experiences/ExperienceHub";
-import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import { api, RegionDetail, RegionDestination, DestinationDetail, RouteDetail } from '../lib/api';
-import { loadLocalRegion, loadLocalRoutes, localDemoAvailable, searchKey, stories } from '../lib/explore';
-import { useAuth } from '../lib/auth';
-import ModelViewer from '../components/ModelViewer';
-import PhotoTour from '../components/PhotoTour';
-import ReviewSection from '../components/ReviewSection';
-import MapBoundary from '../components/MapBoundary';
-import RoutePanel from '../components/RoutePanel';
-import type { ActiveRouteView } from '../components/MapScene';
-import { usePhotoTourAvailable } from '../lib/usePhotoTour';
-import { buildRouteGeometry, formatDistance } from '../lib/routeGeometry';
+import { buildRouteGeometry, formatDistance } from "../lib/routeGeometry";
 
 const MapScene = lazy(() => import("../components/MapScene"));
 
 function readRouteParamFromHash(): string | null {
-  const hash = window.location.hash.replace(/^#/, '');
-  const search = hash.split('?')[1] ?? '';
-  return new URLSearchParams(search).get('route');
+  const hash = window.location.hash.replace(/^#/, "");
+  const search = hash.split("?")[1] ?? "";
+  return new URLSearchParams(search).get("route");
 }
 
 export default function MapPage({ slug }: { slug: string | null }) {
@@ -65,20 +58,30 @@ export default function MapPage({ slug }: { slug: string | null }) {
   const [overlay, setOverlay] = useState<"model" | "tour" | null>(null);
   const [tab, setTab] = useState<"overview" | "reviews">("overview");
 
-  const [routeParam, setRouteParam] = useState<string | null>(() => readRouteParamFromHash());
-  const [routeMode, setRouteMode] = useState<boolean>(() => readRouteParamFromHash() !== null);
-  const [sidebarView, setSidebarView] = useState<'places' | 'route'>(() => (readRouteParamFromHash() !== null ? 'route' : 'places'));
+  const [routeParam, setRouteParam] = useState<string | null>(() =>
+    readRouteParamFromHash(),
+  );
+  const [routeMode, setRouteMode] = useState<boolean>(
+    () => readRouteParamFromHash() !== null,
+  );
+  const [sidebarView, setSidebarView] = useState<"places" | "route">(() =>
+    readRouteParamFromHash() !== null ? "route" : "places",
+  );
   const [routes, setRoutes] = useState<RouteDetail[]>([]);
   const [routesLoading, setRoutesLoading] = useState(false);
-  const [routesError, setRoutesError] = useState('');
-  const [routeBuilderMode, setRouteBuilderMode] = useState<'curated' | 'custom'>(() =>
-    readRouteParamFromHash() === 'custom' ? 'custom' : 'curated'
-  );
+  const [routesError, setRoutesError] = useState("");
+  const [routeBuilderMode, setRouteBuilderMode] = useState<
+    "curated" | "custom"
+  >(() => (readRouteParamFromHash() === "custom" ? "custom" : "curated"));
   const [selectedRouteId, setSelectedRouteId] = useState<string>(() => {
     const p = readRouteParamFromHash();
-    return p && p !== 'true' && p !== 'custom' ? p : '';
+    return p && p !== "true" && p !== "custom" ? p : "";
   });
-  const [customSlugs, setCustomSlugs] = useState<string[]>(['colosseum', 'vittoriano', 'pantheon']);
+  const [customSlugs, setCustomSlugs] = useState<string[]>([
+    "colosseum",
+    "vittoriano",
+    "pantheon",
+  ]);
   const [activeStopIndex, setActiveStopIndex] = useState<number | null>(null);
   const [activeLegIndex, setActiveLegIndex] = useState<number | null>(null);
   const [routeFitTick, setRouteFitTick] = useState(0);
@@ -90,17 +93,17 @@ export default function MapPage({ slug }: { slug: string | null }) {
       if (next !== null) {
         setRouteMode(true);
         setCollapsed(false);
-        if (next === 'custom') {
-          setRouteBuilderMode('custom');
-        } else if (next !== 'true') {
-          setRouteBuilderMode('curated');
+        if (next === "custom") {
+          setRouteBuilderMode("custom");
+        } else if (next !== "true") {
+          setRouteBuilderMode("curated");
           setSelectedRouteId(next);
         }
-        if (!slug) setSidebarView('route');
+        if (!slug) setSidebarView("route");
       }
     };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
   }, [slug]);
 
   useEffect(() => {
@@ -123,15 +126,22 @@ export default function MapPage({ slug }: { slug: string | null }) {
     if (!routeMode) return;
     let active = true;
     setRoutesLoading(true);
-    setRoutesError('');
+    setRoutesError("");
     const loader = local
       ? loadLocalRoutes()
-      : api.listRoutes().then(list => Promise.all(list.map(item => api.getRoute(item.routeId))));
+      : api
+          .listRoutes()
+          .then((list) =>
+            Promise.all(list.map((item) => api.getRoute(item.routeId))),
+          );
     loader
-      .then(data => {
+      .then((data) => {
         if (!active) return;
         setRoutes(data);
-        if (data.length && (!selectedRouteId || !data.some(r => r.routeId === selectedRouteId))) {
+        if (
+          data.length &&
+          (!selectedRouteId || !data.some((r) => r.routeId === selectedRouteId))
+        ) {
           setSelectedRouteId(data[0].routeId);
         }
       })
@@ -141,20 +151,42 @@ export default function MapPage({ slug }: { slug: string | null }) {
             const fallback = await loadLocalRoutes();
             if (active) {
               setRoutes(fallback);
-              if (fallback.length && !selectedRouteId) setSelectedRouteId(fallback[0].routeId);
+              if (fallback.length && !selectedRouteId)
+                setSelectedRouteId(fallback[0].routeId);
               return;
             }
-          } catch { /* Fall through to error */ }
+          } catch {
+            /* Fall through to error */
+          }
         }
         if (active) setRoutesError(e.message);
       })
-      .finally(() => { if (active) setRoutesLoading(false); });
-    return () => { active = false; };
+      .finally(() => {
+        if (active) setRoutesLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [routeMode, local]);
 
-  useEffect(() => { setOverlay(null); setTab('overview'); }, [slug]);
-  useEffect(() => { try { sessionStorage.setItem('roma-search', query); } catch { /* Optional. */ } }, [query]);
-  useEffect(() => { try { sessionStorage.setItem('roma-data-mode', local ? 'local' : 'server'); } catch { /* Optional. */ } }, [local]);
+  useEffect(() => {
+    setOverlay(null);
+    setTab("overview");
+  }, [slug]);
+  useEffect(() => {
+    try {
+      sessionStorage.setItem("roma-search", query);
+    } catch {
+      /* Optional. */
+    }
+  }, [query]);
+  useEffect(() => {
+    try {
+      sessionStorage.setItem("roma-data-mode", local ? "local" : "server");
+    } catch {
+      /* Optional. */
+    }
+  }, [local]);
 
   const selected = region?.destinations.find((p) => p.slug === slug) ?? null;
   const photoTourAvailable = usePhotoTourAvailable(selected?.slug);
@@ -167,13 +199,14 @@ export default function MapPage({ slug }: { slug: string | null }) {
 
   const activeStops = useMemo(() => {
     if (!routeMode) return [];
-    if (routeBuilderMode === 'curated') {
-      const route = routes.find(r => r.routeId === selectedRouteId) ?? routes[0];
+    if (routeBuilderMode === "curated") {
+      const route =
+        routes.find((r) => r.routeId === selectedRouteId) ?? routes[0];
       return route ? route.stops : [];
     }
     return customSlugs
       .map((s, idx) => {
-        const place = places.find(p => p.slug === s);
+        const place = places.find((p) => p.slug === s);
         if (!place) return null;
         return {
           stopOrder: idx + 1,
@@ -186,15 +219,25 @@ export default function MapPage({ slug }: { slug: string | null }) {
         };
       })
       .filter((x): x is NonNullable<typeof x> => x !== null);
-  }, [routeMode, routeBuilderMode, routes, selectedRouteId, customSlugs, places]);
+  }, [
+    routeMode,
+    routeBuilderMode,
+    routes,
+    selectedRouteId,
+    customSlugs,
+    places,
+  ]);
 
-  const routeGeometry = useMemo(() => buildRouteGeometry(activeStops), [activeStops]);
+  const routeGeometry = useMemo(
+    () => buildRouteGeometry(activeStops),
+    [activeStops],
+  );
 
   const activeRouteView: ActiveRouteView | null = useMemo(() => {
     if (!routeMode || activeStops.length < 2) return null;
     return {
       legs: routeGeometry.legs,
-      stops: activeStops.map(s => ({
+      stops: activeStops.map((s) => ({
         slug: s.slug,
         stopOrder: s.stopOrder,
         name: s.name,
@@ -205,44 +248,55 @@ export default function MapPage({ slug }: { slug: string | null }) {
       activeStopIndex,
       fitTick: routeFitTick,
     };
-  }, [routeMode, activeStops, routeGeometry.legs, activeLegIndex, activeStopIndex, routeFitTick]);
+  }, [
+    routeMode,
+    activeStops,
+    routeGeometry.legs,
+    activeLegIndex,
+    activeStopIndex,
+    routeFitTick,
+  ]);
 
   function select(id: string) {
     setCollapsed(false);
-    const suffix = routeMode ? `?route=${routeParam ?? (routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true')}` : '';
+    const suffix = routeMode
+      ? `?route=${routeParam ?? (routeBuilderMode === "custom" ? "custom" : selectedRouteId || "true")}`
+      : "";
     window.location.hash = `#/map/${id}${suffix}`;
     if (routeMode) {
-      const idx = activeStops.findIndex(s => s.slug === id);
+      const idx = activeStops.findIndex((s) => s.slug === id);
       if (idx !== -1) {
         setActiveStopIndex(idx);
         setActiveLegIndex(idx > 0 ? idx - 1 : null);
       }
     }
-    setFocusTick(n => n + 1);
+    setFocusTick((n) => n + 1);
   }
 
   function toggleRouteMode(next: boolean) {
     setRouteMode(next);
     setCollapsed(false);
     if (next) {
-      setSidebarView('route');
+      setSidebarView("route");
       setActiveStopIndex(null);
       setActiveLegIndex(null);
-      setRouteFitTick(n => n + 1);
-      window.location.hash = slug ? `#/map/${slug}?route=true` : '#/map?route=true';
+      setRouteFitTick((n) => n + 1);
+      window.location.hash = slug
+        ? `#/map/${slug}?route=true`
+        : "#/map?route=true";
     } else {
-      setSidebarView('places');
+      setSidebarView("places");
       setActiveStopIndex(null);
       setActiveLegIndex(null);
-      window.location.hash = slug ? `#/map/${slug}` : '#/map';
+      window.location.hash = slug ? `#/map/${slug}` : "#/map";
     }
   }
 
   function focusRouteStop(index: number, stopSlug: string) {
     setActiveStopIndex(index);
     setActiveLegIndex(index > 0 ? index - 1 : 0);
-    window.location.hash = `#/map/${stopSlug}?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`;
-    setFocusTick(n => n + 1);
+    window.location.hash = `#/map/${stopSlug}?route=${routeBuilderMode === "custom" ? "custom" : selectedRouteId || "true"}`;
+    setFocusTick((n) => n + 1);
   }
 
   function focusRouteLeg(legIndex: number) {
@@ -250,19 +304,22 @@ export default function MapPage({ slug }: { slug: string | null }) {
     setActiveStopIndex(legIndex + 1);
     const targetStop = activeStops[legIndex + 1];
     if (targetStop) {
-      window.location.hash = `#/map/${targetStop.slug}?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`;
-      setFocusTick(n => n + 1);
+      window.location.hash = `#/map/${targetStop.slug}?route=${routeBuilderMode === "custom" ? "custom" : selectedRouteId || "true"}`;
+      setFocusTick((n) => n + 1);
     }
   }
 
   function fitEntireRoute() {
     setActiveStopIndex(null);
     setActiveLegIndex(null);
-    setRouteFitTick(n => n + 1);
-    window.location.hash = `#/map?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`;
+    setRouteFitTick((n) => n + 1);
+    window.location.hash = `#/map?route=${routeBuilderMode === "custom" ? "custom" : selectedRouteId || "true"}`;
   }
 
-  const currentStopIdx = selected && routeMode ? activeStops.findIndex(s => s.slug === selected.slug) : -1;
+  const currentStopIdx =
+    selected && routeMode
+      ? activeStops.findIndex((s) => s.slug === selected.slug)
+      : -1;
 
   return (
     <div className={`explore-shell ${collapsed ? "sidebar-collapsed" : ""}`}>
@@ -275,22 +332,26 @@ export default function MapPage({ slug }: { slug: string | null }) {
           <p>Chạm vào di sản. Bước vào lịch sử.</p>
         </div>
 
-        <div className="segmented sidebar-view-switch" role="tablist" aria-label="Chế độ thanh bên">
+        <div
+          className="segmented sidebar-view-switch"
+          role="tablist"
+          aria-label="Chế độ thanh bên"
+        >
           <button
             role="tab"
-            aria-pressed={sidebarView === 'places'}
-            onClick={() => setSidebarView('places')}
+            aria-pressed={sidebarView === "places"}
+            onClick={() => setSidebarView("places")}
           >
             Địa điểm ({places.length})
           </button>
           <button
             role="tab"
-            aria-pressed={sidebarView === 'route'}
+            aria-pressed={sidebarView === "route"}
             onClick={() => {
               if (!routeMode) {
                 toggleRouteMode(true);
               } else {
-                setSidebarView('route');
+                setSidebarView("route");
               }
             }}
           >
@@ -298,7 +359,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
           </button>
         </div>
 
-        {sidebarView === 'route' ? (
+        {sidebarView === "route" ? (
           <RoutePanel
             routes={routes}
             places={places}
@@ -315,13 +376,13 @@ export default function MapPage({ slug }: { slug: string | null }) {
               setRouteBuilderMode(mode);
               setActiveStopIndex(null);
               setActiveLegIndex(null);
-              setRouteFitTick(n => n + 1);
+              setRouteFitTick((n) => n + 1);
             }}
             onSelectRouteId={(id) => {
               setSelectedRouteId(id);
               setActiveStopIndex(null);
               setActiveLegIndex(null);
-              setRouteFitTick(n => n + 1);
+              setRouteFitTick((n) => n + 1);
               window.location.hash = `#/map?route=${id}`;
             }}
             onUpdateCustomSlugs={(nextSlugs) => {
@@ -333,7 +394,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
             onFocusLeg={focusRouteLeg}
             onFitAll={fitEntireRoute}
             onOpenPlaceDetail={(targetSlug) => {
-              setSidebarView('places');
+              setSidebarView("places");
               select(targetSlug);
             }}
           />
@@ -341,21 +402,31 @@ export default function MapPage({ slug }: { slug: string | null }) {
           <>
             {routeMode && currentStopIdx !== -1 && (
               <div className="route-inline-nav">
-                <button type="button" onClick={() => setSidebarView('route')}>
+                <button type="button" onClick={() => setSidebarView("route")}>
                   ← Lộ trình ({currentStopIdx + 1}/{activeStops.length})
                 </button>
                 <div>
                   <button
                     type="button"
                     disabled={currentStopIdx <= 0}
-                    onClick={() => focusRouteStop(currentStopIdx - 1, activeStops[currentStopIdx - 1].slug)}
+                    onClick={() =>
+                      focusRouteStop(
+                        currentStopIdx - 1,
+                        activeStops[currentStopIdx - 1].slug,
+                      )
+                    }
                   >
                     ‹ Trước
                   </button>
                   <button
                     type="button"
                     disabled={currentStopIdx >= activeStops.length - 1}
-                    onClick={() => focusRouteStop(currentStopIdx + 1, activeStops[currentStopIdx + 1].slug)}
+                    onClick={() =>
+                      focusRouteStop(
+                        currentStopIdx + 1,
+                        activeStops[currentStopIdx + 1].slug,
+                      )
+                    }
                   >
                     Tiếp ›
                   </button>
@@ -366,8 +437,8 @@ export default function MapPage({ slug }: { slug: string | null }) {
               className="back-link"
               onClick={() => {
                 window.location.hash = routeMode
-                  ? `#/map?route=${routeBuilderMode === 'custom' ? 'custom' : selectedRouteId || 'true'}`
-                  : '#/map';
+                  ? `#/map?route=${routeBuilderMode === "custom" ? "custom" : selectedRouteId || "true"}`
+                  : "#/map";
               }}
             >
               ← Tất cả địa điểm
@@ -494,10 +565,24 @@ export default function MapPage({ slug }: { slug: string | null }) {
           </>
         ) : (
           <>
-            <form className="search-field" role="search" onSubmit={e => { e.preventDefault(); if (results[0]) select(results[0].slug); }}>
+            <form
+              className="search-field"
+              role="search"
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (results[0]) select(results[0].slug);
+              }}
+            >
               <span aria-hidden="true">⌕</span>
-              <input aria-label="Tìm địa điểm" placeholder="Tìm công trình, địa điểm…" value={query} onChange={e => setQuery(e.target.value)} />
-              <button type="submit" aria-label="Tìm kiếm">→</button>
+              <input
+                aria-label="Tìm địa điểm"
+                placeholder="Tìm công trình, địa điểm…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+              <button type="submit" aria-label="Tìm kiếm">
+                →
+              </button>
             </form>
             <div className="list-heading">
               <h2>Di sản nổi bật</h2>
@@ -647,18 +732,18 @@ export default function MapPage({ slug }: { slug: string | null }) {
               if (routeMode) {
                 fitEntireRoute();
               } else {
-                window.location.hash = '#/map';
-                setFocusTick(n => n + 1);
+                window.location.hash = "#/map";
+                setFocusTick((n) => n + 1);
               }
             }}
           >
-            {routeMode ? '⌖ Toàn tuyến 3D' : '⌖ Toàn cảnh Roma'}
+            {routeMode ? "⌖ Toàn tuyến 3D" : "⌖ Toàn cảnh Roma"}
           </button>
           <button
-            className={`map-chip ${routeMode ? 'active' : ''}`}
+            className={`map-chip ${routeMode ? "active" : ""}`}
             onClick={() => toggleRouteMode(!routeMode)}
           >
-            {routeMode ? '✕ Tắt tuyến 3D' : '🧭 Tuyến tham quan'}
+            {routeMode ? "✕ Tắt tuyến 3D" : "🧭 Tuyến tham quan"}
           </button>
         </div>
         {selected && (
@@ -667,8 +752,8 @@ export default function MapPage({ slug }: { slug: string | null }) {
             <div>
               <span>
                 {routeMode && currentStopIdx !== -1
-                  ? `CHẶNG ${currentStopIdx + 1}/${activeStops.length}${routeGeometry.legs[currentStopIdx] ? ` · TIẾP ${formatDistance(routeGeometry.legs[currentStopIdx].distanceMeters)}` : ' · ĐIỂM CUỐI'}`
-                  : 'ĐANG KHÁM PHÁ'}
+                  ? `CHẶNG ${currentStopIdx + 1}/${activeStops.length}${routeGeometry.legs[currentStopIdx] ? ` · TIẾP ${formatDistance(routeGeometry.legs[currentStopIdx].distanceMeters)}` : " · ĐIỂM CUỐI"}`
+                  : "ĐANG KHÁM PHÁ"}
               </span>
               <strong>{selected.name}</strong>
             </div>
@@ -679,14 +764,21 @@ export default function MapPage({ slug }: { slug: string | null }) {
             >
               ◇ Xem 3D ↗
             </button>
-            {routeMode && currentStopIdx !== -1 && currentStopIdx < activeStops.length - 1 && (
-              <button
-                onClick={() => focusRouteStop(currentStopIdx + 1, activeStops[currentStopIdx + 1].slug)}
-                aria-label="Chuyển sang điểm dừng tiếp theo trong tuyến"
-              >
-                Chặng tiếp →
-              </button>
-            )}
+            {routeMode &&
+              currentStopIdx !== -1 &&
+              currentStopIdx < activeStops.length - 1 && (
+                <button
+                  onClick={() =>
+                    focusRouteStop(
+                      currentStopIdx + 1,
+                      activeStops[currentStopIdx + 1].slug,
+                    )
+                  }
+                  aria-label="Chuyển sang điểm dừng tiếp theo trong tuyến"
+                >
+                  Chặng tiếp →
+                </button>
+              )}
           </div>
         )}
       </section>
