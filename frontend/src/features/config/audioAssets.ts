@@ -8,8 +8,10 @@ export const AUDIO = {
   playerBlock: "/_local/audio/block.mp3",
   // Sư tử đánh trúng người chơi
   lionHitPlayer: "/_local/audio/lion_hit.mp3",
-  // Sư tử thủ (đòn của người chơi bị chặn). Nếu file khác, đổi đường dẫn ở đây.
+  // Sư tử thủ (đòn của người chơi bị chặn)
   lionGuard: "/_local/audio/defend.mp3",
   victory: "/_local/audio/victory.mp3",
   defeat: "/_local/audio/defeat.mp3",
+  // Tiếng lửa tưởng niệm (lặp)
+  fire: "/_local/audio/fire.mp3",
 } as const;

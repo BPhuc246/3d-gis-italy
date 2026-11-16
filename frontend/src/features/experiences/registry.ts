@@ -18,7 +18,7 @@ export type Feature =
 export const VIDEO_URLS: Record<string, string> = {
   "arch-of-constantine": "/_local/videos/arch-intro.mp4",
   colosseum: "/_local/videos/colosseum-intro.mp4",
-  pantheon: "/_local/videos/patheon.mp4", // Nếu file đã đổi thành pantheon.mp4 thì sửa lại đường dẫn
+  pantheon: "/_local/videos/patheon.mp4",
   vittoriano: "/_local/videos/victoriano.mp4",
 };
 
@@ -59,7 +59,7 @@ export const FEATURES: Record<string, Feature[]> = {
     {
       id: "memorial",
       label: "Tưởng niệm 3D",
-      hint: "Cúi đầu, thắp nến mô phỏng, lên bậc thang",
+      hint: "Thắp lửa tưởng niệm, đi bộ lên bậc thang, đổi ngày và đêm",
       type: "scene",
       scene: "vittoriano",
     },
