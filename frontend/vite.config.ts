@@ -61,7 +61,7 @@ export default defineConfig({
   },
 
   build: {
-    sourcemap: false,
+    sourcemap: true,
     minify: "esbuild",
     reportCompressedSize: true,
     cssMinify: false,
