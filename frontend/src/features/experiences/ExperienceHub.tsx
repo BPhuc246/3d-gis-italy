@@ -1,9 +1,13 @@
-import { ComponentType, lazy, Suspense, useEffect, useState } from "react";
-import { api, ExperienceItem } from "../../lib/api";
+import { ComponentType, lazy, Suspense, useState } from "react";
 import VideoModal from "../shared/VideoModal";
 import SceneModal from "../shared/SceneModal";
-import { FEATURES, Feature, SceneKey } from "./registry";
-import { VIDEO_URLS } from "./registry";
+import {
+  AUDIO_URLS,
+  FEATURES,
+  Feature,
+  SceneKey,
+  VIDEO_URLS,
+} from "./registry";
 
 type SceneProps = { audioUrl: string | null };
 
@@ -16,19 +20,8 @@ const SCENES: Record<SceneKey, ComponentType<SceneProps>> = {
 
 export default function ExperienceHub({ slug }: { slug: string }) {
   const features = FEATURES[slug] ?? [];
-  const [items, setItems] = useState<ExperienceItem[]>([]);
   const [open, setOpen] = useState<Feature | null>(null);
 
-  useEffect(() => {
-    setItems([]);
-    setOpen(null);
-    api
-      .experiences(slug)
-      .then(setItems)
-      .catch(() => setItems([]));
-  }, [slug]);
-
-  const find = (key: string) => items.find((i) => i.featureKey === key);
   const Scene = open?.type === "scene" ? SCENES[open.scene] : null;
 
   if (!features.length) return null;
@@ -72,7 +65,7 @@ export default function ExperienceHub({ slug }: { slug: string }) {
           <Suspense
             fallback={<p className="p-6 text-slate-500">Đang dựng cảnh 3D…</p>}
           >
-            <Scene audioUrl={find("crowd_audio")?.assetUrl ?? null} />
+            <Scene audioUrl={AUDIO_URLS.crowd ?? null} />
           </Suspense>
         </SceneModal>
       )}

@@ -57,11 +57,11 @@ const PRAYER_HEAD_ANGLE = -0.55;
 type SoundKey = "crowd" | "fountain" | "noise" | "drop" | "light";
 
 const SOUND_SRC: Record<SoundKey, string> = {
-  crowd: "/_local/audio/crowd.mp3",
-  fountain: "/_local/audio/fountain.mp3",
-  noise: "/_local/audio/noise.mp3",
-  drop: "/_local/audio/drop.mp3",
-  light: "/_local/audio/light.mp3",
+  crowd: "/audio/crowd.mp3",
+  fountain: "/audio/fountain.mp3",
+  noise: "/audio/noise.mp3",
+  drop: "/audio/drop.mp3",
+  light: "/audio/light.mp3",
 };
 
 const SOUND_VOLUME: Record<SoundKey, number> = {

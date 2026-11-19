@@ -440,7 +440,7 @@
           "x": 73,
           "y": 38,
           "title": "Chiều cao gồm tượng trên mái",
-          "text": "Các nhóm tượng được đặt trên mái trong giai đoạn 1924–1927, đưa tổng chiều cao công trình lên khoảng 81 m so với Piazza Venezia.",
+          "text": "Các nhóm tượng được đặt trên mái trong giai đoạn 1924-1927, đưa tổng chiều cao công trình lên khoảng 81 m so với Piazza Venezia.",
           "sourceUrl": "https://www.turismoroma.it/it/node/1541",
           "id": "quadrigas-info-2"
         },
@@ -962,11 +962,7 @@
     {
       "id": "king",
       "prompt": "Vittoriano tưởng niệm ai?",
-      "choices": [
-        "Julius Caesar",
-        "Vittorio Emanuele II",
-        "Constantine I"
-      ],
+      "choices": ["Julius Caesar", "Vittorio Emanuele II", "Constantine I"],
       "answer": 1,
       "explanation": "Công trình tưởng niệm vị vua đầu tiên của nước Ý thống nhất.",
       "sceneId": "exterior"
@@ -974,11 +970,7 @@
     {
       "id": "stone",
       "prompt": "Vật liệu sáng màu đặc trưng của Vittoriano là gì?",
-      "choices": [
-        "Đá Botticino",
-        "Gạch đỏ",
-        "Gỗ sơn trắng"
-      ],
+      "choices": ["Đá Botticino", "Gạch đỏ", "Gỗ sơn trắng"],
       "answer": 0,
       "explanation": "Đá Botticino tạo nên sắc trắng đặc trưng của quần thể.",
       "sceneId": "oblique"
@@ -986,11 +978,7 @@
     {
       "id": "quadrigas",
       "prompt": "Hai cỗ xe tứ mã tượng trưng cho điều gì?",
-      "choices": [
-        "Bốn mùa",
-        "Hai con sông",
-        "Thống nhất và Tự do"
-      ],
+      "choices": ["Bốn mùa", "Hai con sông", "Thống nhất và Tự do"],
       "answer": 2,
       "explanation": "Hai nhóm tượng bằng đồng thể hiện sự Thống nhất của Tổ quốc và Tự do của công dân.",
       "sceneId": "quadrigas"

@@ -1,13 +1,25 @@
-import { useEffect, useState } from 'react';
-import { loadLocalTour, PHOTO_TOUR_SLUGS } from './explore';
+import { useEffect, useState } from "react";
+import { api } from "./api";
 
-export function usePhotoTourAvailable(slug: string | null | undefined) {
+export function usePhotoTourAvailable(slug?: string | null): boolean {
   const [available, setAvailable] = useState(false);
+
   useEffect(() => {
     let active = true;
     setAvailable(false);
-    if (slug && (PHOTO_TOUR_SLUGS as readonly string[]).includes(slug)) loadLocalTour(slug).then(() => { if (active) setAvailable(true); }).catch(() => { /* No tour asset at this deployment. */ });
-    return () => { active = false; };
+    if (!slug) return;
+    api.tours
+      .list()
+      .then((list) => {
+        if (active) setAvailable(list.some((t) => t.slug === slug));
+      })
+      .catch(() => {
+        if (active) setAvailable(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [slug]);
+
   return available;
 }

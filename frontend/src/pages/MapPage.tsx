@@ -2,6 +2,7 @@ import ExperienceHub from "../features/experiences/ExperienceHub";
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import {
   api,
+  Review,
   RegionDetail,
   RegionDestination,
   DestinationDetail,
@@ -110,7 +111,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
     let active = true;
     setError("");
     setRegion(null);
-    (local ? loadLocalRegion() : api.getRegion("roma-trung-tam"))
+    (local ? loadLocalRegion() : api.regions.get("roma-trung-tam"))
       .then((data) => {
         if (active) setRegion(data);
       })
@@ -129,10 +130,10 @@ export default function MapPage({ slug }: { slug: string | null }) {
     setRoutesError("");
     const loader = local
       ? loadLocalRoutes()
-      : api
-          .listRoutes()
+      : api.routes
+          .list()
           .then((list) =>
-            Promise.all(list.map((item) => api.getRoute(item.routeId))),
+            Promise.all(list.map((item) => api.routes.get(item.routeId))),
           );
     loader
       .then((data) => {
@@ -454,7 +455,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
             <div className="detail-actions">
               <button
                 className="button primary"
-                disabled={!selected.embeds.length}
+                disabled={!selected.models.length}
                 onClick={() => setOverlay("model")}
               >
                 <span>◇</span> Xem chi tiết mô hình 3D <span>↗</span>
@@ -496,26 +497,6 @@ export default function MapPage({ slug }: { slug: string | null }) {
                 <p>
                   {stories[selected.slug]?.description ?? selected.description}
                 </p>
-                {local && selected.coverImageCredit && (
-                  <p className="cover-attribution">
-                    Ảnh: {selected.coverImageCredit} ·{" "}
-                    <a
-                      href={selected.coverImageSourceUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Nguồn ảnh ↗
-                    </a>{" "}
-                    ·{" "}
-                    <a
-                      href={selected.coverImageLicenseUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Giấy phép
-                    </a>
-                  </p>
-                )}
                 <div className="facts-grid">
                   {stories[selected.slug]?.facts.map((f) => (
                     <div key={f.label}>
@@ -759,7 +740,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
             </div>
             <button
               onClick={() => setOverlay("model")}
-              disabled={!selected.embeds.length}
+              disabled={!selected.models.length}
               aria-label="Mở mô hình 3D của địa điểm"
             >
               ◇ Xem 3D ↗
@@ -783,11 +764,10 @@ export default function MapPage({ slug }: { slug: string | null }) {
         )}
       </section>
 
-      {selected && selected.embeds.length > 0 && (
+      {selected && overlay === "model" && selected.models.length > 0 && (
         <ModelViewer
           key={selected.slug}
           place={selected}
-          open={overlay === "model"}
           onClose={() => setOverlay(null)}
         />
       )}
@@ -810,14 +790,12 @@ function PlaceHero({
 }) {
   const [broken, setBroken] = useState(false);
   const photo =
-    place.coverImageUrl &&
-    !place.coverImageUrl.includes("placehold.co") &&
-    !broken;
+    place.coverUrl && !place.coverUrl.includes("placehold.co") && !broken;
   return (
     <div className={`place-hero art-${place.slug}`}>
       {photo ? (
         <img
-          src={place.coverImageUrl}
+          src={place.coverUrl ?? undefined}
           alt={place.name}
           loading="lazy"
           onError={() => setBroken(true)}
@@ -884,8 +862,8 @@ function FavoriteControl({ place }: { place: RegionDestination }) {
     setMessage("");
     if (!user) return;
     let active = true;
-    api
-      .getDestination(place.slug)
+    api.destinations
+      .get(place.slug)
       .then((d) => {
         if (active) {
           setFavorite(d.isFavorite);
@@ -912,8 +890,8 @@ function FavoriteControl({ place }: { place: RegionDestination }) {
     setBusy(true);
     setMessage("");
     try {
-      if (favorite) await api.removeFavorite(place.slug);
-      else await api.addFavorite(place.slug);
+      if (favorite) await api.destinations.removeFavorite(place.slug);
+      else await api.destinations.addFavorite(place.slug);
       setFavorite((v) => !v);
     } catch (e) {
       setMessage((e as Error).message);
@@ -941,23 +919,30 @@ function FavoriteControl({ place }: { place: RegionDestination }) {
 
 function ServerReviews({ slug }: { slug: string }) {
   const [detail, setDetail] = useState<DestinationDetail | null>(null);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [error, setError] = useState("");
   const [attempt, setAttempt] = useState(0);
+
   useEffect(() => {
     let active = true;
     setError("");
-    api
-      .getDestination(slug)
-      .then((d) => {
-        if (active) setDetail(d);
+    Promise.all([
+      api.destinations.get(slug),
+      api.destinations.reviews(slug, { limit: 10 }),
+    ])
+      .then(([d, page]) => {
+        if (!active) return;
+        setDetail(d);
+        setReviews(page.items);
       })
-      .catch((e) => {
+      .catch((e: Error) => {
         if (active) setError(e.message);
       });
     return () => {
       active = false;
     };
   }, [slug, attempt]);
+
   if (error)
     return (
       <div className="empty-state">
@@ -971,11 +956,12 @@ function ServerReviews({ slug }: { slug: string }) {
       </div>
     );
   if (!detail) return <p className="empty-state">Đang tải đánh giá…</p>;
+
   return (
     <ReviewSection
-      key={`${slug}:${detail.reviews.map((r) => r.updatedAt).join(",")}`}
+      key={`${slug}:${attempt}`}
       slug={slug}
-      reviews={detail.reviews}
+      reviews={reviews}
       myReview={detail.myReview}
       avgRating={detail.avgRating}
       reviewCount={detail.reviewCount}

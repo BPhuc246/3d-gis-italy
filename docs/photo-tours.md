@@ -2,12 +2,12 @@
 
 ## Phạm vi đã hoàn thiện
 
-| Địa điểm | Cảnh/ảnh riêng | Điểm chuyển ảnh | Điểm thông tin | Câu hỏi |
-| --- | ---: | ---: | ---: | ---: |
-| Colosseum | 8 | 20 | 16 | 3 |
-| Khải hoàn môn Constantine | 7 | 16 | 14 | 3 |
-| Pantheon | 12 | 30 | 24 | 3 |
-| Tổng | 27 | 66 | 54 | 9 |
+| Địa điểm                  | Cảnh/ảnh riêng | Điểm chuyển ảnh | Điểm thông tin | Câu hỏi |
+| ------------------------- | -------------: | --------------: | -------------: | ------: |
+| Colosseum                 |              8 |              20 |             16 |       3 |
+| Khải hoàn môn Constantine |              7 |              16 |             14 |       3 |
+| Pantheon                  |             12 |              30 |             24 |       3 |
+| Tổng                      |             27 |              66 |             54 |       9 |
 
 Mỗi cặp cảnh được nối bằng hai hotspot đối ứng: từ A đến B và từ B về A. Có cả vòng và nhánh, không chỉ một danh sách tuyến tính. Từ bất kỳ ảnh nào đều đến được mọi ảnh khác của cùng tour bằng hotspot. Nút Cảnh trước là lịch sử thao tác riêng, không được dùng để thay thế liên kết quay về trên ảnh.
 
@@ -57,7 +57,7 @@ Nguồn: [Turismo Roma](https://www.turismoroma.it/en/places/arch-costantine), [
 
 Các cảnh: mặt tiền, góc chếch sảnh/khối đền ban ngày, nhìn ngang tiền sảnh, hàng cột, từ bên trong nhìn về cửa, trung tâm nhìn ngang, vòng tường bên, bàn thờ bên, bàn thờ chính, nền đá, mái vòm và Oculus. Có bốn cảnh mới: `entrance`, `side`, `chapel`, `floor`. Các ảnh cũ cũng đã được thay để giảm góc ngước lên và bỏ ảnh đêm.
 
-6 ảnh thuộc cùng bộ sáng 09/10/2016, metadata khoảng 10:45–10:58. 6 ảnh nội thất thuộc bộ ngày 07/03/2013 của Szilas, ánh sáng ban ngày; nguồn không cung cấp đủ giờ nên không khẳng định tất cả cùng một buổi sáng. Ảnh Oculus tối ở mặt trong do chênh lệch phơi sáng, metadata vẫn ghi buổi sáng.
+6 ảnh thuộc cùng bộ sáng 09/10/2016, metadata khoảng 10:45-10:58. 6 ảnh nội thất thuộc bộ ngày 07/03/2013 của Szilas, ánh sáng ban ngày; nguồn không cung cấp đủ giờ nên không khẳng định tất cả cùng một buổi sáng. Ảnh Oculus tối ở mặt trong do chênh lệch phơi sáng, metadata vẫn ghi buổi sáng.
 
 ```mermaid
 graph LR
@@ -90,7 +90,7 @@ Bảng Hành trình có ảnh thu nhỏ, các điểm nối từ cảnh hiện t
 
 ## Ảnh, quyền sử dụng và hiệu năng
 
-27 ảnh Wikimedia Commons đã kiểm tra trang metadata, tác giả và giấy phép; chỉ chọn CC BY, CC BY-SA hoặc CC0. Danh mục từng ảnh với URL nguồn/giấy phép nằm tại [_local/IMAGE_SOURCES.md](../_local/IMAGE_SOURCES.md). Metadata và SHA-256 nằm trong `_local/sources.json`.
+27 ảnh Wikimedia Commons đã kiểm tra trang metadata, tác giả và giấy phép; chỉ chọn CC BY, CC BY-SA hoặc CC0. Danh mục từng ảnh với URL nguồn/giấy phép nằm tại [\_local/IMAGE_SOURCES.md](../_local/IMAGE_SOURCES.md). Metadata và SHA-256 nằm trong `_local/sources.json`.
 
 Ảnh chính được giới hạn 1920px, tổng khoảng 25,12 MiB cho cả ba tour; thumbnail giữ tỷ lệ, tổng khoảng 573 KiB. Danh sách không tải cả ảnh chính để làm thumbnail. Khi xem ảnh, ứng dụng chuẩn bị trước tối đa hai ảnh được liên kết để chuyển cảnh nhanh hơn. JSON tour được cache và thử lại khi lỗi.
 

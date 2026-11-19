@@ -14,12 +14,12 @@ export type Feature =
     }
   | { id: string; label: string; hint: string; type: "scene"; scene: SceneKey };
 
-// Video nằm trong frontend/public/_local/videos/, Vite phục vụ tại /_local/videos/
+// Video nằm trong frontend/public/videos/, Vite phục vụ tại /videos/
 export const VIDEO_URLS: Record<string, string> = {
-  "arch-of-constantine": "/_local/videos/arch-intro.mp4",
-  colosseum: "/_local/videos/colosseum-intro.mp4",
-  pantheon: "/_local/videos/patheon.mp4",
-  vittoriano: "/_local/videos/victoriano.mp4",
+  "arch-of-constantine": "/videos/arch-intro.mp4",
+  colosseum: "/videos/colosseum-intro.mp4",
+  pantheon: "/videos/patheon.mp4",
+  vittoriano: "/videos/victoriano.mp4",
 };
 
 export const FEATURES: Record<string, Feature[]> = {
@@ -80,4 +80,8 @@ export const FEATURES: Record<string, Feature[]> = {
       scene: "pantheon",
     },
   ],
+};
+
+export const AUDIO_URLS: Record<string, string> = {
+  crowd: "/audio/crowd.mp3",
 };
