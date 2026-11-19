@@ -4,25 +4,25 @@ Trạng thái: đề xuất, chưa triển khai các trò chơi và mô hình t�
 
 ## 1. Trải nghiệm muốn đạt
 
-Mỗi công trình có một hoạt động riêng, kéo dài khoảng 1–3 phút. Nhịp chính: quan sát ảnh → thử thao tác → thấy thay đổi → tìm chi tiết ở cảnh liên quan → nhận một dấu hoàn thành trong hộ chiếu Roma. Không yêu cầu đọc hết thuyết minh hoặc làm câu hỏi mới được chuyển cảnh.
+Mỗi công trình có một hoạt động riêng, kéo dài khoảng 1-3 phút. Nhịp chính: quan sát ảnh → thử thao tác → thấy thay đổi → tìm chi tiết ở cảnh liên quan → nhận một dấu hoàn thành trong hộ chiếu Roma. Không yêu cầu đọc hết thuyết minh hoặc làm câu hỏi mới được chuyển cảnh.
 
 Ảnh vẫn là nền toàn màn hình. Con mắt bật/tắt các icon tương tác; kính lúp chỉ bật/tắt thẻ tên cảnh hiện tại, độc lập nhau. Mặc định đều tắt, rê đúng vùng vẫn tìm được icon. Chỉ giữ một nút thoát, bỏ nút về bản đồ bị trùng chức năng. Mũi tên, kéo ảnh, thu gọn thanh trái giữ cách hoạt động đã chốt. Pantheon hiện có 12 cảnh thiên về nhìn ngang và ánh sáng ban ngày. Các hoạt động bên dưới vẫn là kế hoạch.
 
 ## 2. Bộ hoạt động theo từng công trình
 
-| Công trình | Hoạt động chính đề xuất | Thao tác của người xem | Kết quả nhìn thấy | Bản đầu |
-| --- | --- | --- | --- | --- |
-| Colosseum | Khám phá lớp sàn và khu ngầm | Kéo thanh nâng/hạ phần sàn; xoay mô hình cắt lớp đơn giản | Sàn tách ra để lộ các khoang bên dưới | Sơ đồ SVG kéo lớp sàn trước; mô hình 3D ở bước kế tiếp |
-| Constantine | Ghép chi tiết vào mặt đứng | Chọn hoặc kéo 3 mảnh ảnh tới đúng vùng trên ảnh toàn mặt Nam | Vùng đúng sáng lên, mảnh gắn vào mặt đứng; có thể mở ảnh cận | Làm ngay với ảnh đã có và giấy phép đã ghi |
-| Pantheon | Tìm đường đi của ánh sáng | Kéo nguồn sáng trên mô hình mặt cắt; chạm lỗ Oculus | Tia sáng và vệt sáng đổi vị trí trên mô hình | Sơ đồ SVG tương tác trước; không gắn với giờ thực |
+| Công trình  | Hoạt động chính đề xuất      | Thao tác của người xem                                       | Kết quả nhìn thấy                                            | Bản đầu                                                |
+| ----------- | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------ |
+| Colosseum   | Khám phá lớp sàn và khu ngầm | Kéo thanh nâng/hạ phần sàn; xoay mô hình cắt lớp đơn giản    | Sàn tách ra để lộ các khoang bên dưới                        | Sơ đồ SVG kéo lớp sàn trước; mô hình 3D ở bước kế tiếp |
+| Constantine | Ghép chi tiết vào mặt đứng   | Chọn hoặc kéo 3 mảnh ảnh tới đúng vùng trên ảnh toàn mặt Nam | Vùng đúng sáng lên, mảnh gắn vào mặt đứng; có thể mở ảnh cận | Làm ngay với ảnh đã có và giấy phép đã ghi             |
+| Pantheon    | Tìm đường đi của ánh sáng    | Kéo nguồn sáng trên mô hình mặt cắt; chạm lỗ Oculus          | Tia sáng và vệt sáng đổi vị trí trên mô hình                 | Sơ đồ SVG tương tác trước; không gắn với giờ thực      |
 
-Ba hoạt động trên tạo ba kiểu trải nghiệm khác nhau: khám phá cấu trúc, nhận diện bằng hình ảnh và thử nguyên nhân–kết quả. Không dùng cùng một bộ trắc nghiệm đổi tên cho cả ba địa điểm.
+Ba hoạt động trên tạo ba kiểu trải nghiệm khác nhau: khám phá cấu trúc, nhận diện bằng hình ảnh và thử nguyên nhân-kết quả. Không dùng cùng một bộ trắc nghiệm đổi tên cho cả ba địa điểm.
 
 ### 2.1 Colosseum — mở lớp sàn, khám phá Hypogeum
 
 - Điểm vào: các cảnh `interior`, `arena`, `hypogeum`. Nút tại điểm hợp lý có biểu tượng bàn tay hoặc khối cắt lớp, nhãn “Thử mở lớp sàn”. Chỉ một điểm hoạt động chính mỗi cảnh, tránh dày icon.
-- Mở một bàn khám phá nổi trên ảnh, khoảng 360–440px trên desktop; điện thoại dùng khung rộng theo màn hình. Ảnh và góc kéo phía sau giữ nguyên.
-- Bước 1: kéo thanh 0–100% để nâng một phần sàn minh họa. Các lớp phía dưới xuất hiện dần; dừng ở bất kỳ vị trí nào để so sánh.
+- Mở một bàn khám phá nổi trên ảnh, khoảng 360-440px trên desktop; điện thoại dùng khung rộng theo màn hình. Ảnh và góc kéo phía sau giữ nguyên.
+- Bước 1: kéo thanh 0-100% để nâng một phần sàn minh họa. Các lớp phía dưới xuất hiện dần; dừng ở bất kỳ vị trí nào để so sánh.
 - Bước 2: chạm hai bộ phận “Sàn đấu” và “Khu ngầm” để tô sáng phần tương ứng. Phản hồi xuất hiện trực tiếp trên sơ đồ, thuyết minh ngắn theo sau.
 - Bước 3: “Tìm khu ngầm trên ảnh thật” đưa về cảnh `hypogeum`, nháy viền vùng cần quan sát một lần. Người xem xác định đúng vùng thì hoàn thành nhiệm vụ.
 - Mở rộng 3D: mô hình elip cắt lớp tự dựng, kéo để xoay, thanh nâng/hạ sàn, nút “Góc ban đầu”. Không cần tải mô hình toàn công trình chi tiết.
@@ -36,7 +36,7 @@ Ba hoạt động trên tạo ba kiểu trải nghiệm khác nhau: khám phá c
 - Lần lượt hiện một mảnh nhỏ cùng yêu cầu “Chi tiết này nằm ở đâu?”. Người xem chọn mảnh rồi chạm vùng tương ứng; kéo thả là lựa chọn bổ sung, không bắt buộc.
 - Đúng: vùng sáng nhẹ, mảnh trở thành một phần của ảnh toàn mặt, bộ đếm tăng 1/3 và hiện một câu giải thích. Sai: viền rung nhẹ hoặc báo “Thử nhìn lên tầng trên”; không trừ điểm, không tự lộ đáp án ngay.
 - Hoàn thành: mở một lần so sánh toàn mặt/cận cảnh và dấu “Người đọc mặt đứng”. Có nút chơi lại; không cộng tiến độ nhiều lần.
-- Mở rộng 3D: một cụm cột–vòm ba cửa nhỏ, có thể xoay, chạm từng cửa để so sánh kích thước. Tránh tái tạo tượng/phù điêu chi tiết bằng khối thô khiến ảnh bị kém tự nhiên.
+- Mở rộng 3D: một cụm cột-vòm ba cửa nhỏ, có thể xoay, chạm từng cửa để so sánh kích thước. Tránh tái tạo tượng/phù điêu chi tiết bằng khối thô khiến ảnh bị kém tự nhiên.
 - Kiểm chứng vị trí: chỉ dùng các chi tiết mặt Nam cho bài ghép trên ảnh mặt Nam. Không lấy chi tiết từ mặt Bắc/mặt hông rồi yêu cầu ghép vào mặt Nam. Tham chiếu [Turismo Roma](https://www.turismoroma.it/en/places/arch-costantine) và ảnh gốc.
 
 ### 2.3 Pantheon — thử ánh sáng qua Oculus
@@ -94,13 +94,13 @@ Không thưởng chỉ vì bấm nhiều; khuyến khích quan sát qua nhiều 
 
 ## 7. Thứ tự triển khai đề xuất
 
-| Đợt | Kết quả cụ thể | Tiêu chí xong |
-| --- | --- | --- |
-| 1 | Khung hoạt động chung + bài ghép Constantine | 3 mảnh đúng ảnh mặt Nam; chạm/kéo đều chơi được; đóng không mất góc ảnh; lưu tiến độ |
-| 2 | Colosseum nâng/hạ sàn bằng SVG | Kéo sàn có phản hồi rõ; phân biệt sàn/khu ngầm; liên kết tới ảnh thật |
-| 3 | Pantheon thử nguồn sáng bằng SVG | Góc nguồn sáng đổi vệt sáng; nhiệm vụ hoàn thành được; ghi đúng là minh họa |
-| 4 | Một mô hình mini xoay trong một ảnh | Thử với nhịp vòm Colosseum ở `west`; đạt ngân sách tài nguyên; kéo mô hình không kéo ảnh |
-| 5 | Hộ chiếu ba nơi + hoàn thiện hiển thị | Lưu độc lập, chơi lại không cộng lặp, bàn phím/cảm ứng dùng được |
+| Đợt | Kết quả cụ thể                               | Tiêu chí xong                                                                            |
+| --- | -------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| 1   | Khung hoạt động chung + bài ghép Constantine | 3 mảnh đúng ảnh mặt Nam; chạm/kéo đều chơi được; đóng không mất góc ảnh; lưu tiến độ     |
+| 2   | Colosseum nâng/hạ sàn bằng SVG               | Kéo sàn có phản hồi rõ; phân biệt sàn/khu ngầm; liên kết tới ảnh thật                    |
+| 3   | Pantheon thử nguồn sáng bằng SVG             | Góc nguồn sáng đổi vệt sáng; nhiệm vụ hoàn thành được; ghi đúng là minh họa              |
+| 4   | Một mô hình mini xoay trong một ảnh          | Thử với nhịp vòm Colosseum ở `west`; đạt ngân sách tài nguyên; kéo mô hình không kéo ảnh |
+| 5   | Hộ chiếu ba nơi + hoàn thiện hiển thị        | Lưu độc lập, chơi lại không cộng lặp, bàn phím/cảm ứng dùng được                         |
 
 Chọn Constantine làm hoạt động đầu vì dùng ngay ảnh đã được kiểm tra và tạo cảm giác “được làm” rõ ràng. Nếu ưu tiên xem thử 3D trước, có thể thực hiện đợt 4 sau đợt 1; vẫn giữ một mô hình nhỏ làm bản thử trước khi mở rộng.
 

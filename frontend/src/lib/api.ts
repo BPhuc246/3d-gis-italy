@@ -7,33 +7,37 @@ export const tokenStore = {
   clear: () => localStorage.removeItem(TOKEN_KEY),
 };
 
-export type User = {
-  userId: string;
-  fullName: string;
-  email: string;
-  avatarUrl: string | null;
+export class ApiError extends Error {
+  status: number;
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+  }
+}
+
+export type Page<T> = { items: T[]; total: number; limit: number; offset: number };
+
+export type User = { userId: string; fullName: string; email: string; avatarUrl: string | null };
+export type AuthResponse = { token: string; user: User };
+export type GeoJsonGeometry = { type: string; coordinates: unknown };
+
+export type Building = {
+  shapeType: "circle" | "ellipse" | "rectangle";
+  headingDeg: number | null;
+  heightM: number;
+  footprintLengthM: number;
+  footprintWidthM: number;
 };
 
-export type ExperienceItem = {
-  featureKey: string;
-  kind: "video" | "audio";
-  assetUrl: string;
-  license: string;
+export type Model3D = {
+  modelId: string;
+  kind: "exterior" | "interior";
+  embedUrl: string;
   credit: string | null;
 };
 
-export type DestinationSummary = {
-  destinationId: string;
-  slug: string;
-  name: string;
-  address: string;
-  category: string;
-  coverImageUrl: string;
-  latitude: number;
-  longitude: number;
-  avgRating: number | null;
-  reviewCount: number;
-};
+export type GalleryImage = { url: string; caption: string | null; isPrimary: boolean };
 
 export type Review = {
   reviewId: string;
@@ -44,76 +48,52 @@ export type Review = {
   updatedAt: string;
 };
 
+export type DestinationSummary = {
+  destinationId: string;
+  slug: string;
+  name: string;
+  address: string;
+  category: string;
+  categoryLabel: string;
+  coverUrl: string | null;
+  latitude: number;
+  longitude: number;
+  avgRating: number | null;
+  reviewCount: number;
+};
+
 export type DestinationDetail = {
   destinationId: string;
   slug: string;
   name: string;
   description: string;
   address: string;
-  latitude: number;
-  longitude: number;
   category: string;
   categoryLabel: string;
   openingHours: string | null;
   entryFee: number | null;
   entryFeeCurrency: string;
-  coverImageUrl: string;
-  images: {
-    imageUrl: string;
-    imageType: string;
-    caption: string | null;
-    isPrimary: boolean;
-  }[];
-  reviews: Review[];
-  myReview: Review | null;
-  reviewCount: number;
+  coverUrl: string | null;
+  latitude: number;
+  longitude: number;
+  displayColor: string | null;
+  building: Building | null;
+  models: Model3D[];
+  images: GalleryImage[];
   avgRating: number | null;
+  reviewCount: number;
   isFavorite: boolean;
+  myReview: Review | null;
 };
 
-export type EmbedKind = "exterior" | "interior";
-
-export type EmbedItem = {
-  kind: EmbedKind;
-  embedUrl: string;
-  credit: string | null;
-};
-
-export type BuildingShape = "circle" | "ellipse" | "rectangle";
-
-export type RegionDestination = {
-  coverImageCredit?: string;
-  coverImageSourceUrl?: string;
-  coverImageLicenseUrl?: string;
-  slug: string;
-  name: string;
-  description: string;
-  address: string;
-  category: string;
-  categoryLabel: string;
-  latitude: number;
-  longitude: number;
-  coverImageUrl: string;
-  openingHours: string | null;
-  entryFee: number | null;
-  entryFeeCurrency: string;
-  buildingShape: BuildingShape;
-  footprintLengthM: number;
-  footprintWidthM: number;
-  heightM: number;
-  headingDeg: number;
-  interiorHeightM: number | null;
-  displayColor: string;
-  embeds: EmbedItem[];
-  avgRating: number | null;
-  reviewCount: number;
-};
+export type RegionDestination = Omit<DestinationDetail, "isFavorite" | "myReview">;
 
 export type RegionDetail = {
   regionId: string;
   slug: string;
   name: string;
   description: string | null;
+  boundary: GeoJsonGeometry | null;
   centerLatitude: number;
   centerLongitude: number;
   destinations: RegionDestination[];
@@ -136,11 +116,12 @@ export type RouteStop = {
   address: string;
   latitude: number;
   longitude: number;
-  coverImageUrl?: string;
-  categoryLabel?: string;
+  coverUrl: string | null;
+  categoryLabel: string;
 };
 
 export type RouteDetail = Omit<RouteSummary, "stopCount"> & {
+  path: GeoJsonGeometry | null;
   stops: RouteStop[];
 };
 
@@ -148,87 +129,145 @@ export type FavoriteItem = {
   slug: string;
   name: string;
   category: string;
-  coverImageUrl: string;
+  categoryLabel: string;
+  coverUrl: string | null;
   favoritedAt: string;
 };
 
+export type TourSummary = {
+  id: string;
+  title: string;
+  slug: string;
+  name: string;
+  sceneCount: number;
+  coverUrl: string | null;
+};
+
+export type HotspotDirection = "forward" | "return" | "view" | "left" | "right" | "up" | "down";
+
+type HotspotBase = { id: string; title: string; x: number; y: number };
+export type NavigateHotspot = HotspotBase & { target: string; direction: HotspotDirection; text: string };
+export type InfoHotspot = HotspotBase & { text: string; sourceUrl: string | null };
+export type TourHotspot = NavigateHotspot | InfoHotspot;
+
+export type TourScene = {
+  id: string;
+  title: string;
+  image: string | null;
+  thumbnail: string | null;
+  alt: string | null;
+  description: string | null;
+  author: string | null;
+  sourceUrl: string | null;
+  license: string;
+  licenseUrl: string | null;
+  width: number | null;
+  height: number | null;
+  captureDate: string | null;
+  hotspots: TourHotspot[];
+};
+
+export type TourQuestion = {
+  id: string;
+  prompt: string;
+  choices: string[];
+  answer: number | null;
+  explanation: string | null;
+  sceneId: string | null;
+};
+
+export type TourDetail = {
+  id: string;
+  version: number;
+  destinationSlug: string;
+  destinationName: string;
+  title: string;
+  startSceneId: string | null;
+  routeNote: string | null;
+  contentSources: { title: string; url: string }[];
+  scenes: TourScene[];
+  questions: TourQuestion[];
+};
+
+type QueryValue = string | number | undefined | null;
+
+function toQuery(params: Record<string, QueryValue>): string {
+  const qs = new URLSearchParams();
+  for (const [key, value] of Object.entries(params)) {
+    if (value !== undefined && value !== null && value !== "") qs.set(key, String(value));
+  }
+  const text = qs.toString();
+  return text ? `?${text}` : "";
+}
+
 async function request<T>(path: string, init: RequestInit = {}): Promise<T> {
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-  };
+  const headers: Record<string, string> = {};
+  if (init.body !== undefined) headers["Content-Type"] = "application/json";
   const token = tokenStore.get();
   if (token) headers.Authorization = `Bearer ${token}`;
 
   const res = await fetch(`${API_URL}${path}`, { ...init, headers });
+  if (res.status === 204) return undefined as T;
+
   const data: unknown = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error(
-      (data as { message?: string }).message ?? `Lỗi ${res.status}`,
-    );
+    if (res.status === 401 && token) tokenStore.clear();
+    throw new ApiError((data as { message?: string }).message ?? `Lỗi ${res.status}`, res.status);
   }
   return data as T;
 }
 
+const json = (body: unknown) => JSON.stringify(body);
+const enc = encodeURIComponent;
+
 export const api = {
-  register: (body: { fullName: string; email: string; password: string }) =>
-    request<{ token: string; user: User }>("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
+  health: () => request<{ status: string; db: string }>("/api/health"),
 
-  login: (body: { email: string; password: string }) =>
-    request<{ token: string; user: User }>("/api/auth/login", {
-      method: "POST",
-      body: JSON.stringify(body),
-    }),
-
-  me: () => request<User>("/api/auth/me"),
-
-  listDestinations: (params: { category?: string; q?: string }) => {
-    const qs = new URLSearchParams();
-    if (params.category) qs.set("category", params.category);
-    if (params.q) qs.set("q", params.q);
-    return request<DestinationSummary[]>(`/api/destinations?${qs.toString()}`);
+  auth: {
+    register: (body: { fullName: string; email: string; password: string }) =>
+      request<AuthResponse>("/api/auth/register", { method: "POST", body: json(body) }),
+    login: (body: { email: string; password: string }) =>
+      request<AuthResponse>("/api/auth/login", { method: "POST", body: json(body) }),
+    me: () => request<User>("/api/auth/me"),
   },
 
-  getDestination: (slug: string) =>
-    request<DestinationDetail>(`/api/destinations/${slug}`),
+  me: {
+    favorites: () => request<FavoriteItem[]>("/api/me/favorites"),
+  },
 
-  saveReview: (slug: string, body: { rating: number; comment?: string }) =>
-    request<Review>(`/api/destinations/${slug}/review`, {
-      method: "PUT",
-      body: JSON.stringify(body),
-    }),
+  destinations: {
+    list: (params: { category?: string; q?: string; limit?: number; offset?: number } = {}) =>
+      request<Page<DestinationSummary>>(`/api/destinations${toQuery(params)}`),
 
-  deleteReview: (slug: string) =>
-    request<{ ok: boolean }>(`/api/destinations/${slug}/review`, {
-      method: "DELETE",
-    }),
+    get: (slug: string) => request<DestinationDetail>(`/api/destinations/${enc(slug)}`),
 
-  addFavorite: (slug: string) =>
-    request<{ ok: boolean }>(`/api/destinations/${slug}/favorite`, {
-      method: "POST",
-    }),
+    reviews: (slug: string, params: { limit?: number; offset?: number } = {}) =>
+      request<Page<Review>>(`/api/destinations/${enc(slug)}/reviews${toQuery(params)}`),
 
-  removeFavorite: (slug: string) =>
-    request<{ ok: boolean }>(`/api/destinations/${slug}/favorite`, {
-      method: "DELETE",
-    }),
+    saveMyReview: (slug: string, body: { rating: number; comment?: string }) =>
+      request<Review>(`/api/destinations/${enc(slug)}/reviews/me`, { method: "PUT", body: json(body) }),
 
-  myFavorites: () => request<FavoriteItem[]>("/api/me/favorites"),
+    deleteMyReview: (slug: string) =>
+      request<void>(`/api/destinations/${enc(slug)}/reviews/me`, { method: "DELETE" }),
 
-  listRoutes: () => request<RouteSummary[]>("/api/routes"),
+    addFavorite: (slug: string) =>
+      request<void>(`/api/destinations/${enc(slug)}/favorite`, { method: "PUT" }),
 
-  getRoute: (id: string) => request<RouteDetail>(`/api/routes/${id}`),
+    removeFavorite: (slug: string) =>
+      request<void>(`/api/destinations/${enc(slug)}/favorite`, { method: "DELETE" }),
+  },
 
-  getRegion: (slug: string) => request<RegionDetail>(`/api/regions/${slug}`),
+  regions: {
+    get: (slug: string) => request<RegionDetail>(`/api/regions/${enc(slug)}`),
+  },
 
-  experiences: (slug: string) =>
-    request<ExperienceItem[]>(`/api/destinations/${slug}/experiences`),
-  candles: (slug: string) =>
-    request<{ total: number }>(`/api/destinations/${slug}/candles`),
-  lightCandle: (slug: string) =>
-    request<{ total: number }>(`/api/destinations/${slug}/candles`, {
-      method: "POST",
-    }),
+  routes: {
+    list: () => request<RouteSummary[]>("/api/routes"),
+    get: (id: string) => request<RouteDetail>(`/api/routes/${enc(id)}`),
+  },
+
+  tours: {
+    list: () => request<TourSummary[]>("/api/tours"),
+    forDestination: (slug: string) => request<TourDetail>(`/api/destinations/${enc(slug)}/tour`),
+  },
 };

@@ -218,7 +218,7 @@ pantheon = [
     scene('floor','pantheon-floor.jpg','Nền đá cẩm thạch La Mã đa sắc nguyên bản',
         'Mặt sàn lát đá cẩm thạch hình học bảo tồn gần như nguyên vẹn từ thời cổ đại với các phiến đá Porphyry đỏ Ai Cập, cẩm thạch vàng và đá hoa cương xám.', [
         point(55,22,'Hệ thống 22 lỗ thoát nước mưa tinh tế','Do lỗ Oculus mở thẳng lên trời, nước mưa sẽ rơi tự do xuống sàn. Mặt sàn được thiết kế hơi cong lồi ở giữa và dốc nhẹ ra xung quanh với 22 lỗ thoát nước ngầm giúp sàn luôn khô ráo nhanh chóng.',PANTHEON_MUSEUM),
-        point(36,73,'Đá Đỏ Imperial Porphyry biểu tượng hoàng gia','Các vòng tròn lớn bằng đá porphyry màu đỏ tía quý hiếm – loại đá chỉ dành riêng cho Hoàng đế La Mã khai thác từ sa mạc phía đông Ai Cập.',PANTHEON)]),
+        point(36,73,'Đá Đỏ Imperial Porphyry biểu tượng hoàng gia','Các vòng tròn lớn bằng đá porphyry màu đỏ tía quý hiếm - loại đá chỉ dành riêng cho Hoàng đế La Mã khai thác từ sa mạc phía đông Ai Cập.',PANTHEON)]),
     scene('dome','pantheon-dome.jpg','Mái vòm bê tông không cốt thép lớn nhất thế giới',
         'Ngước nhìn tuyệt tác vòm bê tông vĩ đại: 5 tầng ô lõm (coffers) gồm 28 ô mỗi tầng xoay đồng tâm hướng về lỗ mở Oculus ở đỉnh.', [
         point(44,6,'Bí quyết vật liệu bê tông siêu nhẹ dần lên đỉnh','Bê tông La Mã ở chân vòm sử dụng đá travertine nặng và bền; lên đến giữa vòm dùng đá tufa xốp; và gần đỉnh vòm người La Mã sử dụng tro núi lửa và đá bọt pumice siêu nhẹ nổi trên nước.',PANTHEON),

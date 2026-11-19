@@ -1,0 +1,97 @@
+[
+  {
+    "routeId": "11111111-1111-4111-8111-111111111111",
+    "name": "Tuyến La Mã cổ đại",
+    "description": "Ba công trình biểu tượng thời La Mã cổ đại ở trung tâm Roma, nối liền bằng trục phố đi bộ lịch sử Via dei Fori Imperiali và Via del Plebiscito.",
+    "totalDistanceKm": 2.05,
+    "estimatedDurationMinutes": 195,
+    "stops": [
+      {
+        "stopOrder": 1,
+        "stayMinutes": 90,
+        "slug": "colosseum",
+        "name": "Đấu trường La Mã",
+        "address": "Piazza del Colosseo, 1, Roma, Italia",
+        "latitude": 41.89021,
+        "longitude": 12.492231,
+        "coverImageUrl": "/_local/images/colosseum-exterior.jpg",
+        "categoryLabel": "Di tích"
+      },
+      {
+        "stopOrder": 2,
+        "stayMinutes": 20,
+        "slug": "arch-of-constantine",
+        "name": "Khải hoàn môn Constantine",
+        "address": "Via di San Gregorio, Roma, Italia",
+        "latitude": 41.88976,
+        "longitude": 12.490598,
+        "coverImageUrl": "/_local/images/constantine-wide.jpg",
+        "categoryLabel": "Di tích"
+      },
+      {
+        "stopOrder": 3,
+        "stayMinutes": 60,
+        "slug": "pantheon",
+        "name": "Đền Pantheon",
+        "address": "Piazza della Rotonda, Roma, Italia",
+        "latitude": 41.8986,
+        "longitude": 12.4769,
+        "coverImageUrl": "/_local/images/pantheon-exterior.jpg",
+        "categoryLabel": "Di tích"
+      }
+    ]
+  },
+  {
+    "routeId": "22222222-2222-4222-8222-222222222222",
+    "name": "Hành trình Đại lộ Đế chế & Quảng trường Venezia",
+    "description": "Cung đường tham quan trọn vẹn 4 công trình biểu tượng tại trung tâm Roma: từ Đấu trường La Mã, Khải hoàn môn Constantine, qua Đại lộ Via dei Fori Imperiali tới Đài tưởng niệm Vittorio Emanuele II và kết thúc tại Đền Pantheon.",
+    "totalDistanceKm": 2.05,
+    "estimatedDurationMinutes": 255,
+    "stops": [
+      {
+        "stopOrder": 1,
+        "stayMinutes": 90,
+        "slug": "colosseum",
+        "name": "Đấu trường La Mã",
+        "address": "Piazza del Colosseo, 1, Roma, Italia",
+        "latitude": 41.89021,
+        "longitude": 12.492231,
+        "coverImageUrl": "/_local/images/colosseum-exterior.jpg",
+        "categoryLabel": "Di tích"
+      },
+      {
+        "stopOrder": 2,
+        "stayMinutes": 20,
+        "slug": "arch-of-constantine",
+        "name": "Khải hoàn môn Constantine",
+        "address": "Via di San Gregorio, Roma, Italia",
+        "latitude": 41.88976,
+        "longitude": 12.490598,
+        "coverImageUrl": "/_local/images/constantine-wide.jpg",
+        "categoryLabel": "Di tích"
+      },
+      {
+        "stopOrder": 3,
+        "stayMinutes": 60,
+        "slug": "vittoriano",
+        "name": "Đài tưởng niệm Vittorio Emanuele II",
+        "address": "Piazza Venezia, 00186 Roma, Italia",
+        "latitude": 41.89465,
+        "longitude": 12.48312,
+        "coverImageUrl": "/_local/images/vittoriano-exterior.jpg",
+        "categoryLabel": "Di tích"
+      },
+      {
+        "stopOrder": 4,
+        "stayMinutes": 55,
+        "slug": "pantheon",
+        "name": "Đền Pantheon",
+        "address": "Piazza della Rotonda, Roma, Italia",
+        "latitude": 41.8986,
+        "longitude": 12.4769,
+        "coverImageUrl": "/_local/images/pantheon-exterior.jpg",
+        "categoryLabel": "Di tích"
+      }
+    ]
+  }
+]

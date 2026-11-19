@@ -12,15 +12,15 @@ Ba địa điểm trong phạm vi: Colosseum, Khải hoàn môn Constantine và 
 
 ## 2. Hiện trạng đã kiểm tra
 
-| Hạng mục | Hiện trạng | Hướng xử lý |
-| --- | --- | --- |
-| Trang chủ `MapPage.tsx` | Danh sách bên trái, iframe mô hình bên phải; chưa có bản đồ thật | Thay phần trung tâm bằng bản đồ nền 3D |
-| `EmbedPlane.tsx` | Có khung iframe, ghi công và thông báo thiếu URL | Tái sử dụng trong cửa sổ xem mô hình |
-| `DestinationDetail.tsx` | Có thông tin, ảnh, yêu thích và đánh giá | Dùng lại chức năng trong bảng chi tiết bên trái |
-| Dữ liệu địa điểm | Có tọa độ, kích thước khối, hướng và màu trong kiểu dữ liệu vùng | Kiểm tra dữ liệu thật trước khi tái sử dụng để dựng mô hình |
-| Mô hình nhúng | Colosseum và Constantine có bên ngoài; Pantheon có bên ngoài/bên trong theo hướng dẫn | Chỉ hiện lựa chọn có dữ liệu |
-| Tài khoản và yêu thích | Có trang và các lời gọi API tương ứng | Tích hợp vào bố cục mới, kiểm tra luồng đăng nhập quay lại |
-| Tour ảnh, lịch sử đóng góp, quản trị | Chưa thấy màn hình tương ứng trong router hiện tại | Lập phần bổ sung riêng, không coi là đã có |
+| Hạng mục                             | Hiện trạng                                                                            | Hướng xử lý                                                 |
+| ------------------------------------ | ------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Trang chủ `MapPage.tsx`              | Danh sách bên trái, iframe mô hình bên phải; chưa có bản đồ thật                      | Thay phần trung tâm bằng bản đồ nền 3D                      |
+| `EmbedPlane.tsx`                     | Có khung iframe, ghi công và thông báo thiếu URL                                      | Tái sử dụng trong cửa sổ xem mô hình                        |
+| `DestinationDetail.tsx`              | Có thông tin, ảnh, yêu thích và đánh giá                                              | Dùng lại chức năng trong bảng chi tiết bên trái             |
+| Dữ liệu địa điểm                     | Có tọa độ, kích thước khối, hướng và màu trong kiểu dữ liệu vùng                      | Kiểm tra dữ liệu thật trước khi tái sử dụng để dựng mô hình |
+| Mô hình nhúng                        | Colosseum và Constantine có bên ngoài; Pantheon có bên ngoài/bên trong theo hướng dẫn | Chỉ hiện lựa chọn có dữ liệu                                |
+| Tài khoản và yêu thích               | Có trang và các lời gọi API tương ứng                                                 | Tích hợp vào bố cục mới, kiểm tra luồng đăng nhập quay lại  |
+| Tour ảnh, lịch sử đóng góp, quản trị | Chưa thấy màn hình tương ứng trong router hiện tại                                    | Lập phần bổ sung riêng, không coi là đã có                  |
 
 Demo tham khảo hiện có cả model cục bộ đặt trên bản đồ và tour ảnh có hotspot. Không sao chép toàn bộ demo, dữ liệu Việt Nam hoặc chức năng tìm đường sang dự án Roma.
 
@@ -34,10 +34,10 @@ Nếu buộc dùng iframe bản đồ thuần, cần kiểm tra API giao tiếp 
 
 ### 3.2. Hai loại mô hình có vai trò riêng
 
-| Loại | Nơi hiển thị | Mục đích |
-| --- | --- | --- |
+| Loại                               | Nơi hiển thị                                                          | Mục đích                                                            |
+| ---------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | Mô hình minh họa do AI hỗ trợ dựng | Đặt trực tiếp trên bản đồ bằng tài nguyên/khối 3D do ứng dụng quản lý | Nhận diện công trình, chọn địa điểm, quan sát trong bối cảnh địa lý |
-| Mô hình nhúng Sketchfab | Cửa sổ lớn khi bấm “Xem chi tiết mô hình 3D” | Xem chi tiết mô hình nguồn và thao tác mà trình xem cung cấp |
+| Mô hình nhúng Sketchfab            | Cửa sổ lớn khi bấm “Xem chi tiết mô hình 3D”                          | Xem chi tiết mô hình nguồn và thao tác mà trình xem cung cấp        |
 
 Link iframe là đầu vào của trình xem nhúng; kế hoạch không coi nó là tệp mô hình để đặt trực tiếp lên bản đồ. Khi có tệp mô hình được phép sử dụng, có thể đánh giá thay thế bản minh họa sau.
 
@@ -55,23 +55,23 @@ Phần khám phá do ứng dụng kiểm soát đặt trên ảnh 2D: chọn vù
 
 ## 4. Chỉnh sửa từng giao diện trong mục 3.2
 
-| Mục | Nội dung chỉnh sửa dự kiến |
-| --- | --- |
-| 3.2 – Tổng quan | Mô tả rõ ba không gian: bản đồ nền với mô hình minh họa, cửa sổ mô hình nhúng, tour ảnh tương tác |
-| 3.2.1 – Bản đồ và tìm kiếm | Bản đồ chiếm phần chính; bảng trái có tìm kiếm/danh sách/chi tiết; chọn marker hoặc mô hình cập nhật cùng một địa điểm và camera; có thu gọn và nút về tổng quan |
-| 3.2.2 – Chi tiết địa điểm | Giữ ảnh, tổng quan, đánh giá; tách “Đến vị trí trên bản đồ”, “Xem chi tiết mô hình 3D” và “Khám phá qua ảnh” thành ba hành động rõ nghĩa |
-| 3.2.3 – Tham quan ảo | Ghi rõ là tour ảnh 2D có hotspot, chuyển cảnh, thuyết minh, nhiệm vụ và tiến độ; có quay lại, vừa khung và thoát |
-| 3.2.4 – Menu tài khoản | Đặt góc trên phải; khách có đăng nhập/đăng ký; thành viên có yêu thích, đóng góp, chuyển tài khoản, đăng xuất; mục quản trị theo quyền |
-| 3.2.5 – Xác thực | Mở từ menu hoặc thao tác cần đăng nhập; giữ địa điểm, truy vấn và ngữ cảnh để quay lại; giữ bản nháp đánh giá nếu có |
-| 3.2.6 – Yêu thích | Hiển thị trong bảng bên hoặc màn riêng phù hợp màn hình; chọn mục đưa về đúng địa điểm trên bản đồ; bỏ lưu có trạng thái xử lý/lỗi |
-| 3.2.7 – Lịch sử đóng góp | Bổ sung màn/API lấy nội dung của tài khoản hiện tại; mở địa điểm, chỉnh sửa hoặc xóa nội dung của mình |
-| 3.2.8 – Quản trị | Tách quản lý mô hình minh họa, URL mô hình nhúng và tour ảnh; không dùng tỷ lệ/hướng đặt bản đồ để mô tả cấu hình iframe |
+| Mục                        | Nội dung chỉnh sửa dự kiến                                                                                                                                       |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.2 - Tổng quan            | Mô tả rõ ba không gian: bản đồ nền với mô hình minh họa, cửa sổ mô hình nhúng, tour ảnh tương tác                                                                |
+| 3.2.1 - Bản đồ và tìm kiếm | Bản đồ chiếm phần chính; bảng trái có tìm kiếm/danh sách/chi tiết; chọn marker hoặc mô hình cập nhật cùng một địa điểm và camera; có thu gọn và nút về tổng quan |
+| 3.2.2 - Chi tiết địa điểm  | Giữ ảnh, tổng quan, đánh giá; tách “Đến vị trí trên bản đồ”, “Xem chi tiết mô hình 3D” và “Khám phá qua ảnh” thành ba hành động rõ nghĩa                         |
+| 3.2.3 - Tham quan ảo       | Ghi rõ là tour ảnh 2D có hotspot, chuyển cảnh, thuyết minh, nhiệm vụ và tiến độ; có quay lại, vừa khung và thoát                                                 |
+| 3.2.4 - Menu tài khoản     | Đặt góc trên phải; khách có đăng nhập/đăng ký; thành viên có yêu thích, đóng góp, chuyển tài khoản, đăng xuất; mục quản trị theo quyền                           |
+| 3.2.5 - Xác thực           | Mở từ menu hoặc thao tác cần đăng nhập; giữ địa điểm, truy vấn và ngữ cảnh để quay lại; giữ bản nháp đánh giá nếu có                                             |
+| 3.2.6 - Yêu thích          | Hiển thị trong bảng bên hoặc màn riêng phù hợp màn hình; chọn mục đưa về đúng địa điểm trên bản đồ; bỏ lưu có trạng thái xử lý/lỗi                               |
+| 3.2.7 - Lịch sử đóng góp   | Bổ sung màn/API lấy nội dung của tài khoản hiện tại; mở địa điểm, chỉnh sửa hoặc xóa nội dung của mình                                                           |
+| 3.2.8 - Quản trị           | Tách quản lý mô hình minh họa, URL mô hình nhúng và tour ảnh; không dùng tỷ lệ/hướng đặt bản đồ để mô tả cấu hình iframe                                         |
 
 Sau khi triển khai, sửa `HUONG_DAN.md` để phản ánh hành vi mới. Nội dung hiện nói bản đồ đã bị gỡ là mô tả phiên bản đang chạy, chưa sửa thành khẳng định đã khôi phục trong giai đoạn lập kế hoạch.
 
 ## 5. Bố cục và luồng sử dụng
 
-Máy tính: bảng trái khoảng 340–400 px, bản đồ chiếm phần còn lại, tài khoản ở góc phải. Màn hình nhỏ: danh sách/chi tiết dùng bảng trượt phía dưới; mô hình nhúng và tour ảnh có thể mở toàn màn hình.
+Máy tính: bảng trái khoảng 340-400 px, bản đồ chiếm phần còn lại, tài khoản ở góc phải. Màn hình nhỏ: danh sách/chi tiết dùng bảng trượt phía dưới; mô hình nhúng và tour ảnh có thể mở toàn màn hình.
 
 Luồng chính:
 
@@ -87,13 +87,13 @@ Chỉ tải iframe khi mở cửa sổ mô hình. Khi đóng thì giải phóng 
 
 Không chỉ thêm các dấu thông tin để đọc. Mỗi địa điểm có một hành trình ngắn với mục tiêu, phản hồi sau thao tác và trạng thái hoàn thành. Các nội dung dưới đây là đề xuất, chỉ bật khi đã có ảnh và nội dung được kiểm chứng.
 
-| Địa điểm | Trải nghiệm đề xuất | Thao tác và kết quả |
-| --- | --- | --- |
-| Colosseum | “Khám phá cấu trúc đấu trường”: tổng thể → tầng vòm → không gian bên trong nếu có ảnh | Chọn chi tiết trên ảnh, mở góc nhìn liên quan, trả lời câu hỏi nhận diện; cập nhật các chi tiết đã khám phá |
-| Constantine | “Giải mã Khải hoàn môn”: tổng thể → ba vòm → chi tiết trang trí có ảnh | Tìm các chi tiết được gợi ý; bấm đúng vùng để xem ảnh cận và giải thích; câu hỏi tổng kết có phản hồi |
-| Pantheon | “Từ tiền sảnh đến mái vòm”: mặt tiền → nội thất → lỗ mở mái nếu có ảnh | Chọn điểm quan sát và vùng kiến trúc; trả lời câu hỏi nhận diện; có nút mở mô hình bên trong để đối chiếu |
+| Địa điểm    | Trải nghiệm đề xuất                                                                   | Thao tác và kết quả                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Colosseum   | “Khám phá cấu trúc đấu trường”: tổng thể → tầng vòm → không gian bên trong nếu có ảnh | Chọn chi tiết trên ảnh, mở góc nhìn liên quan, trả lời câu hỏi nhận diện; cập nhật các chi tiết đã khám phá |
+| Constantine | “Giải mã Khải hoàn môn”: tổng thể → ba vòm → chi tiết trang trí có ảnh                | Tìm các chi tiết được gợi ý; bấm đúng vùng để xem ảnh cận và giải thích; câu hỏi tổng kết có phản hồi       |
+| Pantheon    | “Từ tiền sảnh đến mái vòm”: mặt tiền → nội thất → lỗ mở mái nếu có ảnh                | Chọn điểm quan sát và vùng kiến trúc; trả lời câu hỏi nhận diện; có nút mở mô hình bên trong để đối chiếu   |
 
-Mức tối thiểu đề xuất cho mỗi địa điểm: 2–3 cảnh có tư liệu phù hợp, ít nhất một điểm chuyển cảnh, ba điểm khám phá và một nhiệm vụ/câu hỏi. Nếu chưa đủ tư liệu thì ghi rõ phần thiếu, chưa hiển thị hành trình như đã hoàn chỉnh.
+Mức tối thiểu đề xuất cho mỗi địa điểm: 2-3 cảnh có tư liệu phù hợp, ít nhất một điểm chuyển cảnh, ba điểm khám phá và một nhiệm vụ/câu hỏi. Nếu chưa đủ tư liệu thì ghi rõ phần thiếu, chưa hiển thị hành trình như đã hoàn chỉnh.
 
 Tiến độ gồm số cảnh/chi tiết đã khám phá và nhiệm vụ đã hoàn thành; khách có thể lưu cục bộ. Tách tiến độ theo địa điểm và phiên bản nội dung để tránh tính lại cùng một điểm hoặc giữ kết quả sai sau khi thay tour. Không cần tài khoản chỉ để khám phá.
 
@@ -113,15 +113,15 @@ Dữ liệu tour đề xuất:
 
 Điểm tương tác phải bám đúng nội dung ảnh khi đổi kích thước, zoom hoặc có khoảng trống quanh ảnh. Liên kết cảnh phải hợp lệ; cảnh khởi đầu phải tồn tại. Giai đoạn đầu có thể dùng JSON quản lý phiên bản; khi làm quản trị, chọn một nguồn dữ liệu chính và bổ sung API lưu trữ tương ứng.
 
-| Khu vực | Công việc dự kiến |
-| --- | --- |
-| `frontend/src/pages/MapPage.tsx` | Tổ chức bản đồ, bảng bên và trạng thái lựa chọn |
-| Các thành phần mới | Bản đồ nền, mô hình minh họa, bảng chi tiết, cửa sổ mô hình, tour ảnh, hotspot và tiến độ |
-| `frontend/src/components/EmbedPlane.tsx` | Dùng lại khung nhúng, bổ sung hành vi tải/lỗi phù hợp và mở nguồn ngoài khi cần |
-| `frontend/src/App.tsx`, `Header.tsx` | Bố cục, menu tài khoản và điều hướng giữ ngữ cảnh |
-| `frontend/src/lib/api.ts` | Kiểu dữ liệu mô hình/tour và API mới khi cần |
-| Backend, migration mới | Dữ liệu tour, lịch sử đóng góp, quyền quản trị và API chỉnh sửa theo giai đoạn |
-| `HUONG_DAN.md` | Cập nhật hướng dẫn chạy, thao tác và giới hạn sau triển khai |
+| Khu vực                                  | Công việc dự kiến                                                                         |
+| ---------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `frontend/src/pages/MapPage.tsx`         | Tổ chức bản đồ, bảng bên và trạng thái lựa chọn                                           |
+| Các thành phần mới                       | Bản đồ nền, mô hình minh họa, bảng chi tiết, cửa sổ mô hình, tour ảnh, hotspot và tiến độ |
+| `frontend/src/components/EmbedPlane.tsx` | Dùng lại khung nhúng, bổ sung hành vi tải/lỗi phù hợp và mở nguồn ngoài khi cần           |
+| `frontend/src/App.tsx`, `Header.tsx`     | Bố cục, menu tài khoản và điều hướng giữ ngữ cảnh                                         |
+| `frontend/src/lib/api.ts`                | Kiểu dữ liệu mô hình/tour và API mới khi cần                                              |
+| Backend, migration mới                   | Dữ liệu tour, lịch sử đóng góp, quyền quản trị và API chỉnh sửa theo giai đoạn            |
+| `HUONG_DAN.md`                           | Cập nhật hướng dẫn chạy, thao tác và giới hạn sau triển khai                              |
 
 Không coi giới hạn iframe là lý do khóa chức năng toàn trang. Chuẩn bị trạng thái đang tải, thiếu dữ liệu, tài nguyên lỗi, thử lại và liên kết mở mô hình tại nguồn. Trước triển khai xác minh cách nhận biết lỗi của trình xem, không mặc định sự kiện tải iframe có nghĩa mô hình bên trong đã tải thành công.
 
@@ -165,7 +165,7 @@ Không coi giới hạn iframe là lý do khóa chức năng toàn trang. Chuẩ
 - Cập nhật `HUONG_DAN.md` và sửa nội dung mục 3.2 theo chức năng thực tế đã hoàn thành.
 - Chạy kiểm tra build, kiểm tra dữ liệu và thực hiện kịch bản nghiệm thu dưới đây.
 
-Ưu tiên demo giai đoạn 1–3 để giải quyết vấn đề trải nghiệm trước. Giai đoạn 4–5 vẫn nằm trong kế hoạch hoàn thiện các màn hình đã nêu trong mục 3.2; nếu chưa làm phải ghi rõ là chưa hoàn thành.
+Ưu tiên demo giai đoạn 1-3 để giải quyết vấn đề trải nghiệm trước. Giai đoạn 4-5 vẫn nằm trong kế hoạch hoàn thiện các màn hình đã nêu trong mục 3.2; nếu chưa làm phải ghi rõ là chưa hoàn thành.
 
 ## 9. Tiêu chí nghiệm thu
 

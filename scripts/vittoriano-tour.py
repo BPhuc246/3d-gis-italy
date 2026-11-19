@@ -37,7 +37,7 @@ def create(scene, point, question, build, navigation):
         scene('quadrigas', 'vittoriano-quadrigas.jpg', 'Hai cỗ xe tứ mã trên đường chân trời',
             'Nhìn mái công trình từ xa để thấy hai nhóm tượng tứ mã nổi bật trên nền trời.', [
             point(28, 14, 'Thống nhất và Tự do', 'Hai cỗ xe tứ mã bằng đồng tượng trưng cho sự Thống nhất của Tổ quốc và Tự do của công dân.', official),
-            point(73, 38, 'Chiều cao gồm tượng trên mái', 'Các nhóm tượng được đặt trên mái trong giai đoạn 1924–1927, đưa tổng chiều cao công trình lên khoảng 81 m so với Piazza Venezia.', official)]),
+            point(73, 38, 'Chiều cao gồm tượng trên mái', 'Các nhóm tượng được đặt trên mái trong giai đoạn 1924-1927, đưa tổng chiều cao công trình lên khoảng 81 m so với Piazza Venezia.', official)]),
         scene('museum-entry', 'vittoriano-museum-entry.jpg', 'Lối vào khu bảo tàng trong Vittoriano',
             'Mặt bên khu bảo tàng thuộc Vittoriano, chụp ban ngày: dòng chữ Museo Centrale del Risorgimento phía trên cửa vào.', [
             point(44, 44, 'Museo Centrale del Risorgimento', 'Bảo tàng nằm trong lòng quần thể Vittoriano, kể về quá trình hình thành nước Ý thống nhất.', museum),
