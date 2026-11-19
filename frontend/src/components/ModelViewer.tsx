@@ -17,7 +17,9 @@ export default function ModelViewer({
   const [kind, setKind] = useState<Model3D["kind"]>(
     place.models[0]?.kind ?? "exterior",
   );
+
   const current = place.models.find((m) => m.kind === kind) ?? place.models[0];
+
   if (!current) return null;
 
   return (
@@ -31,6 +33,7 @@ export default function ModelViewer({
     >
       <div className="model-toolbar">
         <p>Kéo để xoay · Cuộn để thu phóng</p>
+
         {place.models.length > 1 && (
           <div className="segmented">
             {place.models.map((m) => (
@@ -50,7 +53,7 @@ export default function ModelViewer({
         key={current.modelId}
         src={current.embedUrl}
         title={`${place.name} · ${KIND_LABEL[current.kind]}`}
-        allow="autoplay; fullscreen; xr-spatial-tracking"
+        allow="autoplay; xr-spatial-tracking"
         allowFullScreen
         loading="lazy"
         style={{

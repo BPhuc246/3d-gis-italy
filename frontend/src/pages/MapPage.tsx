@@ -189,9 +189,22 @@ export default function MapPage({ slug }: { slug: string | null }) {
     }
   }, [local]);
 
-  const selected = region?.destinations.find((p) => p.slug === slug) ?? null;
+  // Một số nguồn dữ liệu có thể trả về nhiều bản ghi cùng slug.
+  // Chuẩn hóa danh sách tại đây để tránh React render các phần tử trùng key
+  // (ví dụ: hai địa điểm đều có slug "colosseum").
+  // Loại bỏ các địa điểm trùng slug trước khi render.
+  const places = useMemo(() => {
+    const seen = new Set<string>();
+    return (region?.destinations ?? []).filter((p) => {
+      if (seen.has(p.slug)) return false;
+      seen.add(p.slug);
+      return true;
+    });
+  }, [region]);
+
+  const selected = places.find((p) => p.slug === slug) ?? null;
   const photoTourAvailable = usePhotoTourAvailable(selected?.slug);
-  const places = region?.destinations ?? [];
+
   const results = places.filter((p) =>
     searchKey(
       `${p.name} ${p.slug} ${stories[p.slug]?.subtitle ?? ""}`,
@@ -611,7 +624,7 @@ export default function MapPage({ slug }: { slug: string | null }) {
               <div className="place-list">
                 {results.map((p, i) => (
                   <button
-                    key={p.slug}
+                    key={`${p.slug}-${i}`}
                     className="place-card"
                     onClick={() => select(p.slug)}
                   >
