@@ -1,11 +1,21 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import { api, tokenStore, User } from './api';
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { api, tokenStore, User } from "./api";
 
 type AuthState = {
   user: User | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  register: (fullName: string, email: string, password: string) => Promise<void>;
+  register: (
+    fullName: string,
+    email: string,
+    password: string,
+  ) => Promise<void>;
   logout: () => void;
 };
 
@@ -20,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       return;
     }
-    api
+    api.auth
       .me()
       .then(setUser)
       .catch(() => tokenStore.clear())
@@ -31,12 +41,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     user,
     loading,
     login: async (email, password) => {
-      const res = await api.login({ email, password });
+      const res = await api.auth.login({ email, password });
       tokenStore.set(res.token);
       setUser(res.user);
     },
     register: async (fullName, email, password) => {
-      const res = await api.register({ fullName, email, password });
+      const res = await api.auth.register({ fullName, email, password });
       tokenStore.set(res.token);
       setUser(res.user);
     },
@@ -51,6 +61,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth(): AuthState {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth phải được dùng trong AuthProvider');
+  if (!ctx) throw new Error("useAuth phải được dùng trong AuthProvider");
   return ctx;
 }
