@@ -9,6 +9,7 @@ import destinationsRouter from "./routes/destinations";
 import toursRouter from "./routes/tours";
 import regionsRouter from "./routes/regions";
 import routesRouter from "./routes/routes";
+import "dotenv/config";
 
 export function createApp() {
   const app = express();
