@@ -11,11 +11,6 @@ const ASSET_DIR = path.resolve(
   process.env.ASSET_DIR ?? "_local",
 );
 
-import fs from "node:fs";
-
-console.log("ASSET_DIR:", ASSET_DIR);
-console.log("Images exist:", fs.existsSync(path.join(ASSET_DIR, "images")));
-
 const MIME: Record<string, string> = {
   ".jpg": "image/jpeg",
   ".jpeg": "image/jpeg",

@@ -1,9 +1,12 @@
 import { pool } from "../db/pool";
-import { publicUrl } from "./public-url";
+import { ASSET_BASE, publicUrl } from "./public-url";
 
-// Trả về đường dẫn tương đối, cần đi qua publicUrl() ở nơi dùng
+// Escape dấu nháy đơn để chèn an toàn vào chuỗi SQL
+const SQL_ASSET_BASE = ASSET_BASE.replace(/'/g, "''");
+
+// Trả về URL tuyệt đối, ví dụ https://threed-gis-italy-backend.onrender.com/api/assets/<id>
 export const COVER_URL_SQL = `CASE WHEN d.cover_asset_id IS NULL THEN NULL
-  ELSE '/api/assets/' || d.cover_asset_id END`;
+  ELSE '${SQL_ASSET_BASE}/api/assets/' || d.cover_asset_id END`;
 
 // Tham số khối Three.js (không lưu mesh); NULL khi địa điểm không có khối
 export const BUILDING_SQL = `CASE WHEN d.building_shape IS NULL THEN NULL ELSE
