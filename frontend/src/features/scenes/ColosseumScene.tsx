@@ -21,7 +21,11 @@ import { LionAI, type LionState } from "./combat/LionAI";
 
 type CombatResult = "victory" | "defeat" | null;
 
-const CREATIVE_HOME = new THREE.Vector3(0, 80, -10);
+// Độ cao đi bộ ở chế độ Creative
+const CREATIVE_HEIGHT = 60;
+const CREATIVE_HOME = new THREE.Vector3(0, CREATIVE_HEIGHT, -10);
+const CREATIVE_MIN_HEIGHT = 2;
+const CREATIVE_MAX_HEIGHT = 300;
 const START_POSITION = new THREE.Vector3(0, 20, -8);
 
 // Đĩa tròn lơ lửng là sàn chiến đấu
@@ -111,6 +115,7 @@ export default function ColosseumScene({
 }) {
   const [helmetOn, setHelmetOn] = useState(false);
   const [combatMode, setCombatMode] = useState(false);
+  const [flying, setFlying] = useState(false); // [MỚI] trạng thái bay để hiển thị nút
   const [playerHits, setPlayerHits] = useState(0);
   const [lionHits, setLionHits] = useState(0);
   const [blocking, setBlocking] = useState(false);
@@ -123,6 +128,9 @@ export default function ColosseumScene({
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const lionRef = useRef<LionAI | null>(null);
+
+  // [MỚI] Yêu cầu từ nút bấm và phím G, xử lý trong vòng lặp 3D
+  const intent = useRef({ toggleFly: false });
 
   // init chỉ chạy một lần, nên mọi trạng thái React mà vòng lặp 3D cần đều đi qua ref
   const live = useRef({ helmetOn, combatMode, combatResult, combatSession });
@@ -162,7 +170,7 @@ export default function ColosseumScene({
     scene.add(camera);
     camera.position.copy(CREATIVE_HOME);
     camera.rotation.order = "YXZ";
-    camera.lookAt(0, 0, 0);
+    camera.lookAt(0, CREATIVE_HEIGHT, 0);
 
     let disposed = false;
     let loadedArchitecture: THREE.Object3D | null = null;
@@ -246,10 +254,12 @@ export default function ColosseumScene({
         console.warn("Không tìm thấy gladiator_helmet.glb");
       });
 
-    // Điều khiển
+    // Điều khiển Creative: mặc định đi bộ ở 60m, bật bay để đổi độ cao
     const creative = new CreativeFlyController(camera, renderer.domElement);
     creative.speed = 10;
     creative.boostSpeed = 30;
+    creative.walkHeight = CREATIVE_HEIGHT;
+    creative.setFlying(false);
 
     const combat = new CombatController(camera, renderer.domElement, {
       onAttack() {
@@ -290,6 +300,14 @@ export default function ColosseumScene({
 
     const lionRoot = () => (lion as unknown as LionRootAccess).root;
 
+    // [MỚI] Phím G bật/tắt bay
+    const onKey = (event: KeyboardEvent) => {
+      if (!event.repeat && event.code === "KeyG") {
+        intent.current.toggleFly = true;
+      }
+    };
+    window.addEventListener("keydown", onKey);
+
     // Theo dõi trạng thái trước đó để chỉ gọi hàm bật/tắt khi có thay đổi
     let lastSession = 0;
     let lastCombatMode = false;
@@ -301,6 +319,16 @@ export default function ColosseumScene({
     return {
       update(dt) {
         const state = live.current;
+
+        // [MỚI] Xử lý yêu cầu bật/tắt bay (chỉ ngoài chế độ chiến đấu)
+        if (intent.current.toggleFly) {
+          intent.current.toggleFly = false;
+          if (!state.combatMode) {
+            const next = !creative.flying;
+            creative.setFlying(next);
+            setFlying(next);
+          }
+        }
 
         if (state.combatSession !== lastSession) {
           lastSession = state.combatSession;
@@ -317,8 +345,15 @@ export default function ColosseumScene({
           platform.visible = state.combatMode;
           if (!state.combatMode) {
             lion.hide();
+            // [MỚI] Thoát chiến đấu: về chế độ đi bộ ở 60m
+            creative.setFlying(false);
+            setFlying(false);
             camera.position.copy(CREATIVE_HOME);
-            camera.lookAt(0, 0, 0);
+            camera.lookAt(0, CREATIVE_HEIGHT, 0);
+          } else {
+            // [MỚI] Vào chiến đấu: tắt bay trước khi bắt đầu
+            creative.setFlying(false);
+            setFlying(false);
           }
         }
 
@@ -341,6 +376,15 @@ export default function ColosseumScene({
         creative.update(dt);
         lion.update(paused ? 0 : dt, combat.isBlocking);
 
+        // [MỚI] Khi bay ở Creative, giới hạn độ cao để không xuống sát đất hoặc bay quá cao
+        if (!state.combatMode && creative.flying) {
+          camera.position.y = THREE.MathUtils.clamp(
+            camera.position.y,
+            CREATIVE_MIN_HEIGHT,
+            CREATIVE_MAX_HEIGHT,
+          );
+        }
+
         // Bức tường vô hình: người chơi và sư tử không ra khỏi đĩa
         if (fighting) {
           keepOnDisc(camera, PLAYER_WALL);
@@ -355,6 +399,7 @@ export default function ColosseumScene({
 
       dispose() {
         disposed = true;
+        window.removeEventListener("keydown", onKey);
         creative.dispose();
         combat.dispose();
         lion.dispose();
@@ -395,12 +440,27 @@ export default function ColosseumScene({
     if (document.pointerLockElement) document.exitPointerLock();
   };
 
+  // [MỚI] Nút bật/tắt bay, chỉ hiện ngoài chế độ chiến đấu
+  const toggleFlyButton = () => {
+    intent.current.toggleFly = true;
+  };
+
   return (
     <div className="colosseum-scene" style={wrapperStyle}>
       <style>{sceneCss}</style>
       <ThreeCanvas init={init} />
 
       <div style={controlStackStyle}>
+        {!combatMode && (
+          <button
+            className="button secondary"
+            style={buttonStyle}
+            onClick={toggleFlyButton}
+          >
+            {flying ? "Tắt bay (G)" : "Bật bay (G)"}
+          </button>
+        )}
+
         {!combatMode && (
           <button
             className="button secondary"
@@ -451,7 +511,9 @@ export default function ColosseumScene({
       >
         {combatMode
           ? "Combat Mode: WASD di chuyển · Space nhảy · Shift chạy · Chuột trái đánh · Chuột phải giữ để chặn."
-          : "Creative Mode: Click màn hình để điều khiển camera · WASD di chuyển · Space bay lên · Shift bay xuống · Ctrl tăng tốc · ESC thả chuột."}
+          : flying
+            ? "Creative Mode (đang bay): WASD di chuyển · Space lên cao · Shift xuống thấp · Ctrl tăng tốc · G tắt bay · ESC thả chuột."
+            : `Creative Mode: bạn đi bộ ở độ cao ${CREATIVE_HEIGHT}m · WASD di chuyển · Ctrl tăng tốc · G bật bay để đổi độ cao · ESC thả chuột.`}
         {!audio.available
           ? " Chưa có audioUrl (feature_key: crowd_audio)."
           : ""}
