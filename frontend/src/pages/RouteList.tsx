@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { api, RouteSummary } from '../lib/api';
-import { loadLocalRoutes, localDemoAvailable } from '../lib/explore';
+import { useEffect, useState } from "react";
+import { api, RouteSummary } from "../lib/api";
+import { loadLocalRoutes, localDemoAvailable } from "../lib/explore";
 
 export default function RouteList() {
   const [routes, setRoutes] = useState<RouteSummary[]>([]);
@@ -9,8 +9,8 @@ export default function RouteList() {
 
   useEffect(() => {
     let active = true;
-    api
-      .listRoutes()
+    api.routes
+      .list()
       .then((data) => {
         if (active) setRoutes(data);
       })
@@ -27,7 +27,7 @@ export default function RouteList() {
                   totalDistanceKm: r.totalDistanceKm,
                   estimatedDurationMinutes: r.estimatedDurationMinutes,
                   stopCount: r.stops.length,
-                }))
+                })),
               );
               setOfflineMode(true);
               return;
@@ -47,9 +47,12 @@ export default function RouteList() {
     <div className="mx-auto max-w-5xl p-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-slate-800">Tuyến tham quan 3D</h1>
+          <h1 className="text-3xl font-bold text-slate-800">
+            Tuyến tham quan 3D
+          </h1>
           <p className="mt-2 text-slate-500">
-            Khám phá các cung đường đi bộ di sản La Mã kết nối các công trình trên bản đồ 3D.
+            Khám phá các cung đường đi bộ di sản La Mã kết nối các công trình
+            trên bản đồ 3D.
           </p>
         </div>
         <a
@@ -75,7 +78,9 @@ export default function RouteList() {
           >
             <div>
               <h2 className="text-xl font-bold text-slate-800">{r.name}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{r.description}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                {r.description}
+              </p>
               <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium text-amber-900">
                 <span className="rounded-lg bg-amber-50 px-2.5 py-1.5">
                   📍 {r.stopCount} điểm dừng

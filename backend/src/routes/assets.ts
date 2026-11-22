@@ -6,7 +6,15 @@ import { isUuid } from "../lib/validate";
 const router = Router();
 
 // Thư mục chứa ảnh gốc (_local). Mặc định: ../_local so với thư mục backend
-const ASSET_DIR = path.resolve(process.cwd(), process.env.ASSET_DIR ?? "../_local");
+const ASSET_DIR = path.resolve(
+  process.cwd(),
+  process.env.ASSET_DIR ?? "/_local",
+);
+
+import fs from "node:fs";
+
+console.log("ASSET_DIR:", ASSET_DIR);
+console.log("Images exist:", fs.existsSync(path.join(ASSET_DIR, "images")));
 
 const MIME: Record<string, string> = {
   ".jpg": "image/jpeg",
@@ -18,9 +26,16 @@ const MIME: Record<string, string> = {
 
 const NOT_FOUND = { message: "Không tìm thấy tệp" };
 
-async function sendAsset(res: Response, next: NextFunction, id: string, thumb: boolean) {
+async function sendAsset(
+  res: Response,
+  next: NextFunction,
+  id: string,
+  thumb: boolean,
+) {
   try {
-    const column = thumb ? "COALESCE(thumbnail_path, storage_path)" : "storage_path";
+    const column = thumb
+      ? "COALESCE(thumbnail_path, storage_path)"
+      : "storage_path";
     const { rows } = await pool.query<{ p: string | null }>(
       `SELECT ${column} AS p FROM media_asset WHERE asset_id = $1`,
       [id],

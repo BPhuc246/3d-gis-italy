@@ -1,6 +1,7 @@
-import { createApp } from './app';
-import { env } from './config/env';
-import { pool } from './db/pool';
+import { createApp } from "./app";
+import { env } from "./config/env";
+import { pool } from "./db/pool";
+import "dotenv/config";
 
 const app = createApp();
 
@@ -17,5 +18,5 @@ async function shutdown(signal: string) {
   });
 }
 
-process.on('SIGINT', () => shutdown('SIGINT'));
-process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));
