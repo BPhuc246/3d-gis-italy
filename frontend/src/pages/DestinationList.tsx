@@ -18,12 +18,23 @@ export default function DestinationList() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let active = true;
     setLoading(true);
-    api
-      .listDestinations({ category, q: keyword })
-      .then(setItems)
-      .catch((e: Error) => setError(e.message))
-      .finally(() => setLoading(false));
+    setError(null);
+    api.destinations
+      .list({ category, q: keyword })
+      .then((page) => {
+        if (active) setItems(page.items);
+      })
+      .catch((e: Error) => {
+        if (active) setError(e.message);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, [category, keyword]);
 
   const search = (e: FormEvent) => {

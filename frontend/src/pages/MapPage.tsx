@@ -539,8 +539,14 @@ export default function MapPage({ slug }: { slug: string | null }) {
                         : "Xem loại vé và giá hiện hành tại nguồn chính thức."}
                   </p>
                 </div>
-                <ExperienceHub key={selected.slug} slug={selected.slug} />
-                <FavoriteControl key={selected.slug} place={selected} />
+                <ExperienceHub
+                  key={`exp-${selected.slug}`}
+                  slug={selected.slug}
+                />
+                <FavoriteControl
+                  key={`fav-${selected.slug}`}
+                  place={selected}
+                />
                 <a
                   className="source-link"
                   href={

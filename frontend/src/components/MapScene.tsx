@@ -154,8 +154,9 @@ export default function MapScene({
     const map = new WebScene({
       portalItem: { id: "c7400d08c9d546808961e3f01e201857" },
     });
+    const abort = new AbortController();
     map
-      .load()
+      .load({ signal: abort.signal })
       .then(() => {
         if (disposed) return;
         const masks = modelPlaces.flatMap((p) =>
@@ -264,6 +265,7 @@ export default function MapScene({
     return () => {
       disposed = true;
       clearTimeout(timer);
+      abort.abort();
       click.remove();
       routeLayerRef.current = null;
       routeStopsLayerRef.current = null;

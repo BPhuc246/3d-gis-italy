@@ -1,69 +1,31 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-
 import { fileURLToPath } from "node:url";
-import { readFile } from "node:fs/promises";
-import { extname, resolve, sep } from "node:path";
-import type { IncomingMessage, ServerResponse } from "node:http";
 
-const localRoot = fileURLToPath(new URL("../_local/", import.meta.url));
+const rootDir = fileURLToPath(new URL("..", import.meta.url));
 
-async function serveLocalFiles(req: IncomingMessage, res: ServerResponse) {
-  try {
-    const relative = decodeURIComponent((req.url ?? "").split("?")[0]).replace(
-      /^\/+/,
-      "",
-    );
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, rootDir, "");
+  const backendUrl = env.BACKEND_URL || "http://localhost:4000";
 
-    const path = resolve(localRoot, relative);
+  return {
+    plugins: [react(), tailwindcss()],
 
-    const allowed = [".json", ".jpg", ".webp", ".png"];
+    envDir: rootDir,
 
-    if (
-      !path.startsWith(resolve(localRoot) + sep) ||
-      !allowed.includes(extname(path))
-    ) {
-      res.statusCode = 404;
-      res.end();
-      return;
-    }
-
-    const body = await readFile(path);
-    const extension = extname(path);
-
-    const contentTypes: Record<string, string> = {
-      ".json": "application/json; charset=utf-8",
-      ".jpg": "image/jpeg",
-      ".webp": "image/webp",
-      ".png": "image/png",
-    };
-
-    res.setHeader("Content-Type", contentTypes[extension]);
-    res.setHeader("Cache-Control", "no-cache");
-    res.end(body);
-  } catch {
-    res.statusCode = 404;
-    res.end("Local resource not found");
-  }
-}
-
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-
-  envDir: fileURLToPath(new URL("..", import.meta.url)),
-
-  server: {
-    port: 5173,
-    proxy: {
-      "/api": { target: process.env.BACKEND_URL, changeOrigin: true },
+    server: {
+      port: 5173,
+      proxy: {
+        "/api": { target: backendUrl, changeOrigin: true },
+      },
     },
-  },
 
-  build: {
-    sourcemap: true,
-    minify: "esbuild",
-    reportCompressedSize: true,
-    cssMinify: false,
-  },
+    build: {
+      sourcemap: true,
+      minify: "esbuild",
+      reportCompressedSize: true,
+      cssMinify: false,
+    },
+  };
 });
