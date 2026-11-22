@@ -2,13 +2,16 @@ import { Router } from "express";
 import { pool } from "../db/pool";
 import { COVER_URL_SQL } from "../lib/destination-data";
 import { isSlug } from "../lib/validate";
+import { publicUrl } from "../lib/public-url";
 
 const router = Router();
 const NOT_FOUND = "Không có tour cho địa điểm này";
 const LINK_TEXT = "Chuyển góc nhìn; có điểm nối để quay lại ảnh này.";
 
-const imageUrl = (id: string | null) => (id ? `/api/assets/${id}` : null);
-const thumbUrl = (id: string | null) => (id ? `/api/assets/${id}/thumb` : null);
+const imageUrl = (id: string | null) =>
+  id ? publicUrl(`/api/assets/${id}`) : null;
+const thumbUrl = (id: string | null) =>
+  id ? publicUrl(`/api/assets/${id}/thumb`) : null;
 
 // Danh sách tour
 router.get("/tours", async (_req, res, next) => {
@@ -33,7 +36,9 @@ router.get("/destinations/:slug/tour", async (req, res, next) => {
     const slug = req.params.slug;
     if (!isSlug(slug)) return void res.status(404).json({ message: NOT_FOUND });
 
-    const { rows: [tour] } = await pool.query(
+    const {
+      rows: [tour],
+    } = await pool.query(
       `SELECT t.tour_id AS "tourId", t.external_id AS id, t.version,
               d.slug AS "destinationSlug", d.name AS "destinationName", t.title,
               t.route_note AS "routeNote", t.start_scene_id AS "startSceneId"
@@ -115,8 +120,23 @@ router.get("/destinations/:slug/tour", async (req, res, next) => {
         .filter((h) => h.sceneId === s.sceneId)
         .map((h) =>
           h.target
-            ? { id: h.id, x: h.x, y: h.y, title: h.title, text: h.text, target: h.target, direction: h.direction }
-            : { id: h.id, x: h.x, y: h.y, title: h.title, text: h.text, sourceUrl: h.sourceUrl },
+            ? {
+                id: h.id,
+                x: h.x,
+                y: h.y,
+                title: h.title,
+                text: h.text,
+                target: h.target,
+                direction: h.direction,
+              }
+            : {
+                id: h.id,
+                x: h.x,
+                y: h.y,
+                title: h.title,
+                text: h.text,
+                sourceUrl: h.sourceUrl,
+              },
         ),
     }));
 
@@ -141,7 +161,9 @@ router.get("/destinations/:slug/tour", async (req, res, next) => {
       title: tour.title,
       routeNote: tour.routeNote,
       startSceneId:
-        sceneRows.find((s) => s.sceneId === tour.startSceneId)?.id ?? sceneRows[0]?.id ?? null,
+        sceneRows.find((s) => s.sceneId === tour.startSceneId)?.id ??
+        sceneRows[0]?.id ??
+        null,
       contentSources: sources.rows,
       scenes: scenesOut,
       questions: questionsOut,

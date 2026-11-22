@@ -1,5 +1,7 @@
 import { pool } from "../db/pool";
+import { publicUrl } from "./public-url";
 
+// Trả về đường dẫn tương đối, cần đi qua publicUrl() ở nơi dùng
 export const COVER_URL_SQL = `CASE WHEN d.cover_asset_id IS NULL THEN NULL
   ELSE '/api/assets/' || d.cover_asset_id END`;
 
@@ -34,7 +36,9 @@ export type GalleryImage = {
   isPrimary: boolean;
 };
 
-export async function loadModels(ids: string[]): Promise<Map<string, ModelOut[]>> {
+export async function loadModels(
+  ids: string[],
+): Promise<Map<string, ModelOut[]>> {
   const map = new Map<string, ModelOut[]>();
   if (ids.length === 0) return map;
   const { rows } = await pool.query<ModelOut & { destinationId: string }>(
@@ -51,7 +55,9 @@ export async function loadModels(ids: string[]): Promise<Map<string, ModelOut[]>
   return map;
 }
 
-export async function loadGallery(ids: string[]): Promise<Map<string, GalleryImage[]>> {
+export async function loadGallery(
+  ids: string[],
+): Promise<Map<string, GalleryImage[]>> {
   const map = new Map<string, GalleryImage[]>();
   if (ids.length === 0) return map;
   const { rows } = await pool.query<GalleryImage & { destinationId: string }>(
@@ -63,7 +69,10 @@ export async function loadGallery(ids: string[]): Promise<Map<string, GalleryIma
     [ids],
   );
   for (const { destinationId, ...img } of rows) {
-    map.set(destinationId, [...(map.get(destinationId) ?? []), img]);
+    map.set(destinationId, [
+      ...(map.get(destinationId) ?? []),
+      { ...img, url: publicUrl(img.url) ?? "" },
+    ]);
   }
   return map;
 }
