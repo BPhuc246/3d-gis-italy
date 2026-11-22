@@ -8,7 +8,7 @@ const router = Router();
 // Thư mục chứa ảnh gốc (_local). Mặc định: ../_local so với thư mục backend
 const ASSET_DIR = path.resolve(
   process.cwd(),
-  process.env.ASSET_DIR ?? "/_local",
+  process.env.ASSET_DIR ?? "_local",
 );
 
 import fs from "node:fs";
